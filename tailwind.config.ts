@@ -10,6 +10,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				red: 'rgb(229,9,20)',
+				redHover: 'rgb(193, 17, 25)',
 			},
 		},
 	},

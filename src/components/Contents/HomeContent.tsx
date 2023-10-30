@@ -1,10 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
+import homeBg from '@/assets/homeBg.jpg'
+import Image from 'next/image'
+import { GetStartedForm } from '@/components'
 
 const HomeContent = () => {
   return (
-		<div className='bg-gray-900 px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
-			<div>
+		<div>
+			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+				<Image src={homeBg} alt='home background image' fill className='-z-10 object-cover' />
 				<nav className='flex items-center justify-between py-6'>
 					<svg
 						viewBox='0 0 111 30'
@@ -31,6 +35,15 @@ const HomeContent = () => {
 						</Link>
 					</div>
 				</nav>
+				<div className='text-white text-center pt-40 pb-20 sm:pt-60 sm:pb-30 md:pt-80 md:pb-40 lg:pt-100 lg:pb-50'>
+					<h1 className='font-bold text-4xl'>Âlâsı var!</h1>
+					<h2 className='text-xl mt-4'>En iyi dizi, film, belgesel ve çok daha fazlası burada.</h2>
+					<p className='leading-6 text-xl	my-6'>
+						İzlemeye hazır mısınız? Üye olmak ya da hesabınıza tekrar ulaşmak için tek yapmanız gereken e-posta
+						adresinizi girmek.
+					</p>
+					<GetStartedForm />
+				</div>
 			</div>
 		</div>
 	)
