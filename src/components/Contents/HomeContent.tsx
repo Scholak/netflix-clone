@@ -6,7 +6,7 @@ import tv2Img from '@/assets/tv2.png'
 import phoneImg from '@/assets/phone.png'
 import childImg from '@/assets/child.png'
 import Image from 'next/image'
-import { Faq, GetStartedForm } from '@/components'
+import { Faq, GetStartedForm, Footer } from '@/components'
 
 const HomeContent = () => {
   return (
@@ -115,6 +115,7 @@ const HomeContent = () => {
 				<GetStartedForm />
 			</div>
 			<div className='mt-20 bg-neutral-700 h-1.5 w-full'></div>
+			<Footer />
 		</div>
 	)
 }
