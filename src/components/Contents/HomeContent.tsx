@@ -10,10 +10,10 @@ import { Faq, GetStartedForm, Footer } from '@/components'
 
 const HomeContent = () => {
   return (
-		<div className='bg-black'>
+		<div className=''>
 			{/* Navbar and Hero Section */}
 			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
-				<Image src={homeBg} alt='home background image' fill className='-z-10 object-cover' />
+				<Image src={homeBg} alt='home background image' fill className='object-cover -z-10' />
 				<nav className='flex items-center justify-between py-6'>
 					<svg
 						viewBox='0 0 111 30'
@@ -107,14 +107,14 @@ const HomeContent = () => {
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
 			</div>
 			<Faq />
-			<div className='bg-black px-6 sm:px-10 md:px-20 lg:px-30 xl:px-60 2xl:px-96'>
+			<div className='bg-black pb-20 px-6 sm:px-10 md:px-20 lg:px-30 xl:px-60 2xl:px-96'>
 				<p className='py-6 text-white text-center font-medium text-xl'>
 					İzlemeye hazır mısınız? Üye olmak ya da hesabınıza tekrar ulaşmak için tek yapmanız gereken e-posta adresinizi
 					girmek.
 				</p>
 				<GetStartedForm />
 			</div>
-			<div className='mt-20 bg-neutral-700 h-1.5 w-full'></div>
+			<div className='bg-neutral-700 h-1.5 w-full'></div>
 			<Footer />
 		</div>
 	)
