@@ -7,7 +7,7 @@ import { GetStartedForm } from '@/components'
 const HomeContent = () => {
   return (
 		<div>
-			<div className='relative px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 				<Image src={homeBg} alt='home background image' fill className='-z-10 object-cover' />
 				<nav className='flex items-center justify-between py-6'>
 					<svg
