@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 import homeBg from '@/assets/homeBg.jpg'
+import tvImg from '@/assets/tv.png'
+import tv2Img from '@/assets/tv2.png'
+import phoneImg from '@/assets/phone.png'
+import childImg from '@/assets/child.png'
 import Image from 'next/image'
 import { GetStartedForm } from '@/components'
 
@@ -47,8 +51,60 @@ const HomeContent = () => {
 				</div>
 			</div>
 			{/* Features Section */}
-			<div>
-
+			<div className='bg-black text-white py-8'>
+				{/* Feature One */}
+				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+					<div className='w-full text-center lg:w-1/2 lg:text-left'>
+						<h3 className='text-5xl font-bold mb-6'>Televizyonunuzda izleyin</h3>
+						<p className='text-2xl leading-6 font-medium'>
+							Akıllı TV, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray oynatıcılar ve daha fazlasında seyredin.
+						</p>
+					</div>
+					<div className='relative w-full h-full lg:w-1/2'>
+						<Image src={tvImg} alt='tv image' fill className='object-contain' />
+					</div>
+				</div>
+				<div className='bg-neutral-700 h-1.5 w-full'></div>
+				{/* Feature Two */}
+				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row-reverse lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+					<div className='w-full text-center lg:w-1/2 lg:text-left'>
+						<h3 className='text-5xl font-bold mb-6'>Çevrimdışı izlemek için içerikleri indirin</h3>
+						<p className='text-2xl leading-6 font-medium'>
+							En sevdiğiniz içerikleri kolayca kaydedin ve her zaman izleyecek bir şeyleriniz olsun.
+						</p>
+					</div>
+					<div className='relative w-full h-full lg:w-1/2'>
+						<Image src={phoneImg} alt='tv image' fill className='object-contain' />
+					</div>
+				</div>
+				<div className='bg-neutral-700 h-1.5 w-full'></div>
+				{/* Feature Three */}
+				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+					<div className='w-full text-center lg:w-1/2 lg:text-left'>
+						<h3 className='text-5xl font-bold mb-6'>İstediğiniz her yerde izleyin</h3>
+						<p className='text-2xl leading-6 font-medium'>
+							Telefonda, tablette, bilgisayarda, televizyonda sınırsız film ve dizi izleyin.
+						</p>
+					</div>
+					<div className='relative w-full h-full lg:w-1/2'>
+						<Image src={tv2Img} alt='tv image' fill className='object-contain' />
+					</div>
+				</div>
+				<div className='bg-neutral-700 h-1.5 w-full'></div>
+				{/* Feature Four */}
+				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row-reverse lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+					<div className='w-full text-center lg:w-1/2 lg:text-left'>
+						<h3 className='text-5xl font-bold mb-6'>Çocuklarınız için profiller oluşturun</h3>
+						<p className='text-2xl leading-6 font-medium'>
+							Üyeliğinize dâhil olan bu ücretsiz deneyim sayesinde çocuklarınız, sadece onlara özel bir alanda en
+							sevdikleri karakterlerle maceralara atılabilir.
+						</p>
+					</div>
+					<div className='relative w-full h-full lg:w-1/2'>
+						<Image src={childImg} alt='tv image' fill className='object-contain' />
+					</div>
+				</div>
+				<div className='bg-neutral-700 h-1.5 w-full'></div>
 			</div>
 		</div>
 	)
