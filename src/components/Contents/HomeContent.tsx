@@ -40,7 +40,7 @@ const HomeContent = () => {
 						</Link>
 					</div>
 				</nav>
-				<div className='text-white text-center pt-40 pb-20 sm:pt-60 sm:pb-30 md:pt-80 md:pb-40 lg:pt-100 lg:pb-50'>
+				<div className='text-white text-center pt-32 pb-12 sm:pt-44 sm:pb-24 md:pt-52 md:pb-36 lg:pb-48'>
 					<h1 className='font-bold text-4xl'>Âlâsı var!</h1>
 					<h2 className='text-xl mt-4'>En iyi dizi, film, belgesel ve çok daha fazlası burada.</h2>
 					<p className='leading-6 text-xl	my-6'>
