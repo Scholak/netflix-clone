@@ -55,8 +55,8 @@ const HomeContent = () => {
 				{/* Feature One */}
 				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 					<div className='w-full text-center lg:w-1/2 lg:text-left'>
-						<h3 className='text-5xl font-bold mb-6'>Televizyonunuzda izleyin</h3>
-						<p className='text-2xl leading-6 font-medium'>
+						<h3 className='text-2xl font-bold mb-6 sm:text-5xl'>Televizyonunuzda izleyin</h3>
+						<p className='text-lg leading-6 font-medium sm:text-2xl'>
 							Akıllı TV, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray oynatıcılar ve daha fazlasında seyredin.
 						</p>
 					</div>
@@ -68,8 +68,8 @@ const HomeContent = () => {
 				{/* Feature Two */}
 				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row-reverse lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 					<div className='w-full text-center lg:w-1/2 lg:text-left'>
-						<h3 className='text-5xl font-bold mb-6'>Çevrimdışı izlemek için içerikleri indirin</h3>
-						<p className='text-2xl leading-6 font-medium'>
+						<h3 className='text-2xl font-bold mb-6 sm:text-5xl'>Çevrimdışı izlemek için içerikleri indirin</h3>
+						<p className='text-lg leading-6 font-medium sm:text-2xl'>
 							En sevdiğiniz içerikleri kolayca kaydedin ve her zaman izleyecek bir şeyleriniz olsun.
 						</p>
 					</div>
@@ -81,8 +81,8 @@ const HomeContent = () => {
 				{/* Feature Three */}
 				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 					<div className='w-full text-center lg:w-1/2 lg:text-left'>
-						<h3 className='text-5xl font-bold mb-6'>İstediğiniz her yerde izleyin</h3>
-						<p className='text-2xl leading-6 font-medium'>
+						<h3 className='text-2xl font-bold mb-6 sm:text-5xl'>İstediğiniz her yerde izleyin</h3>
+						<p className='text-lg leading-6 font-medium sm:text-2xl'>
 							Telefonda, tablette, bilgisayarda, televizyonda sınırsız film ve dizi izleyin.
 						</p>
 					</div>
@@ -94,8 +94,8 @@ const HomeContent = () => {
 				{/* Feature Four */}
 				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row-reverse lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 					<div className='w-full text-center lg:w-1/2 lg:text-left'>
-						<h3 className='text-5xl font-bold mb-6'>Çocuklarınız için profiller oluşturun</h3>
-						<p className='text-2xl leading-6 font-medium'>
+						<h3 className='text-2xl font-bold mb-6 sm:text-5xl'>Çocuklarınız için profiller oluşturun</h3>
+						<p className='text-lg leading-6 font-medium sm:text-2xl'>
 							Üyeliğinize dâhil olan bu ücretsiz deneyim sayesinde çocuklarınız, sadece onlara özel bir alanda en
 							sevdikleri karakterlerle maceralara atılabilir.
 						</p>
