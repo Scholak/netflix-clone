@@ -6,11 +6,12 @@ import tv2Img from '@/assets/tv2.png'
 import phoneImg from '@/assets/phone.png'
 import childImg from '@/assets/child.png'
 import Image from 'next/image'
-import { Faq, GetStartedForm, Footer } from '@/components'
+import { Faq, GetStartedForm, Footer, CookiePreferences } from '@/components'
 
 const HomeContent = () => {
   return (
-		<div className=''>
+		<div className='relative'>
+			<CookiePreferences />
 			{/* Navbar and Hero Section */}
 			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 				<Image src={homeBg} alt='home background image' fill className='object-cover -z-10' />
