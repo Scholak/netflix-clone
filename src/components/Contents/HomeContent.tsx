@@ -51,6 +51,7 @@ const HomeContent = () => {
 				</div>
 			</div>
 			{/* Features Section */}
+			<div className='bg-neutral-700 h-1.5 w-full'></div>
 			<div className='bg-black text-white py-8'>
 				{/* Feature One */}
 				<div className='h-96 my-20 flex flex-col gap-6 lg:flex-row lg:gap-0 lg:items-center px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
