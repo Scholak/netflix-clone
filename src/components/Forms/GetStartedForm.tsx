@@ -1,19 +1,26 @@
 'use client'
 
+import { setEmail } from '@/redux/slices/signupReducer'
 import { IGetStarted } from '@/types/forms/getStrartedType'
 import { getStartedSchema } from '@/validations/getStartedSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { FaChevronRight } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 
 const GetStartedForm = () => {
+	const dispatch = useDispatch()
+	const router = useRouter()
+
 	const { register, handleSubmit, formState: { errors } } = useForm<IGetStarted>({
 		resolver: zodResolver(getStartedSchema)
 	})
 
 	const onSubmit = (data: IGetStarted) => {
-		alert(data.email)
+		dispatch(setEmail(data.email))
+		router.push('/signup/registration')
 	}
 
   return (
