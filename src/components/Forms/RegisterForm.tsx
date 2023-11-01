@@ -47,7 +47,7 @@ const RegisterForm = () => {
 					Bir parola ekleyin
 				</label>
 				<input
-					type='text'
+					type='password'
 					id='password'
 					{...register('password')}
 					className='w-full py-2 px-4 text-black rounded border border-neutral-600'
