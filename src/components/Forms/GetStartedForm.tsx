@@ -32,7 +32,7 @@ const GetStartedForm = () => {
 					className='py-3 px-6 bg-transparent rounded border border-gray-300 placeholder:text-gray-200'
 					placeholder='E-posta adresi'
 				/>
-				<button className='flex items-center gap-3 bg-red text-white rounded py-3 px-6 text-xl font-medium transition duration-300 hover:bg-redHover'>
+				<button type='submit' className='flex items-center gap-3 bg-red text-white rounded py-3 px-6 text-xl font-medium transition duration-300 hover:bg-redHover'>
 					<span>Başlayın</span>
 					<FaChevronRight />
 				</button>
