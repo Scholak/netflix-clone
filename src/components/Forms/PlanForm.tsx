@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
-import { setPlanId } from '@/redux/slices/signupReducer'
+import { setPlanId as setPlanIdAction } from '@/redux/slices/signupReducer'
 import tick from '@/assets/tick.png'
 import tickGray from '@/assets/tickGray.png'
 import Image from 'next/image'
@@ -14,7 +14,7 @@ const PlanForm = () => {
 	const [planId, setPlanId] = useState<number>(0)
 
 	const handleNextStep = () => {
-		dispatch(setPlanId(planId))
+		dispatch(setPlanIdAction(planId))
 		router.push('/signup/paymentPicker')
 	}
 
