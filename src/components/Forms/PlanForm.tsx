@@ -1,12 +1,22 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import { setPlanId } from '@/redux/slices/signupReducer'
 import tick from '@/assets/tick.png'
 import tickGray from '@/assets/tickGray.png'
 import Image from 'next/image'
 
 const PlanForm = () => {
+	const router = useRouter()
+	const dispatch = useDispatch()
 	const [planId, setPlanId] = useState<number>(0)
+
+	const handleNextStep = () => {
+		dispatch(setPlanId(planId))
+		router.push('/signup/paymentPicker')
+	}
 
   return (
 		<div>
@@ -105,7 +115,7 @@ const PlanForm = () => {
 				Bu hesabı sadece sizinle birlikte yaşayanlar kullanabilir. Özel planda aynı anda 4 farklı cihazda içerik
 				izleyin. Standart planda bu sayı 2, Temel planda ise 1'dir.
 			</p>
-			<button className='mt-4 w-full py-4 bg-red text-white text-center text-xl font-medium rounded shadow lg:w-min lg:px-48 hover:bg-[#F6121D]'>
+			<button className='mt-4 w-full py-4 bg-red text-white text-center text-xl font-medium rounded shadow lg:w-min lg:px-48 hover:bg-[#F6121D]' onClick={handleNextStep}>
 				İleri
 			</button>
 		</div>

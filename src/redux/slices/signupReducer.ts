@@ -4,11 +4,13 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 export interface signUpState {
 	email: string
 	password: string
+	planId: 0 | 1 | 2
 }
 
 const initialState: signUpState = {
 	email: '',
 	password: '',
+	planId: 0
 }
 
 export const signUpSlice = createSlice({
@@ -21,9 +23,12 @@ export const signUpSlice = createSlice({
 		setPassword: (state, action: PayloadAction<string>) => {
 			state.password = action.payload
 		},
+		setPlanId: (state, action: PayloadAction<number>) => {
+			state.planId = action.payload
+		},
 	},
 })
 
-export const { setEmail, setPassword } = signUpSlice.actions
+export const { setEmail, setPassword, setPlanId } = signUpSlice.actions
 
 export default signUpSlice.reducer
