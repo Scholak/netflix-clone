@@ -14,7 +14,7 @@ const PlanForm = () => {
 	const [planId, setPlanId] = useState<number>(0)
 
 	const handleNextStep = () => {
-		dispatch(setPlanIdAction(planId))
+		dispatch(setPlanIdAction(planId as 0 | 1 | 2))
 		router.push('/signup/paymentPicker')
 	}
 
