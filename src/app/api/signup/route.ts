@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 export async function POST(request: NextRequest) {
   const body = await request.json()
 
-  const signedupUser = await prisma.user.create({
+	const signedupUser = await prisma.user.create({
 		data: {
 			email: body.email.toLowerCase(),
 			password: await bcrypt.hash(body.password, 10),
@@ -14,5 +14,9 @@ export async function POST(request: NextRequest) {
 		},
 	})
 
-  return new Response(JSON.stringify(signedupUser))
+	if (signedupUser) {
+		return new Response(JSON.stringify({ success: true }))
+	}
+
+	return new Response(JSON.stringify({ success: false }))
 }

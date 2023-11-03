@@ -6,6 +6,7 @@ import { IPayWithCard } from '@/types/forms/payWithCardType'
 import { payWithCardSchema } from '@/validations/payWithCardSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
@@ -17,6 +18,8 @@ const plans = [
 ]
 
 const PaymentWithCardForm = () => {
+	const router = useRouter()
+
 	const { email, password, planId } = useSelector((state: RootState) => state.signup)
 
   const { register, handleSubmit, formState: { errors } } = useForm<IPayWithCard>({
@@ -32,8 +35,10 @@ const PaymentWithCardForm = () => {
 					planId,
 					cardNumber: `**** **** **** ${data.cardNumber.slice(Number(data.cardNumber) - 4)}`,
 				})
+					router.push('/login')
+				if (response.data.success) {
 
-				console.log(response.data)
+				}
 			} catch (error: any) {
 				alert('bir hata oluştu')
 			}
