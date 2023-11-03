@@ -28,7 +28,7 @@ const CookiePreferences = () => {
 						<p className='md:hidden'>
 							Netflix ve üçüncü taraflar çerez kullanır. <span className='underline font-medium'>(Neden?) Çerez tercihlerinizi</span> değiştirebilirsiniz.
 						</p>
-						<FaTimes className='translate-y-1 text-lg shrink-0' onClick={() => setIsActive(false)} />
+						<FaTimes className='translate-y-1 text-lg shrink-0 cursor-pointer' onClick={() => setIsActive(false)} />
 					</div>
 					<div className='flex items-center gap-4'>
 						<button
