@@ -5,6 +5,7 @@ import payViaPhone from '@/assets/payViaPhone.png'
 import netflix from '@/assets/netflix.png'
 import Image from 'next/image'
 import { FaAngleRight } from 'react-icons/fa'
+import Link from 'next/link'
 
 const PaymentPickerPage = () => {
   return (
@@ -21,21 +22,30 @@ const PaymentPickerPage = () => {
 				Endişelenmeyin, güvenlidir. İstediğiniz zaman internet üzerinden kolayca iptal edebilirsiniz.
 			</p>
 			<div className='mt-4 grid gap-1'>
-				<button className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'>
+				<Link
+					href='/signup/creditoption'
+					className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'
+				>
 					<span>Kredi Kartı veya Banka Kartı</span>
 					<Image src={paymentMethods} alt='payment methods' className='translate-y-0.5' />
 					<FaAngleRight className='ml-auto text-2xl' />
-				</button>
-				<button className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'>
+				</Link>
+				<Link
+					href='/signup/dcboption'
+					className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'
+				>
 					<span>Cep telefonu faturasına ekle</span>
 					<Image src={payViaPhone} alt='pay via phone' className='translate-y-0.5' />
 					<FaAngleRight className='ml-auto text-2xl' />
-				</button>
-				<button className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'>
+				</Link>
+				<Link
+					href='/signup/giftoption'
+					className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'
+				>
 					<span>Hediye Kartı</span>
 					<Image src={netflix} alt='netflix' className='translate-y-0.5' />
 					<FaAngleRight className='ml-auto text-2xl' />
-				</button>
+				</Link>
 			</div>
 		</div>
 	)
