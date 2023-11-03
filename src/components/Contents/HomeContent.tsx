@@ -30,11 +30,16 @@ const HomeContent = () => {
 						</g>
 					</svg>
 					<div className='flex items-center gap-6'>
-						<select className='py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'>
-							<option className='text-black' selected>
+						<select
+							defaultValue='tr'
+							className='py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'
+						>
+							<option value='tr' className='text-black'>
 								Türkçe
 							</option>
-							<option className='text-black'>English</option>
+							<option value='en' className='text-black'>
+								English
+							</option>
 						</select>
 						<Link href='/login' className='py-1.5 px-4 rounded-md bg-red text-white text-sm font-bold'>
 							Oturum Aç
