@@ -4,6 +4,7 @@ import { store } from '@/redux/store'
 import React from 'react'
 import { Provider } from 'react-redux'
 import AuthProvider from './AuthProvider'
+import ReduxProvider from './ReduxProvider'
 
 interface IRootProviderProps {
 	children: React.ReactNode
@@ -12,7 +13,9 @@ interface IRootProviderProps {
 const RootProvider = ({children}: IRootProviderProps) => {
   return (
 		<AuthProvider>
-			<Provider store={store}>{children}</Provider>
+			<ReduxProvider>
+				{children}
+			</ReduxProvider>
 		</AuthProvider>
 	)
 }
