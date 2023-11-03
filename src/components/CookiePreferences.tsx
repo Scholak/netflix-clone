@@ -9,7 +9,7 @@ const CookiePreferences = () => {
   return (
 		<>
 			{isActive && (
-				<div className='absolute top-0 left-0 right-0 py-2 px-4 bg-white z-10'>
+				<div className='fixed top-0 left-0 right-0 py-2 px-4 bg-white z-10'>
 					<div className='mb-4 flex justify-between text-neutral-600'>
 						{/* Desktop View */}
 						<p className='hidden md:block'>
