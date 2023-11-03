@@ -35,10 +35,13 @@ const PaymentWithCardForm = () => {
 					planId,
 					cardNumber: `**** **** **** ${data.cardNumber.slice(Number(data.cardNumber) - 4)}`,
 				})
-					router.push('/login')
-				if (response.data.success) {
 
+				if (response.data.success) {
+					router.push('/login')
+				} else {
+					alert('bir hata oluştu')
 				}
+				
 			} catch (error: any) {
 				alert('bir hata oluştu')
 			}
