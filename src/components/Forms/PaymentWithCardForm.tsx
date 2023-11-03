@@ -1,7 +1,6 @@
 'use client'
 
 import { api } from '@/lib/api'
-import { setCardNumber } from '@/redux/slices/signupReducer'
 import { RootState } from '@/redux/store'
 import { IPayWithCard } from '@/types/forms/payWithCardType'
 import { payWithCardSchema } from '@/validations/payWithCardSchema'
@@ -9,8 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { FaChevronRight } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const plans = [
 	{ name: 'Temel', price: '99,99' },
@@ -19,7 +17,6 @@ const plans = [
 ]
 
 const PaymentWithCardForm = () => {
-	const dispatch = useDispatch()
 	const { email, password, planId } = useSelector((state: RootState) => state.signup)
 
   const { register, handleSubmit, formState: { errors } } = useForm<IPayWithCard>({
