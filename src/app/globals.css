@@ -6,6 +6,18 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0.8));
 }
 
+.login-navbar-gradient-bg {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+}
+
+.transparent-bg {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.transparent-login-footer {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 .faq-answer-container {
   display: grid;
   grid-template-rows: 0fr;

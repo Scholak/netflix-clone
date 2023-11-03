@@ -1,0 +1,14 @@
+import { ILogin } from '@/types/forms/loginType'
+import { ZodType, z } from 'zod'
+
+export const loginSchema: ZodType<ILogin> = z.object({
+	email: z
+		.string()
+		.min(1, 'Lütfen e-posta adresini girin.')
+		.email('Lütfen geçerli bir e-posta adresini girin.')
+		.max(50, 'E-posta adresi maksimum 50 karakter olabilir.'),
+	password: z
+		.string()
+		.min(1, 'Parola 6 ile 60 karakter arasında olmalıdır.')
+		.max(60, 'Parola 6 ile 60 karakter arasında olmalıdır.'),
+})
