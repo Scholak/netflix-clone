@@ -1,5 +1,6 @@
 'use client'
 
+import { api } from '@/lib/api'
 import { setEmail, setPassword } from '@/redux/slices/signupReducer'
 import { RootState } from '@/redux/store'
 import { IRegister } from '@/types/forms/registerType'
@@ -20,11 +21,17 @@ const RegisterForm = () => {
     resolver: zodResolver(registerSchema)
   })
 
-  const onSubmit = (data: IRegister) => {
-    dispatch(setEmail(data.email))
-    dispatch(setPassword(data.password))
+  const onSubmit = async (data: IRegister) => {
+		const response = await api.post('/existing-user', data)
 
-    router.push('/signup')
+		if (!response.data.userExists) {
+			dispatch(setEmail(data.email))
+			dispatch(setPassword(data.password))
+
+			router.push('/signup')
+		} else {
+			alert('Kullanıcı zaten kayıtlı')
+		}
 	}
 
   return (
