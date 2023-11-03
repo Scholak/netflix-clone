@@ -1,10 +1,12 @@
 'use client'
 
+import { api } from '@/lib/api'
 import { RootState } from '@/redux/store'
 import { IGiftOption } from '@/types/forms/giftOptionType'
 import { giftOptionSchema } from '@/validations/giftOptionSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
@@ -16,7 +18,9 @@ const plans = [
 ]
 
 const GiftOptionForm = () => {
-  const planId = useSelector((state: RootState) => state.signup.planId)
+	const router = useRouter()
+
+  const { email, password, planId } = useSelector((state: RootState) => state.signup)
 
 	const {
 		register,
@@ -26,10 +30,28 @@ const GiftOptionForm = () => {
 		resolver: zodResolver(giftOptionSchema),
 	})
 
-	const onSubmit = (data: IGiftOption) => {
-		if (data.code !== '12345678910') {
+	const onSubmit = async (data: IGiftOption) => {
+		if (data.code === '12345678910') {
+			try {
+				const response = await api.post('/signup', {
+					email,
+					password,
+					planId,
+					cardNumber: '',
+				})
+
+				if (response.data.success) {
+					router.push('/login')
+				} else {
+					alert('bir hata oluştu')
+				}
+			} catch (error: any) {
+				alert('bir hata oluştu')
+			}
+    } else {
       alert('geçersiz hediye kodu')
-    }
+			
+		}
 	}
 
   return (
