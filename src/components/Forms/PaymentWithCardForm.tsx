@@ -1,5 +1,6 @@
 'use client'
 
+import { api } from '@/lib/api'
 import { setCardNumber } from '@/redux/slices/signupReducer'
 import { RootState } from '@/redux/store'
 import { IPayWithCard } from '@/types/forms/payWithCardType'
@@ -19,17 +20,28 @@ const plans = [
 
 const PaymentWithCardForm = () => {
 	const dispatch = useDispatch()
-	const planId = useSelector((state: RootState) => state.signup.planId)
+	const { email, password, planId } = useSelector((state: RootState) => state.signup)
 
   const { register, handleSubmit, formState: { errors } } = useForm<IPayWithCard>({
     resolver: zodResolver(payWithCardSchema)
   })
 
-  const onSubmit = (data: IPayWithCard) => {
+  const onSubmit = async (data: IPayWithCard) => {
 		if (data.confirm) {
-			dispatch(setCardNumber(data.cardNumber))
+			try {
+				const response = await api.post('/signup', {
+					email,
+					password,
+					planId,
+					cardNumber: `**** **** **** ${data.cardNumber.slice(Number(data.cardNumber) - 4)}`,
+				})
+
+				console.log(response.data)
+			} catch (error: any) {
+				alert('bir hata oluştu')
+			}
 		} else {
-			alert('please confirm')
+			alert('Lütfen onaylayın!')
 		}
   }
 
