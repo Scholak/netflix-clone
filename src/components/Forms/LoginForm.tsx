@@ -3,23 +3,40 @@
 import { ILogin } from '@/types/forms/loginType'
 import { loginSchema } from '@/validations/loginSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 const LoginForm = () => {
+	const router = useRouter()
+
+	const [authError, setAuthError] = useState<string>('')
+
   const { register, handleSubmit, formState: { errors } } = useForm<ILogin>({
     resolver: zodResolver(loginSchema)
   })
 
-  const onSubmit = (data: ILogin) => {
-    alert(JSON.stringify(data))
+  const onSubmit = async (data: ILogin) => {
+		const status = await signIn('credentials', { email: data.email, password: data.password, redirect: false })
+		
+		if (!status?.ok && status?.error) {
+			setAuthError(status.error)
+		} else {
+			router.push('/browse')
+		}
   }
 
   return (
 		<div className='w-full py-12 transparent-bg'>
 			<div className='transparent-bg p-6 rounded-lg w-full sm:p-8 md:p-12 md:w-1/2 md:mx-auto lg:p-16 xl:w-1/4'>
 				<h1 className='mb-6 text-white text-3xl font-bold'>Oturum Aç</h1>
+				{authError && (
+					<p className='mb-2 p-3 rounded bg-orange-500 text-white font-medium'>
+						{authError}
+					</p>
+				)}
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className='mb-4'>
 						<label htmlFor='email' className='mb-2 text-white font-medium'>
