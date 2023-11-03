@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
 
   const signedupUser = await prisma.user.create({
 		data: {
-			email: body.email,
+			email: body.email.toLowerCase(),
 			password: await bcrypt.hash(body.password, 10),
 			planId: body.planId,
 			cardNumber: body.cardNumber,
