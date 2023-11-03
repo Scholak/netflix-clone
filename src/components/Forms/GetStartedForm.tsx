@@ -1,5 +1,6 @@
 'use client'
 
+import { api } from '@/lib/api'
 import { setEmail } from '@/redux/slices/signupReducer'
 import { IGetStarted } from '@/types/forms/getStrartedType'
 import { getStartedSchema } from '@/validations/getStartedSchema'
@@ -18,9 +19,15 @@ const GetStartedForm = () => {
 		resolver: zodResolver(getStartedSchema)
 	})
 
-	const onSubmit = (data: IGetStarted) => {
-		dispatch(setEmail(data.email))
-		router.push('/signup/registration')
+	const onSubmit = async (data: IGetStarted) => {
+		const response = await api.post('/existing-user', data)
+		
+		if (!response.data.userExists) {
+			dispatch(setEmail(data.email))
+			router.push('/signup/registration')
+		} else {
+			alert('Kullanıcı zaten kayıtlı')
+		}
 	}
 
   return (
