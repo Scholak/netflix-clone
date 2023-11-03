@@ -115,7 +115,7 @@ const PlanForm = () => {
 				Bu hesabı sadece sizinle birlikte yaşayanlar kullanabilir. Özel planda aynı anda 4 farklı cihazda içerik
 				izleyin. Standart planda bu sayı 2, Temel planda ise 1'dir.
 			</p>
-			<button className='mt-4 w-full py-4 bg-red text-white text-center text-xl font-medium rounded shadow lg:w-min lg:px-48 hover:bg-[#F6121D]' onClick={handleNextStep}>
+			<button className='mt-4 w-full py-4 bg-red text-white text-center text-xl font-medium rounded shadow lg:w-min lg:px-48 lg:mx-auto lg:block hover:bg-[#F6121D]' onClick={handleNextStep}>
 				İleri
 			</button>
 		</div>
