@@ -1,6 +1,6 @@
 export { default as Faq } from './Faq'
 export { default as CookiePreferences } from './CookiePreferences'
-export { default as Footer } from './Footer'
+export { default as HomeFooter } from './HomeFooter'
 export { default as LoginFooter } from './LoginFooter'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'

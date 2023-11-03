@@ -6,11 +6,11 @@ import tv2Img from '@/assets/tv2.png'
 import phoneImg from '@/assets/phone.png'
 import childImg from '@/assets/child.png'
 import Image from 'next/image'
-import { Faq, GetStartedForm, Footer, CookiePreferences } from '@/components'
+import { Faq, GetStartedForm, HomeFooter, CookiePreferences } from '@/components'
 
 const HomePage = () => {
   return (
-    <div className='relative'>
+		<div className='relative'>
 			<CookiePreferences />
 			{/* Navbar and Hero Section */}
 			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
@@ -122,9 +122,9 @@ const HomePage = () => {
 				<GetStartedForm />
 			</div>
 			<div className='bg-neutral-700 h-1.5 w-full'></div>
-			<Footer />
+			<HomeFooter />
 		</div>
-  )
+	)
 }
 
 export default HomePage
