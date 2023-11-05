@@ -20,7 +20,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
   return (
 		<>
 			{!isLoading && (
-				<div className='relative w-screen h-[80vh] flex items-center'>
+				<div className='relative w-screen h-[90vh] flex items-center'>
 					<div className='absolute inset-0 bg-black bg-opacity-30 z-10'></div>
 					<div className='px-4 text-white z-20 translate-y-20 md:max-w-screen-sm md:px-8 xl:px-16'>
 						<h1 className='text-3xl text-center font-bold md:text-2xl md:text-left'>{data.title}</h1>
