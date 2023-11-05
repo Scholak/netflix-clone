@@ -23,12 +23,13 @@ const CreateProfileForm = () => {
       await api.post('/profile', data)
       router.push('/browse')
     } catch (error: any) {
-      console.log(error.response.data)
+      setResponseError(error.response.data.message)
     }
   }
 
   return (
 		<form onSubmit={handleSubmit(onSubmit)}>
+			{responseError && <h2 className='mb-4 text-xl text-red font-medium'>{responseError}</h2>}
 			<div className='flex flex-col items-center gap-4 md:flex-row'>
 				<div className='shrink-0 w-40 h-40 flex items-center justify-center rounded bg-red border-4 border-red group-hover:border-white'></div>
 				<div className='w-full flex-1'>
@@ -43,10 +44,16 @@ const CreateProfileForm = () => {
 			</div>
 			<div className='h-px mt-8 mb-12 bg-neutral-600'></div>
 			<div className='flex flex-col gap-4 md:flex-row'>
-				<button type='submit' className='py-3 px-8 text-neutral-900 bg-white text-xl font-bold hover:text-white hover:bg-red'>
+				<button
+					type='submit'
+					className='py-3 px-8 text-neutral-900 bg-white text-xl font-bold hover:text-white hover:bg-red'
+				>
 					Devam Et
 				</button>
-				<Link href='/browse' className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 hover:text-white hover:border-white'>
+				<Link
+					href='/browse'
+					className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 hover:text-white hover:border-white'
+				>
 					İptal
 				</Link>
 			</div>
