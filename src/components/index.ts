@@ -3,6 +3,7 @@ export { default as CookiePreferences } from './CookiePreferences'
 export { default as HomeFooter } from './HomeFooter'
 export { default as LoginFooter } from './LoginFooter'
 export { default as ProfileCard } from './ProfileCard'
+export { default as Profiles } from './Profiles'
 export { default as AddProfileCard } from './AddProfileCard'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'

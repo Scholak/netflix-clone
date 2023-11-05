@@ -3,6 +3,22 @@ import { prisma } from '@/lib/prisma'
 import { getServerSession } from 'next-auth'
 import { NextRequest } from 'next/server'
 
+export async function GET(request: NextRequest) {
+  const session = await getServerSession(authOptions)
+
+	if (!session) {
+		return new Response('', { status: 403 })
+	}
+
+  const profiles = await prisma.profile.findMany({
+    where: {
+      userId: session.user.id
+    }
+  })
+
+  return new Response(JSON.stringify({ profiles }))
+}
+
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions)
 
