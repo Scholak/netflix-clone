@@ -5,6 +5,8 @@ export { default as LoginFooter } from './LoginFooter'
 export { default as ProfileCard } from './ProfileCard'
 export { default as Profiles } from './Profiles'
 export { default as AddProfileCard } from './AddProfileCard'
+export { default as Search } from './Search'
+export { default as UserMenu } from './UserMenu'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'
 export { default as RegisterForm } from './Forms/RegisterForm'
