@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
       return new Response(JSON.stringify({ message: 'Yeni profil oluşturulurken hala oluştu.' }), { status: 400 })
     }
   } catch (error: any) {
-    console.log(error)
     return new Response(JSON.stringify({ message: 'Sunucu hatası. Lütfen daha sonra tekrar deneyin.' }), { status: 500 })
   }
 }
