@@ -3,8 +3,12 @@ import Link from 'next/link'
 import React from 'react'
 import { FaRegBell } from 'react-icons/fa'
 
-const UserLayout = () => {
-  return (
+interface IUserLayoutProps {
+	children: React.ReactNode
+}
+
+const UserLayout = ({ children }: IUserLayoutProps) => {
+	return (
 		<div>
 			<nav className='user-nav-gradient-bg flex items-center justify-between text-neutral-200 py-2 px-4 md:px-8 md:py-4 xl:py-8 xl:px-16'>
 				<div className='flex items-center gap-4'>
@@ -42,6 +46,7 @@ const UserLayout = () => {
 					<UserMenu />
 				</div>
 			</nav>
+			{children}
 		</div>
 	)
 }
