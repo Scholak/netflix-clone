@@ -1,5 +1,6 @@
 import { EditProfileForm } from '@/components'
 import axios from 'axios'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 interface Params {
@@ -10,6 +11,10 @@ interface Params {
 
 const EditProfilePage = async ({ params }: Params) => {
 	const response = await axios.get(`${process.env.APP_URL}/api/profile/${params.id}`)
+
+	if (!response.data.profile) {
+		redirect('/browse')
+	}
 
   return (
 		<div className='min-h-[100dvh] py-6 bg-neutral-900 md:py-10 lg:py-16'>

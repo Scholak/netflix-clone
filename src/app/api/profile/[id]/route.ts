@@ -39,3 +39,13 @@ export async function PUT(request: NextRequest, { params }: Params) {
 		return new Response(JSON.stringify({ message: 'Sunucu hatası. Data sonra tekrar deneyin.' }), { status: 500 })
 	}
 }
+
+export async function DELETE(request: NextRequest, { params }: Params) {
+  await prisma.profile.delete({
+    where: {
+      id: Number(params.id),
+    },
+  })
+
+  return new Response(null, { status: 204 })
+}

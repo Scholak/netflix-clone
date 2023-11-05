@@ -36,6 +36,16 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 		}
 	}
 
+	const handleDeleteProfile = async () => {
+		try {
+			await api.delete(`/profile/${profile.id}`)
+			router.push('/browse')
+		} catch (error: any) {
+			setResponseError(error.response.data.message)
+		}
+
+	}
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			{responseError && <h2 className='mb-4 text-xl text-red font-medium'>{responseError}</h2>}
@@ -66,7 +76,7 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 				>
 					İptal
 				</Link>
-				<button className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 hover:text-white hover:border-white'>Profili Sil</button>
+				<p onClick={handleDeleteProfile} className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 hover:text-white hover:border-white'>Profili Sil</p>
 			</div>
 		</form>
 	)
