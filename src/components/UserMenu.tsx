@@ -33,7 +33,7 @@ const UserMenu = () => {
 			<FaCaretDown className='text-white transition duration-500 group-hover:rotate-180' />
 			<div className='absolute top-0 pt-10 right-0 w-52 transition duration-300 opacity-0 select-none pointer-events-none group-hover:opacity-100 group-hover:select-all group-hover:pointer-events-auto'>
 				<div className='bg-neutral-800 border border-neutral-300'>
-					<div className='mb-3 p-3'>
+					<div className='grid gap-2 mb-3 p-3'>
 						{profiles?.map((profile: IProfile) => (
 							<div key={profile.id} className='flex items-center gap-3 hover:underline'>
 								<div className='w-6 h-6 rounded bg-red'></div>
@@ -41,7 +41,7 @@ const UserMenu = () => {
 							</div>
 						))}
 					</div>
-					<div className='my-3 px-3 flex items-center gap-2 hover:underline'>
+					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaPencilAlt className='text-lg' />
 						<p>Profil Yönetimi</p>
 					</div>
