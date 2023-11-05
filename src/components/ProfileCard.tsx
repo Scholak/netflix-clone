@@ -1,4 +1,3 @@
-
 import { IProfile } from '@/types/profileType'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
