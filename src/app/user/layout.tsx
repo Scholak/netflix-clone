@@ -10,7 +10,7 @@ interface IUserLayoutProps {
 const UserLayout = ({ children }: IUserLayoutProps) => {
 	return (
 		<div>
-			<nav className='user-nav-gradient-bg flex items-center justify-between text-neutral-200 py-2 px-4 md:px-8 md:py-4 xl:py-8 xl:px-16'>
+			<nav className='user-nav-gradient-bg fixed w-full flex items-center justify-between text-neutral-200 py-2 px-4 z-50 md:px-8 md:py-4 xl:py-6 xl:px-16'>
 				<div className='flex items-center gap-4'>
 					<svg
 						viewBox='0 0 111 30'
