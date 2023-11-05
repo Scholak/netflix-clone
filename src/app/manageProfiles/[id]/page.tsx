@@ -13,7 +13,7 @@ const EditProfilePage = async ({ params }: Params) => {
 	const response = await axios.get(`${process.env.APP_URL}/api/profile/${params.id}`)
 
 	if (!response.data.profile) {
-		redirect('/browse')
+		redirect('/manageProfiles')
 	}
 
   return (

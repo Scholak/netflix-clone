@@ -30,7 +30,7 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 	const onSubmit = async (data: IEditProfile) => {
 		try {
 			await api.put(`/profile/${profile.id}`, data)
-			router.push('/browse')
+			router.push('/manageProfiles')
 		} catch (error: any) {
 			setResponseError(error.response.data.message)
 		}
@@ -39,7 +39,7 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 	const handleDeleteProfile = async () => {
 		try {
 			await api.delete(`/profile/${profile.id}`)
-			router.push('/browse')
+			router.push('/manageProfiles')
 		} catch (error: any) {
 			setResponseError(error.response.data.message)
 		}
@@ -76,7 +76,7 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 				>
 					İptal
 				</Link>
-				<p onClick={handleDeleteProfile} className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 hover:text-white hover:border-white'>Profili Sil</p>
+				<p onClick={handleDeleteProfile} className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 cursor-pointer hover:text-white hover:border-white'>Profili Sil</p>
 			</div>
 		</form>
 	)
