@@ -1,10 +1,9 @@
 'use client'
 
-import { store } from '@/redux/store'
 import React from 'react'
-import { Provider } from 'react-redux'
 import AuthProvider from './AuthProvider'
 import ReduxProvider from './ReduxProvider'
+import ReactQueryProvider from './ReactQueryProvider'
 
 interface IRootProviderProps {
 	children: React.ReactNode
@@ -14,7 +13,7 @@ const RootProvider = ({children}: IRootProviderProps) => {
   return (
 		<AuthProvider>
 			<ReduxProvider>
-				{children}
+				<ReactQueryProvider>{children}</ReactQueryProvider>
 			</ReduxProvider>
 		</AuthProvider>
 	)
