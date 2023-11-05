@@ -1,10 +1,10 @@
+import { Banner } from '@/components'
 import React from 'react'
 
-const UserHomePage = () => {
-  
+const UserHomePage = async () => {
   return (
 		<div>
-      <h1>hi</h1>
+      <Banner mediaType='movie' />
 		</div>
 	)
 }
