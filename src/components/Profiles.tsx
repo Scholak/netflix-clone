@@ -5,20 +5,23 @@ import { IProfile } from '@/types/profileType'
 import React, { useEffect, useState } from 'react'
 import { ProfileCard } from '.'
 
-const Profiles = () => {
-  const [profiles, setProfiles] = useState<IProfile[]>([])
+interface IProfilesProps {
+  isEditingMode?: boolean
+}
 
-  useEffect(() => {
-    api.get('/profile').then((response: any) => {
-      setProfiles(response.data.profiles)
-    })
-  }, [profiles])
+const Profiles = ({ isEditingMode }: IProfilesProps) => {
+	const [profiles, setProfiles] = useState<IProfile[]>([])
 
+	useEffect(() => {
+		api.get('/profile').then((response: any) => {
+			setProfiles(response.data.profiles)
+		})
+	}, [profiles])
 
-  return (
+	return (
 		<>
 			{profiles.map((profile: IProfile) => (
-				<ProfileCard key={profile.id} profile={profile} />
+				<ProfileCard key={profile.id} profile={profile} editing={isEditingMode} />
 			))}
 		</>
 	)

@@ -31,3 +31,7 @@
 .faq-answer-container.active p {
   padding: 24px
 }
+
+.profile-card-bg {
+  background: rgba(0, 0, 0, 0.4);
+}
