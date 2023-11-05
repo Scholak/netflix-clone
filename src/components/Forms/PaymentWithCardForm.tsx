@@ -2,9 +2,11 @@
 
 import { api } from '@/lib/api'
 import { RootState } from '@/redux/store'
+import { signup } from '@/services/userService'
 import { IPayWithCard } from '@/types/forms/payWithCardType'
 import { payWithCardSchema } from '@/validations/payWithCardSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -20,6 +22,16 @@ const plans = [
 const PaymentWithCardForm = () => {
 	const router = useRouter()
 
+	const paymentWitchCardMutation = useMutation({
+		mutationFn: signup,
+		onError: () => {
+			alert('bir hata oluştu')
+		},
+		onSuccess: () => {
+			router.push('/login')
+		},
+	})
+
 	const { email, password, planId } = useSelector((state: RootState) => state.signup)
 
   const { register, handleSubmit, formState: { errors } } = useForm<IPayWithCard>({
@@ -29,19 +41,12 @@ const PaymentWithCardForm = () => {
   const onSubmit = async (data: IPayWithCard) => {
 		if (data.confirm) {
 			try {
-				const response = await api.post('/signup', {
+				await paymentWitchCardMutation.mutateAsync({
 					email,
 					password,
 					planId,
 					cardNumber: `**** **** **** ${data.cardNumber.slice(Number(data.cardNumber) - 4)}`,
 				})
-
-				if (response.data.success) {
-					router.push('/login')
-				} else {
-					alert('bir hata oluştu')
-				}
-				
 			} catch (error: any) {
 				alert('bir hata oluştu')
 			}

@@ -1,26 +1,32 @@
 'use client'
 
-import { api } from '@/lib/api'
 import { IProfile } from '@/types/profileType'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ProfileCard } from '.'
+import { useQuery } from '@tanstack/react-query'
+import { getProfiles } from '@/services/profileService'
 
 interface IProfilesProps {
   isEditingMode?: boolean
 }
 
 const Profiles = ({ isEditingMode }: IProfilesProps) => {
-	const [profiles, setProfiles] = useState<IProfile[]>([])
+	const { data: profiles, isLoading, error } = useQuery({
+		queryKey: ['profiles'],
+		queryFn: getProfiles,
+	})
 
-	useEffect(() => {
-		api.get('/profile').then((response: any) => {
-			setProfiles(response.data.profiles)
-		})
-	}, [profiles])
+	if (error) {
+		// will be implemented later...
+	}
+
+	if (isLoading) {
+		// skeleton loader will be implemented later...
+	}
 
 	return (
 		<>
-			{profiles.map((profile: IProfile) => (
+			{profiles?.map((profile: IProfile) => (
 				<ProfileCard key={profile.id} profile={profile} editing={isEditingMode} />
 			))}
 		</>

@@ -3,7 +3,7 @@
 import { ILogin } from '@/types/forms/loginType'
 import { loginSchema } from '@/validations/loginSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'

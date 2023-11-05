@@ -1,10 +1,13 @@
 'use client'
 
 import { api } from '@/lib/api'
+import { queryClient } from '@/lib/queryClient'
+import { editProfile } from '@/services/profileService'
 import { IEditProfile } from '@/types/forms/editProfileType'
 import { IProfile } from '@/types/profileType'
 import { editProfileSchema } from '@/validations/editProfileSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -19,6 +22,13 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 
 	const [responseError, setResponseError] = useState<string>('')
 
+	const editProfileMutation = useMutation({
+		mutationFn: editProfile,
+		onError: (error: any) => {
+			setResponseError(error.response.data.message)
+		},
+	})
+
 	const {
 		register,
 		handleSubmit,
@@ -29,7 +39,8 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 
 	const onSubmit = async (data: IEditProfile) => {
 		try {
-			await api.put(`/profile/${profile.id}`, data)
+			await editProfileMutation.mutateAsync({ id: profile.id, data })
+			queryClient.invalidateQueries({ queryKey: ['profiles'] })
 			router.push('/manageProfiles')
 		} catch (error: any) {
 			setResponseError(error.response.data.message)

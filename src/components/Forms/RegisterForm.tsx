@@ -3,9 +3,11 @@
 import { api } from '@/lib/api'
 import { setEmail, setPassword } from '@/redux/slices/signupReducer'
 import { RootState } from '@/redux/store'
+import { isExistingUser } from '@/services/userService'
 import { IRegister } from '@/types/forms/registerType'
 import { registerSchema } from '@/validations/registerSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -13,6 +15,19 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const RegisterForm = () => {
   const router = useRouter()
+
+	const isExistingUserMutation = useMutation({
+		mutationFn: isExistingUser,
+		onSuccess: (exists: string) => {
+			if (!exists) {
+				router.push('/signup')
+			} else {
+				dispatch(setEmail(''))
+				dispatch(setPassword(''))
+				alert('Kullanıcı zaten kayıtlı')
+			}
+		},
+	})
 
   const email = useSelector((state: RootState) => state.signup.email)
   const dispatch = useDispatch()
@@ -22,15 +37,12 @@ const RegisterForm = () => {
   })
 
   const onSubmit = async (data: IRegister) => {
-		const response = await api.post('/existing-user', data)
-
-		if (!response.data.userExists) {
+		try {
 			dispatch(setEmail(data.email))
 			dispatch(setPassword(data.password))
-
-			router.push('/signup')
-		} else {
-			alert('Kullanıcı zaten kayıtlı')
+			await isExistingUserMutation.mutateAsync(data)
+		} catch (error: any) {
+			// will be implemented...
 		}
 	}
 

@@ -1,10 +1,11 @@
 'use client'
 
-import { api } from '@/lib/api'
 import { RootState } from '@/redux/store'
+import { signup } from '@/services/userService'
 import { IGiftOption } from '@/types/forms/giftOptionType'
 import { giftOptionSchema } from '@/validations/giftOptionSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -20,6 +21,16 @@ const plans = [
 const GiftOptionForm = () => {
 	const router = useRouter()
 
+	const giftOptionMutation = useMutation({
+		mutationFn: signup,
+		onError: () => {
+			alert('bir hata oluştu')
+		},
+		onSuccess: () => {
+			router.push('/login')
+		},
+	})
+
   const { email, password, planId } = useSelector((state: RootState) => state.signup)
 
 	const {
@@ -32,25 +43,9 @@ const GiftOptionForm = () => {
 
 	const onSubmit = async (data: IGiftOption) => {
 		if (data.code === '12345678910') {
-			try {
-				const response = await api.post('/signup', {
-					email,
-					password,
-					planId,
-					cardNumber: '',
-				})
-
-				if (response.data.success) {
-					router.push('/login')
-				} else {
-					alert('bir hata oluştu')
-				}
-			} catch (error: any) {
-				alert('bir hata oluştu')
-			}
+			await giftOptionMutation.mutateAsync({ email, password, planId, cardNumber: '' })
     } else {
       alert('geçersiz hediye kodu')
-			
 		}
 	}
 

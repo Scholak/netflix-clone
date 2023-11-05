@@ -2,9 +2,11 @@
 
 import { api } from '@/lib/api'
 import { setEmail } from '@/redux/slices/signupReducer'
+import { isExistingUser } from '@/services/userService'
 import { IGetStarted } from '@/types/forms/getStrartedType'
 import { getStartedSchema } from '@/validations/getStartedSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -15,18 +17,28 @@ const GetStartedForm = () => {
 	const dispatch = useDispatch()
 	const router = useRouter()
 
+	const isExistingUserMutation = useMutation({
+		mutationFn: isExistingUser,
+		onSuccess: (exists: string) => {
+			if (!exists) {
+				router.push('/signup/registration')
+			} else {
+				dispatch(setEmail(''))
+				alert('Kullanıcı zaten kayıtlı')
+			}
+		},
+	})
+
 	const { register, handleSubmit, formState: { errors } } = useForm<IGetStarted>({
 		resolver: zodResolver(getStartedSchema)
 	})
 
 	const onSubmit = async (data: IGetStarted) => {
-		const response = await api.post('/existing-user', data)
-		
-		if (!response.data.userExists) {
+		try {
 			dispatch(setEmail(data.email))
-			router.push('/signup/registration')
-		} else {
-			alert('Kullanıcı zaten kayıtlı')
+			await isExistingUserMutation.mutateAsync(data)
+		} catch (error: any) {
+			// will be implemented...
 		}
 	}
 

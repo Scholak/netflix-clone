@@ -1,9 +1,11 @@
 'use client'
 
-import { api } from '@/lib/api'
+import { queryClient } from '@/lib/queryClient'
+import { createNewProfile } from '@/services/profileService'
 import { ICreateProfile } from '@/types/forms/createProfileType'
 import { createProfileSchema } from '@/validations/createProfileSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -13,18 +15,26 @@ const CreateProfileForm = () => {
   const router = useRouter()
 
   const [responseError, setResponseError] = useState<string>('')
+
+	const createProfileMutation = useMutation({
+		mutationFn: createNewProfile,
+		onError: (error: any) => {
+			setResponseError(error.response.data.message)
+		},
+	})
   
   const { register, handleSubmit, formState: { errors } } = useForm<ICreateProfile>({
     resolver: zodResolver(createProfileSchema)
   })
 
   const onSubmit = async (data: ICreateProfile) => {
-    try {
-      await api.post('/profile', data)
-      router.push('/browse')
-    } catch (error: any) {
-      setResponseError(error.response.data.message)
-    }
+		try {
+			await createProfileMutation.mutateAsync(data)
+			queryClient.invalidateQueries({ queryKey: ['profiles'] })
+			router.push('/browse')
+		} catch (error: any) {
+			setResponseError(error.response.data.message)
+		}
   }
 
   return (

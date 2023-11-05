@@ -2,21 +2,30 @@
 
 
 import { api } from '@/lib/api'
+import { getProfiles } from '@/services/profileService'
 import { IProfile } from '@/types/profileType'
+import { useQuery } from '@tanstack/react-query'
 import { signOut } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
 import { FaCaretDown, FaFileExport, FaPencilAlt, FaRegQuestionCircle, FaRegUser } from 'react-icons/fa'
 
 const UserMenu = () => {
-  const [profiles, setProfiles] = useState<IProfile[]>([])
+  const {
+		data: profiles,
+		isLoading,
+		error,
+	} = useQuery({
+		queryKey: ['profiles'],
+		queryFn: getProfiles,
+	})
 
-  useEffect(() => {
-    api.get('/profile').then((response: any) => {
-      setProfiles(response.data.profiles)
-    })
-  }, [])
+	if (error) {
+		// will be implemented later...
+	}
 
-  console.log(profiles)
+	if (isLoading) {
+		// skeleton loader will be implemented later...
+	}
 
   return (
 		<div className='group relative flex items-center gap-2 text-sm cursor-pointer'>
@@ -25,7 +34,7 @@ const UserMenu = () => {
 			<div className='absolute top-0 pt-10 right-0 w-52 transition duration-300 opacity-0 select-none pointer-events-none group-hover:opacity-100 group-hover:select-all group-hover:pointer-events-auto'>
 				<div className='bg-neutral-800 border border-neutral-300'>
 					<div className='mb-3 p-3'>
-						{profiles.map((profile: IProfile) => (
+						{profiles?.map((profile: IProfile) => (
 							<div key={profile.id} className='flex items-center gap-3 hover:underline'>
 								<div className='w-6 h-6 rounded bg-red'></div>
 								<p className='text-white'>{profile.name}</p>
