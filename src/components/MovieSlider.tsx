@@ -58,16 +58,14 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 					className='text-white text-4xl'
 				>
 					{items.map((item: any) => (
-						<SwiperSlide key={item.id}>
-							<div onClick={() => setSelectedMovie(item.id)}>
-								<Image
-									src={item.image}
-									alt='movie image'
-									width={400}
-									height={300}
-									className='w-full h-full object-cover rounded'
-								/>
-							</div>
+						<SwiperSlide key={item.id} onClick={() => setSelectedMovie(item.id)} className='cursor-pointer'>
+							<Image
+								src={item.image}
+								alt='movie image'
+								width={400}
+								height={300}
+								className='w-full h-full object-cover rounded'
+							/>
 						</SwiperSlide>
 					))}
 				</Swiper>
