@@ -28,7 +28,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 		<>
 			{!isLoading && (
 				<div className='relative w-full h-[90vh] flex items-end md:items-center'>
-					<div className='absolute inset-0 bg-black bg-opacity-30 z-10'></div>
+					<div className='absolute inset-0 bg-black bg-opacity-30 z-[9]'></div>
 					<div className='px-4 text-white z-20 -translate-y-4 md:translate-y-20 md:max-w-screen-sm md:px-8 xl:px-16'>
 						<h1 className='text-3xl text-center font-bold md:text-2xl md:text-left'>{data.title}</h1>
 						<p className='my-4 text-lg text-center text-medium md:my-8 md:text-xl md:text-left'>{data.overview}</p>
