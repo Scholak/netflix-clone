@@ -68,7 +68,7 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 								alt='movie image'
 								width={200}
 								height={150}
-								className='w-full h-full object-cover rounded'
+								className='w-full h-auto object-cover rounded'
 							/>
 						</SwiperSlide>
 					))}

@@ -47,7 +47,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 								alt='movie image'
 								width={800}
 								height={500}
-								className='absolute w-full h-full object-cover -z-10'
+								className='absolute w-full h-auto object-cover -z-10'
 							/>
 							<div className='h-full flex items-end gap-3 p-3 md:p-6 lg:p-12'>
 								<Link
