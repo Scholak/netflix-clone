@@ -2,6 +2,8 @@ import { Banner, MovieSlider } from '@/components'
 import { api } from '@/lib/api'
 import React from 'react'
 
+export const revalidate = 0
+
 const UserHomePage = async () => {
 	const popularMovieResponse = await api.get('/movies/popular')
 	const sliderMoviesResponse = await api.get('/movies/slider')
