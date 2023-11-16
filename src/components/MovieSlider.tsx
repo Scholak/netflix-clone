@@ -1,13 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import Image from 'next/image'
+import { MovieDetailPopup } from '.'
 
 interface IMovieSliderProps {
   title: string
@@ -16,6 +17,8 @@ interface IMovieSliderProps {
 }
 
 const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
+  const [selectedMovie, setSelectedMovie] = useState<number>(-1)
+
 	return (
 		<div className='select-none p-4 md:p-8 xl:p-16'>
 			<Link href={link} className='group inline-flex items-center gap-1 mb-6 text-2xl text-white font-bold'>
@@ -33,9 +36,9 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 					modules={[Navigation]}
 					navigation
 					breakpoints={{
-            0: {
-              slidesPerView: 1
-            },
+						0: {
+							slidesPerView: 1,
+						},
 						640: {
 							slidesPerView: 3,
 						},
@@ -56,10 +59,19 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 				>
 					{items.map((item: any) => (
 						<SwiperSlide key={item.id}>
-							<Image src={item.image} alt='movie image' width={400} height={300} className='w-full h-full object-cover rounded' />
+							<div onClick={() => setSelectedMovie(item.id)}>
+								<Image
+									src={item.image}
+									alt='movie image'
+									width={400}
+									height={300}
+									className='w-full h-full object-cover rounded'
+								/>
+							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
+				{selectedMovie !== -1 && <MovieDetailPopup id={selectedMovie} setSelectedMovie={setSelectedMovie} />}
 			</div>
 		</div>
 	)
