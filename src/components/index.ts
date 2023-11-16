@@ -10,6 +10,7 @@ export { default as UserMenu } from './UserMenu'
 export { default as Banner } from './Banner'
 export { default as BannerDetail } from './BannerDetail'
 export { default as BannerRelatedMovies } from './BannerRelatedMovies'
+export { default as MovieSlider } from './MovieSlider'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'
 export { default as RegisterForm } from './Forms/RegisterForm'
