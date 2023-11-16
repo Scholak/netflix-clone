@@ -8,6 +8,8 @@ export { default as AddProfileCard } from './AddProfileCard'
 export { default as Search } from './Search'
 export { default as UserMenu } from './UserMenu'
 export { default as Banner } from './Banner'
+export { default as BannerDetail } from './BannerDetail'
+export { default as BannerRelatedMovies } from './BannerRelatedMovies'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'
 export { default as RegisterForm } from './Forms/RegisterForm'
