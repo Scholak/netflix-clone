@@ -25,7 +25,7 @@ const BannerDetail = ({ id, mediaType, setToggleDetail }: IBannerDetailProps) =>
 		<>
 			{!isLoading && (
 				<>
-					<div className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
+					<div onClick={() => setToggleDetail(false)} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
 					<div className='absolute left-1/2 top-6 -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-2/3 lg:w-1/2'>
 						<div className='relative h-[512px] bg-gradient-to-b from-transparent to-black'>
 							<div
