@@ -20,7 +20,7 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
   const [selectedMovie, setSelectedMovie] = useState<number>(-1)
 
 	return (
-		<div className='select-none p-4 md:p-8 xl:p-16'>
+		<div className='select-none px-4 md:px-8 xl:px-16'>
 			<Link href={link} className='group inline-flex items-center gap-1 mb-6 text-2xl text-white font-bold'>
 				<h4>{title}</h4>
 				<p className='text-sm text-sky-600 font-medium -translate-x-8 opacity-0 transition delay-100 duration-500 group-hover:opacity-100 group-hover:translate-x-0'>
@@ -62,8 +62,8 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 							<Image
 								src={item.image}
 								alt='movie image'
-								width={400}
-								height={300}
+								width={200}
+								height={150}
 								className='w-full h-full object-cover rounded'
 							/>
 						</SwiperSlide>
