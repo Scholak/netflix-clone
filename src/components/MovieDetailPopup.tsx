@@ -29,15 +29,20 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 		})
 	}, [])
 
+	const handleClosePopup = () => {
+		document.title = 'Netflix Türkiye'
+		setSelectedMovie(-1)
+	}
+
 	return (
 		<>
 			{!isLoading && (
 				<>
-					<div onClick={() => setSelectedMovie(-1)} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
+					<div onClick={handleClosePopup} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
 					<div className='absolute left-1/2 top-6 -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'>
 						<div className='relative h-[512px] bg-gradient-to-b from-transparent to-black'>
 							<div
-								onClick={() => setSelectedMovie(-1)}
+								onClick={handleClosePopup}
 								className='absolute top-4 right-4 flex items-center justify-center w-10 h-10 bg-neutral-900 text-white rounded-full cursor-pointer'
 							>
 								<FaTimes />
