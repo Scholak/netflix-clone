@@ -1,6 +1,6 @@
 import { tmdbApi } from '@/lib/tmdbApi'
-import { calculateRating } from '@/utlis/calculateRating'
-import { generateTeaser } from '@/utlis/generateTeaser'
+import { calculateRating } from '@/utils/calculateRating'
+import { generateTeaser } from '@/utils/generateTeaser'
 import { NextRequest } from 'next/server'
 
 interface Params {

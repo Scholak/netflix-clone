@@ -1,6 +1,6 @@
 import { tmdbApi } from '@/lib/tmdbApi'
 import { IGenre } from '@/types/genreType'
-import { getRandomGenres } from '@/utlis/getRandomGenre'
+import { getRandomGenres } from '@/utils/getRandomGenre'
 import { NextRequest } from 'next/server'
 
 interface Params {
