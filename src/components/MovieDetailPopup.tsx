@@ -20,6 +20,8 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 		queryFn: () => getMovieBannerDetail(id),
 	})
 
+	data?.title ? (document.title = `${data.title} - Netflix`) : ''
+
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
