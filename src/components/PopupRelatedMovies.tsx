@@ -6,7 +6,7 @@ interface IBannerRelatedMoviesProps {
 	movies: any
 }
 
-const BannerRelatedMovies = ({ movieId, movies }: IBannerRelatedMoviesProps) => {
+const PopupRelatedMovies = ({ movieId, movies }: IBannerRelatedMoviesProps) => {
 	return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
 			<h3 className='mb-6 text-2xl text-white font-bold'>Benzerleri</h3>
@@ -26,4 +26,4 @@ const BannerRelatedMovies = ({ movieId, movies }: IBannerRelatedMoviesProps) => 
 	)
 }
 
-export default BannerRelatedMovies
+export default PopupRelatedMovies

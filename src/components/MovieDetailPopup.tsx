@@ -2,12 +2,12 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
 import { getMovieBannerDetail } from '@/services/movieService'
-import { BannerRelatedMovies } from '.'
+import { PopupRelatedMovies } from '.'
 
 interface IMovieDetailPopupProps {
 	id: number
@@ -20,12 +20,19 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 		queryFn: () => getMovieBannerDetail(id),
 	})
 
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+	}, [])
+
 	return (
 		<>
 			{!isLoading && (
 				<>
 					<div onClick={() => setSelectedMovie(-1)} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
-					<div className='absolute left-1/2 top-6 -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-2/3 lg:w-1/2'>
+					<div className='absolute left-1/2 top-6 -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'>
 						<div className='relative h-[512px] bg-gradient-to-b from-transparent to-black'>
 							<div
 								onClick={() => setSelectedMovie(-1)}
@@ -88,7 +95,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 									</p>
 								</div>
 							</div>
-							<BannerRelatedMovies movieId={data.id} movies={data.relatedMovies} />
+							<PopupRelatedMovies movieId={data.id} movies={data.relatedMovies} />
 							<div className='grid gap-3 px-3 pb-3 lg:pb-12 font-medium text-sm text-white md:px-6 md:pb-6 lg:px-12'>
 								<p className='text-2xl font-bold'>{data.title} Hakkında</p>
 								<p>

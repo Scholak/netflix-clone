@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaInfo, FaPlay } from 'react-icons/fa'
-import { BannerDetail } from '.'
+import { MovieDetailPopup } from '.'
 
 interface IBannerProps {
   mediaType: 'movie' | 'serie'
@@ -18,11 +18,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 		queryFn: mediaType === 'movie' ? getFeaturedMovie : getFeaturedMovie,
 	})
 
-	const [toggleDetail, setToggleDetail] = useState<boolean>(false)
-
-	const handleToggleDetail = () => {
-		setToggleDetail(!toggleDetail)
-	}
+	const [selectedMovie, setSelectedMovie] = useState<number>(-1)
 
   return (
 		<>
@@ -41,7 +37,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 								<span className='font-bold'>Oynat</span>
 							</Link>
 							<button
-								onClick={handleToggleDetail}
+								onClick={() => setSelectedMovie(data.id)}
 								className='flex items-center justify-center gap-2 py-3 px-6 rounded bg-neutral-600 text-white'
 							>
 								<div className='h-min flex items-center justify-center p-1 border-2 border-white rounded-full aspect-square'>
@@ -52,7 +48,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 						</div>
 					</div>
 					<Image src={data.image} alt='poster' fill className='inset-0 object-cover' />
-					{toggleDetail && <BannerDetail id={data.id} mediaType={mediaType} setToggleDetail={setToggleDetail} />}
+					{selectedMovie !== -1 && <MovieDetailPopup id={data.id} setSelectedMovie={setSelectedMovie} />}
 				</div>
 			)}
 		</>
