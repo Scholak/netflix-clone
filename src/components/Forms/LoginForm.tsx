@@ -32,11 +32,7 @@ const LoginForm = () => {
 		<div className='w-full py-12 transparent-bg'>
 			<div className='transparent-bg p-6 rounded-lg w-full sm:p-8 md:p-12 md:w-1/2 md:mx-auto lg:p-16 xl:w-1/4'>
 				<h1 className='mb-6 text-white text-3xl font-bold'>Oturum Aç</h1>
-				{authError && (
-					<p className='mb-2 p-3 rounded bg-orange-500 text-white font-medium'>
-						{authError}
-					</p>
-				)}
+				{authError && <p className='mb-2 p-3 rounded bg-orange-500 text-white font-medium'>{authError}</p>}
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className='mb-4'>
 						<label htmlFor='email' className='mb-2 text-white font-medium'>
@@ -74,7 +70,7 @@ const LoginForm = () => {
 						<p className='hover:underline cursor-pointer'>Yardım ister misiniz?</p>
 					</div>
 					<p className='my-4 text-neutral-400'>
-						Netflix'e katılmak ister misiniz?{' '}
+						Netflix&apos;e katılmak ister misiniz?{' '}
 						<Link href='/' className='text-white'>
 							Şimdi kaydolun.
 						</Link>

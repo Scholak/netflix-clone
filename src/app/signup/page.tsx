@@ -19,7 +19,7 @@ const SelectPlanPage = () => {
 				</li>
 				<li className='flex gap-1'>
 					<Image src={tick} alt='tick' className='-translate-y-2 shrink-0' />
-					Tek ve düşük bir ücretle, Netflix'teki her şey önünüzde.
+					Tek ve düşük bir ücretle, Netflix&apos;teki her şey önünüzde.
 				</li>
 				<li className='flex gap-1'>
 					<Image src={tick} alt='tick' className='-translate-y-2 shrink-0' />

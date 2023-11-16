@@ -7,7 +7,7 @@ const CreateProfilePage = () => {
 			<div className='flex flex-col md:w-1/2'>
 				<h1 className='text-6xl text-white text-center font-medium md:text-left'>Profil Ekle</h1>
 				<p className='my-6 text-2xl text-neutral-500 text-center font-medium md:text-left'>
-					Netflix'i izleyen başka bir kişi için profil ekleyin.
+					Netflix&apos;i izleyen başka bir kişi için profil ekleyin.
 				</p>
 				<div className='h-px mb-8 bg-neutral-600'></div>
 				<CreateProfileForm />
