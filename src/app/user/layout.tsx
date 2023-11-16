@@ -1,4 +1,4 @@
-import { Search, UserMenu } from '@/components'
+import { Search, UserFooter, UserMenu } from '@/components'
 import Link from 'next/link'
 import React from 'react'
 import { FaRegBell } from 'react-icons/fa'
@@ -47,6 +47,7 @@ const UserLayout = ({ children }: IUserLayoutProps) => {
 				</div>
 			</nav>
 			{children}
+			<UserFooter />
 		</div>
 	)
 }
