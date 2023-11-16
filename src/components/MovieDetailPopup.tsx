@@ -76,7 +76,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 										{data.cast.map((cast: any, idx: number) => {
 											if (idx < 5) {
 												return (
-													<span className='text-white hover:underline'>
+													<span key={idx} className='text-white hover:underline'>
 														{idx !== 0 ? ', ' : ''}
 														{cast.name}
 													</span>
@@ -87,7 +87,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 									<p className='text-sm text-neutral-400'>
 										Türler:{' '}
 										{data.genres.map((genre: any, idx: number) => (
-											<span className='text-white hover:underline'>
+											<span key={idx} className='text-white hover:underline'>
 												{idx !== 0 ? ', ' : ''}
 												{genre.name}
 											</span>
@@ -102,7 +102,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 									Yönetmen:{' '}
 									<span className='text-white'>
 										{data.producers.map((producer: any, idx: number) => (
-											<span className='text-white hover:underline'>
+											<span key={idx} className='text-white hover:underline'>
 												{idx !== 0 ? ', ' : ''}
 												{producer.name}
 											</span>
@@ -112,7 +112,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 								<p>
 									Oyuncu Kadrosu:{' '}
 									{data.cast.map((cast: any, idx: number) => (
-										<span className='text-white hover:underline'>
+										<span key={idx} className='text-white hover:underline'>
 											{idx !== 0 ? ', ' : ''}
 											{cast.name}
 										</span>
@@ -121,7 +121,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 								<p>
 									Senarist:{' '}
 									{data.directors.map((director: any, idx: number) => (
-										<span className='text-white hover:underline'>
+										<span key={idx} className='text-white hover:underline'>
 											{idx !== 0 ? ', ' : ''}
 											{director.name}
 										</span>
