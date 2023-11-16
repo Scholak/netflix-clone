@@ -14,7 +14,7 @@ const PopupRelatedMovies = ({ movieId, movies }: IBannerRelatedMoviesProps) => {
 				{movies.map((movie: any) => {
 					if (movie.overview && movie.id !== movieId) {
 						return (
-							<div key={movie.id} className='shadow rounded overflow-hidden bg-neutral-800 text-neutral-300'>
+							<div key={movie.id} className='shadow rounded overflow-hidden bg-neutral-800 text-neutral-300 cursor-pointer'>
 								<Image src={movie.image} alt='related movie image' width={300} height={200} className='w-full' />
 								<p className='p-3 text-sm'>{movie.overview}</p>
 							</div>
