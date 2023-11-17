@@ -75,7 +75,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 			return {
 				id: serie.id,
 				title: serie.name,
-				image: `${process.env.TMDB_IMAGE_PATH}/original${serie.backdrop_path}`,
+				image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
 				releaseDate: serie.first_air_date,
 			}
 		}),
