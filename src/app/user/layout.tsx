@@ -33,7 +33,7 @@ const UserLayout = ({ children }: IUserLayoutProps) => {
 							<Link href='/user/movies'>Filmler</Link>
 						</li>
 						<li>
-							<Link href='/user/new'>Yeni ve Popüler</Link>
+							<Link href='/user/latest'>Yeni ve Popüler</Link>
 						</li>
 						<li>
 							<Link href='/user/list'>Listem</Link>

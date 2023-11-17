@@ -15,6 +15,7 @@ export { default as UserFooter } from './UserFooter'
 export { default as SerieDetailPopup } from './SerieDetailPopup'
 export { default as PopupRelatedSeries } from './PopupRelatedSeries'
 export { default as SerieSeasons } from './SerieSeasons'
+export { default as TopTenSlider } from './TopTenSlider'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'
 export { default as RegisterForm } from './Forms/RegisterForm'
