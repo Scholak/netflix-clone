@@ -102,7 +102,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									</p>
 								</div>
 							</div>
-							<PopupRelatedSeries serieId={data.id} series={data.relatedSeries} />
+							<PopupRelatedSeries series={data.relatedSeries} />
 							<div className='grid gap-3 px-3 pb-3 lg:pb-12 font-medium text-sm text-white md:px-6 md:pb-6 lg:px-12'>
 								<p className='text-2xl font-bold'>{data.title} Hakkında</p>
 								<p>
