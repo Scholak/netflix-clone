@@ -18,7 +18,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 				const items = response.data.results.map((serie: any) => {
 					return {
 						id: serie.id,
-						image: `${process.env.TMDB_IMAGE_PATH}/original${serie.backdrop_path}`,
+						image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
 					}
 				})
 
