@@ -7,7 +7,7 @@ import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
 import { getSerieBannerDetail } from '@/services/serieService'
-import { PopupRelatedSeries, SerieSeasons } from '.'
+import { PopupRelatedSeries, SerieSeasons } from '..'
 
 interface ISerieDetailPopupProps {
 	id: number

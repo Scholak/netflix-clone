@@ -2,7 +2,7 @@
 
 import { IProfile } from '@/types/profileType'
 import React from 'react'
-import { ProfileCard } from '.'
+import { ProfileCard } from '..'
 import { useQuery } from '@tanstack/react-query'
 import { getProfiles } from '@/services/profileService'
 

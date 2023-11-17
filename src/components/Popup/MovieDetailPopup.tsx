@@ -7,7 +7,7 @@ import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
 import { getMovieBannerDetail } from '@/services/movieService'
-import { PopupRelatedMovies } from '.'
+import { PopupRelatedMovies } from '..'
 
 interface IMovieDetailPopupProps {
 	id: number
