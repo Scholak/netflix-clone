@@ -2,7 +2,7 @@ import { tmdbApi } from '@/lib/tmdbApi'
 import { NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const response = await tmdbApi.get('/movie/popular')
+  const response = await tmdbApi.get('/movie/top_rated')
 	const movie = {
 		id: response.data.results[0].id,
 		title: response.data.results[0].title,
