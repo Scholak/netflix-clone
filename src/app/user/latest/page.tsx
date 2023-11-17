@@ -19,7 +19,7 @@ const LatestPage = async () => {
 			<TopTenSlider
 				title='Türkiye de Bugünün Top 10 Film Listesi'
 				items={topTenMovieResponse.data.movies}
-				type='serie'
+				type='movie'
 			/>
 			<TopTenSlider
 				title='Türkiye de Bugünün Top 10 Dizi Listesi'
