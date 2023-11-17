@@ -12,9 +12,9 @@ const UserHomePage = async () => {
 		<div className='bg-neutral-900'>
 			<Banner mediaType='movie' />
 			<div className='py-4 md:py-6 lg:py-12'>
-				<Slider title='Gündemdekiler' link='/popular' items={popularMovieResponse.data.movies} />
+				<Slider title='Gündemdekiler' link='/popular' items={popularMovieResponse.data.movies} type='movie' />
 				{sliderMoviesResponse.data.sliders.map((slider: any) => (
-					<Slider key={slider.id} title={slider.title} link={slider.link} items={slider.items} />
+					<Slider key={slider.id} title={slider.title} link={slider.link} items={slider.items} type='movie' />
 				))}
 			</div>
 		</div>

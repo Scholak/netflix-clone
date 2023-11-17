@@ -8,16 +8,26 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import Image from 'next/image'
-import { MovieDetailPopup } from '.'
+import { MovieDetailPopup, SerieDetailPopup } from '.'
 
 interface IMovieSliderProps {
-  title: string
-  link: string
-  items: any[]
+	title: string
+	link: string
+	items: any[]
+	type: 'movie' | 'serie'
 }
 
-const Slider = ({ title, link, items }: IMovieSliderProps) => {
+const Slider = ({ title, link, items, type }: IMovieSliderProps) => {
   const [selectedMovie, setSelectedMovie] = useState<number>(-1)
+  const [selectedSerie, setSelectedSerie] = useState<number>(-1)
+
+	const handleTogglePopup = (id: number) => {
+		if (type === 'movie') {
+			setSelectedMovie(id)
+		} else {
+			setSelectedSerie(id)
+		}
+	}
 
 	return (
 		<div className='select-none p-4 md:p-8 xl:px-16'>
@@ -62,7 +72,7 @@ const Slider = ({ title, link, items }: IMovieSliderProps) => {
 					className='text-white text-4xl'
 				>
 					{items.map((item: any) => (
-						<SwiperSlide key={item.id} onClick={() => setSelectedMovie(item.id)} className='cursor-pointer h-full'>
+						<SwiperSlide key={item.id} onClick={() => handleTogglePopup(item.id)} className='cursor-pointer h-full'>
 							<Image
 								src={item.image}
 								alt='media image'
@@ -74,6 +84,7 @@ const Slider = ({ title, link, items }: IMovieSliderProps) => {
 					))}
 				</Swiper>
 				{selectedMovie !== -1 && <MovieDetailPopup id={selectedMovie} setSelectedMovie={setSelectedMovie} />}
+				{selectedSerie !== -1 && <SerieDetailPopup id={selectedSerie} setSelectedSerie={setSelectedSerie} />}
 			</div>
 		</div>
 	)
