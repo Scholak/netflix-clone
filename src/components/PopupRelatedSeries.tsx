@@ -15,7 +15,7 @@ const PopupRelatedMovies = ({ series }: IBannerRelatedMoviesProps) => {
 						key={serie.id}
 						className='shadow rounded overflow-hidden bg-neutral-800 text-neutral-300 cursor-pointer'
 					>
-						<Image src={serie.image} alt='related serie image' width={300} height={200} className='w-full' />
+						<Image src={serie.image} alt='related serie image' width={300} height={200} className='w-full aspect-video object-cover' />
 						<p className='p-3 text-sm'>{serie.title}</p>
 					</div>
 				)
