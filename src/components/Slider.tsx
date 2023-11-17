@@ -16,7 +16,7 @@ interface IMovieSliderProps {
   items: any[]
 }
 
-const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
+const Slider = ({ title, link, items }: IMovieSliderProps) => {
   const [selectedMovie, setSelectedMovie] = useState<number>(-1)
 
 	return (
@@ -65,7 +65,7 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 						<SwiperSlide key={item.id} onClick={() => setSelectedMovie(item.id)} className='cursor-pointer h-full'>
 							<Image
 								src={item.image}
-								alt='movie image'
+								alt='media image'
 								width={200}
 								height={150}
 								className='w-full h-auto object-cover rounded'
@@ -79,4 +79,4 @@ const MovieSlider = ({ title, link, items }: IMovieSliderProps) => {
 	)
 }
 
-export default MovieSlider
+export default Slider
