@@ -12,10 +12,7 @@ interface Params {
 export async function GET(request: NextRequest, { params }: Params) {
 	const movieResponse = await tmdbApi.get(`/movie/${params.id}`)
 	const peopleResponse = await tmdbApi.get(`/movie/${params.id}/credits`)
-
-	const genreIds = movieResponse.data.genres.map((genre: any) => genre.id).join(',')
-
-	const relatedMovies = await tmdbApi.get(`/discover/movie?with_genres=${genreIds}`)
+	const relatedMovies = await tmdbApi.get(`/movie/${params.id}/similar`)
 
   let producerFound: boolean = false
   let directorFound: boolean = false
