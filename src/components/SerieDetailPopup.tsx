@@ -7,7 +7,7 @@ import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
 import { getSerieBannerDetail } from '@/services/serieService'
-import { PopupRelatedMovies, PopupRelatedSeries } from '.'
+import { PopupRelatedMovies, PopupRelatedSeries, SerieSeasons } from '.'
 
 interface ISerieDetailPopupProps {
 	id: number
@@ -102,6 +102,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									</p>
 								</div>
 							</div>
+							<SerieSeasons seasons={data.seasons} />
 							<PopupRelatedSeries series={data.relatedSeries} />
 							<div className='grid gap-3 px-3 pb-3 lg:pb-12 font-medium text-sm text-white md:px-6 md:pb-6 lg:px-12'>
 								<p className='text-2xl font-bold'>{data.title} Hakkında</p>

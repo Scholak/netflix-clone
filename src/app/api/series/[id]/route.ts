@@ -10,10 +10,9 @@ interface Params {
 }
 
 export async function GET(request: NextRequest, { params }: Params) {
-	const serieResponse = await tmdbApi.get(`/tv/${params.id}`)
+	const serieResponse = await tmdbApi.get(`/tv/${params.id}?append_to_response=episode_groups`)
 	const peopleResponse = await tmdbApi.get(`/tv/${params.id}/credits`)
 	const relatedSeries = await tmdbApi.get(`/tv/${params.id}/similar`)
-
 
 	let producerFound: boolean = false
 	let directorFound: boolean = false
@@ -26,6 +25,16 @@ export async function GET(request: NextRequest, { params }: Params) {
 		genres: serieResponse.data.genres,
 		rating: calculateRating(serieResponse.data.vote_average),
 		runtime: serieResponse.data.runtime,
+		seasons: serieResponse.data.seasons.map((season: any) => {
+			return {
+				id: season.id,
+				date: season.air_date,
+				name: season.name,
+				overview: season.overview,
+				episodeCOunt: season.episode_count,
+				poster: `${process.env.TMDB_IMAGE_PATH}/original${season.poster_path}`,
+			}
+		}),
 		cast: peopleResponse.data.cast
 			.map((cast: any, idx: number) => {
 				if (idx > 9) {
