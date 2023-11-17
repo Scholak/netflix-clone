@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
@@ -22,13 +22,6 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 
 	data?.title ? (document.title = `${data.title} - Netflix`) : ''
 
-	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		})
-	}, [])
-
 	const handleClosePopup = () => {
 		document.title = 'Netflix Türkiye'
 		setSelectedMovie(-1)
@@ -39,7 +32,10 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 			{!isLoading && (
 				<>
 					<div onClick={handleClosePopup} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
-					<div className='absolute left-1/2 top-6 -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'>
+					<div
+						id='movieDetailPopup'
+						className='fixed left-1/2 top-6 bottom-0 overflow-y-auto -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'
+					>
 						<div className='relative h-[512px] bg-gradient-to-b from-transparent to-black'>
 							<div
 								onClick={handleClosePopup}
