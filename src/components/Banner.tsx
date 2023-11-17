@@ -7,6 +7,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaInfo, FaPlay } from 'react-icons/fa'
 import { MovieDetailPopup } from '.'
+import { getFeaturedSerie } from '@/services/serieService'
 
 interface IBannerProps {
   mediaType: 'movie' | 'serie'
@@ -15,7 +16,7 @@ interface IBannerProps {
 const Banner = ({ mediaType }: IBannerProps) => {
   const { data, isLoading } = useQuery({
 		queryKey: mediaType === 'movie' ? ['featuredMovie'] : ['featuredSerie'],
-		queryFn: mediaType === 'movie' ? getFeaturedMovie : getFeaturedMovie,
+		queryFn: mediaType === 'movie' ? getFeaturedMovie : getFeaturedSerie,
 	})
 
 	const [selectedMovie, setSelectedMovie] = useState<number>(-1)
