@@ -2,6 +2,8 @@ import { Slider, TopTenSlider } from '@/components'
 import { api } from '@/lib/api'
 import React from 'react'
 
+export const revalidate = 0
+
 const LatestPage = async () => {
   const upcomingMovieResponse = await api.get('/movies/upcoming')
   const nowPayingMovieResponse = await api.get('/movies/now-playing')
