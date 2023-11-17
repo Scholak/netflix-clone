@@ -12,6 +12,8 @@ export { default as PopupRelatedMovies } from './PopupRelatedMovies'
 export { default as MovieSlider } from './MovieSlider'
 export { default as MovieDetailPopup } from './MovieDetailPopup'
 export { default as UserFooter } from './UserFooter'
+export { default as SerieDetailPopup } from './SerieDetailPopup'
+export { default as PopupRelatedSeries } from './PopupRelatedSeries'
 
 export { default as GetStartedForm } from './Forms/GetStartedForm'
 export { default as RegisterForm } from './Forms/RegisterForm'
