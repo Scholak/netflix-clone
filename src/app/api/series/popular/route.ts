@@ -4,10 +4,10 @@ import { NextRequest } from 'next/server'
 export async function GET(request: NextRequest) {
 	const response = await tmdbApi.get('/tv/popular')
 
-	const series = response.data.results.map((movie: any) => {
+	const series = response.data.results.map((serie: any) => {
     return {
-			id: movie.id,
-			image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
+			id: serie.id,
+			image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
 		}
   })
 
