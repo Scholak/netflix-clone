@@ -29,11 +29,9 @@ const Search = () => {
   return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className={`hidden p-2 items-center gap-4 cursor-pointer border sm:flex ${
-				active ? 'px-4 border-white' : 'border-transparent'
-			}`}
+			className={`hidden p-2 items-center gap-4 border sm:flex ${active ? 'px-4 border-white' : 'border-transparent'}`}
 		>
-			<FaSearch onClick={() => setActive(!active)} />
+			<FaSearch onClick={() => setActive(!active)} className='cursor-pointer' />
 			<input
 				{...register('query')}
 				type='text'
