@@ -9,7 +9,7 @@ interface IUserLayoutProps {
 
 const UserLayout = ({ children }: IUserLayoutProps) => {
 	return (
-		<div>
+		<div className='flex flex-col min-h-screen'>
 			<nav className='bg-neutral-900 fixed w-full flex items-center justify-between text-neutral-200 py-4 px-4 z-10 md:px-8 md:py-3 xl:py-4 xl:px-16'>
 				<div className='flex items-center gap-1 md:gap-2 lg:gap-4'>
 					<Link href='/user' className='mr-2 md:mr-4 lg:mr-8'>
@@ -60,7 +60,7 @@ const UserLayout = ({ children }: IUserLayoutProps) => {
 					<UserMenu />
 				</div>
 			</nav>
-			{children}
+			<main className='flex-1 bg-neutral-900'>{children}</main>
 			<UserFooter />
 		</div>
 	)
