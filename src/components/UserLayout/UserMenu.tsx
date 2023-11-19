@@ -5,6 +5,7 @@ import { getProfiles } from '@/services/profileService'
 import { IProfile } from '@/types/profileType'
 import { useQuery } from '@tanstack/react-query'
 import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { FaCaretDown, FaFileExport, FaPencilAlt, FaRegQuestionCircle, FaRegUser } from 'react-icons/fa'
@@ -53,10 +54,10 @@ const UserMenu = () => {
 							</div>
 						))}
 					</div>
-					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
+					<Link href='/manageProfiles' className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaPencilAlt className='text-lg' />
 						<p>Profil Yönetimi</p>
-					</div>
+					</Link>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaFileExport className='text-lg' />
 						<p>Profili Aktar</p>
