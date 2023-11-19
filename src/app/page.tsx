@@ -7,8 +7,17 @@ import phoneImg from '@/assets/phone.png'
 import childImg from '@/assets/child.png'
 import Image from 'next/image'
 import { Faq, GetStartedForm, HomeFooter, CookiePreferences } from '@/components'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/authOptions'
+import { redirect } from 'next/navigation'
 
-const HomePage = () => {
+const HomePage = async () => {
+	const session = await getServerSession(authOptions)
+
+	if (!!session) {
+		redirect('/user')
+	}
+
   return (
 		<div className='relative'>
 			<CookiePreferences />
