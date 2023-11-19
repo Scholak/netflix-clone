@@ -18,8 +18,6 @@ const ListPage = async () => {
 
   const response = await api.get(`/list/${session.user.profileId}`)
 
-	console.log(response.data.lists[0].type)
-
   return (
 		<div className='px-4 py-20 md:px-8 xl:px-16 bg-neutral-900'>
 			<h5 className='flex flex-wrap items-end gap-2 text-3xl text-white font-bold mb-4 md:mb-8'>Listem</h5>
