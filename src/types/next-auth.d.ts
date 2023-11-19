@@ -8,6 +8,7 @@ declare module 'next-auth' {
 			password: string
 			planId: number
 			cardNumber: string
+			profileId?: number
 		} & DefaultSession['user']
 	}
 }

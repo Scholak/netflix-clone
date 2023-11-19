@@ -1,4 +1,7 @@
+'use client'
+
 import { IProfile } from '@/types/profileType'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -11,9 +14,13 @@ interface IProfileCardProps {
 
 const ProfileCard = ({ profile, editing }: IProfileCardProps) => {
 	const router = useRouter()
-	const handleRedirectUser = () => {
-		sessionStorage.setItem('profileId', String(profile.id))
-		router.push('/user')
+	const session = useSession()
+
+	const handleRedirectUser = async () => {
+		if (session.data) {
+			session.update({ profileId: profile.id })
+			router.push('/user')
+		}
 	}
 
 	if (editing) {
