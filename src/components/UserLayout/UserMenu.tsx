@@ -1,12 +1,10 @@
 'use client'
 
-
-import { api } from '@/lib/api'
 import { getProfiles } from '@/services/profileService'
 import { IProfile } from '@/types/profileType'
 import { useQuery } from '@tanstack/react-query'
 import { signOut } from 'next-auth/react'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { FaCaretDown, FaFileExport, FaPencilAlt, FaRegQuestionCircle, FaRegUser } from 'react-icons/fa'
 
 const UserMenu = () => {
