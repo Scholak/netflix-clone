@@ -24,4 +24,13 @@ model Profile {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   name   String
   userId Int
+  List   List[]
+}
+
+model List {
+  id        Int     @id @default(autoincrement())
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId Int
+  mediaId   Int
+  mediaType String
 }
