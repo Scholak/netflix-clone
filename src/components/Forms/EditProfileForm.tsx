@@ -8,6 +8,7 @@ import { IProfile } from '@/types/profileType'
 import { editProfileSchema } from '@/validations/editProfileSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -61,11 +62,19 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			{responseError && <h2 className='mb-4 text-xl text-red font-medium'>{responseError}</h2>}
 			<div className='flex flex-col items-center gap-4 md:flex-row'>
-				<div className='shrink-0 w-40 h-40 flex items-center justify-center rounded bg-red border-4 border-red group-hover:border-white'></div>
+				<div className='shrink-0 w-40 h-40 flex items-center justify-center'>
+					<Image
+						src={`/avatars/${profile.avatar}.jpg`}
+						alt='avatar image'
+						width={400}
+						height={400}
+						className='w-full h-full object-cover'
+					/>
+				</div>
 				<div className='w-full flex-1'>
 					<input
 						type='text'
-            defaultValue={profile.name}
+						defaultValue={profile.name}
 						{...register('name')}
 						className='w-full p-3 text-xl bg-neutral-500 text-white outline-none rounded placeholder:text-white placeholder:text-xl'
 						placeholder='Adı'
@@ -87,7 +96,12 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 				>
 					İptal
 				</Link>
-				<p onClick={handleDeleteProfile} className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 cursor-pointer hover:text-white hover:border-white'>Profili Sil</p>
+				<p
+					onClick={handleDeleteProfile}
+					className='py-3 px-8 text-neutral-400 text-xl text-center border border-neutral-400 cursor-pointer hover:text-white hover:border-white'
+				>
+					Profili Sil
+				</p>
 			</div>
 		</form>
 	)

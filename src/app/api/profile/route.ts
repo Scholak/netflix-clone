@@ -30,11 +30,12 @@ export async function POST(request: NextRequest) {
 
   try {
     const newProfile = await prisma.profile.create({
-      data: {
-        name: body.name,
-        userId: session.user.id
-      }
-    })
+			data: {
+				name: body.name,
+				userId: session.user.id,
+				avatar: String(Math.ceil(Math.random() * 5)),
+			},
+		})
 
     if (newProfile) {
 			return new Response(JSON.stringify({ newProfile }), { status: 201 })

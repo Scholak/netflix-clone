@@ -5,6 +5,7 @@ import { getProfiles } from '@/services/profileService'
 import { IProfile } from '@/types/profileType'
 import { useQuery } from '@tanstack/react-query'
 import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -38,7 +39,19 @@ const UserMenu = () => {
 
   return (
 		<div className='group relative flex items-center gap-2 text-sm cursor-pointer'>
-			<div className='w-6 h-6 bg-red rounded'></div>
+			<div className='w-6 h-6'>
+				{profiles && session.data?.user.profileId && (
+					<Image
+						src={`/avatars/${
+							profiles.filter((profile: IProfile) => profile.id === session.data?.user.profileId)[0].avatar
+						}.jpg`}
+						alt='avatar image'
+						width={50}
+						height={50}
+						className='w-full h-full object-cover'
+					/>
+				)}
+			</div>
 			<FaCaretDown className='text-white transition duration-500 group-hover:rotate-180' />
 			<div className='absolute top-0 pt-10 right-0 w-52 transition duration-300 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto'>
 				<div className='bg-neutral-800 border border-neutral-300'>
@@ -49,7 +62,15 @@ const UserMenu = () => {
 								onClick={() => handleSwitchProfile(profile.id)}
 								className='flex items-center gap-3 hover:underline'
 							>
-								<div className='w-6 h-6 rounded bg-red'></div>
+								<div className='w-6 h-6'>
+									<Image
+										src={`/avatars/${profile.avatar}.jpg`}
+										alt='avatar image'
+										width={50}
+										height={50}
+										className='w-full h-full object-cover'
+									/>
+								</div>
 								<p className='text-white'>{profile.name}</p>
 							</div>
 						))}
