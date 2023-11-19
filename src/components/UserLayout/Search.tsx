@@ -22,6 +22,7 @@ const Search = () => {
 	})
 
 	const onSubmit = (data: ISearch) => {
+		setActive(false)
 		router.push(`/user/search?q=${data.query}`)
 	}
 
