@@ -1,4 +1,4 @@
-import { SearchCard } from '@/components'
+import { MediaCard } from '@/components'
 import { api } from '@/lib/api'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
@@ -35,10 +35,10 @@ const SearchPage = async ({ searchParams }: ISearchParams) => {
 			</h5>
 			<div className='grid gap-4 md:gap-y-16 lg:gap-y-32 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
 				{movieResponse.data.movies.map((movie: any) => (
-					<SearchCard media={movie} type='movie' key={movie.id} />
+					<MediaCard media={movie} type='movie' key={movie.id} />
 				))}
 				{serieResponse.data.series.map((serie: any) => (
-					<SearchCard media={serie} type='serie' key={serie.id} />
+					<MediaCard media={serie} type='serie' key={serie.id} />
 				))}
 			</div>
 		</div>

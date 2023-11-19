@@ -4,13 +4,13 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { MovieDetailPopup, SerieDetailPopup } from '.'
 
-interface ISearchCardProps {
+interface IMediaCardProps {
 	media: any
 	type: 'movie' | 'serie'
 }
 
-const SearchCard = ({ media, type }: ISearchCardProps) => {
-  const [selectedMovie, setSelectedMovie] = useState<number>(-1)
+const MediaCard = ({ media, type }: IMediaCardProps) => {
+	const [selectedMovie, setSelectedMovie] = useState<number>(-1)
 	const [selectedSerie, setSelectedSerie] = useState<number>(-1)
 
 	const handleToggleDetail = () => {
@@ -21,7 +21,7 @@ const SearchCard = ({ media, type }: ISearchCardProps) => {
 		}
 	}
 
-  return (
+	return (
 		<>
 			<div onClick={handleToggleDetail} className='w-full cursor-pointer sm:h-20 md:h-28 lg:h-36'>
 				<Image
@@ -38,4 +38,4 @@ const SearchCard = ({ media, type }: ISearchCardProps) => {
 	)
 }
 
-export default SearchCard
+export default MediaCard
