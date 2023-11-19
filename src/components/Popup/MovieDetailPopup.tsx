@@ -5,9 +5,11 @@ import Link from 'next/link'
 import React from 'react'
 import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { getMovieBannerDetail } from '@/services/movieService'
 import { PopupRelatedMovies } from '..'
+import { useRouter } from 'next/navigation'
+import { addToList } from '@/services/listService'
 
 interface IMovieDetailPopupProps {
 	id: number
@@ -15,9 +17,18 @@ interface IMovieDetailPopupProps {
 }
 
 const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
+	const router = useRouter()
+
 	const { data, isLoading } = useQuery({
 		queryKey: ['movieBannerDetail'],
 		queryFn: () => getMovieBannerDetail(id),
+	})
+
+	const addToListMutation = useMutation({
+		mutationFn: addToList,
+		onSuccess: () => {
+			router.push('/user/list')
+		}
 	})
 
 	data?.title ? (document.title = `${data.title} - Netflix`) : ''
@@ -25,6 +36,10 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 	const handleClosePopup = () => {
 		document.title = 'Netflix Türkiye'
 		setSelectedMovie(-1)
+	}
+
+	const handleAddToList = () => {
+		addToListMutation.mutate({ mediaId: id, mediaType: 'movie' })
 	}
 
 	return (
@@ -58,7 +73,10 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 									<FaPlay />
 									<span className='font-bold'>Oynat</span>
 								</Link>
-								<div className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'>
+								<div 
+									onClick={handleAddToList}
+									className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'
+								>
 									<FaPlus />
 								</div>
 								<div className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'>

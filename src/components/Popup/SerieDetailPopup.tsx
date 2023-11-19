@@ -5,9 +5,11 @@ import Link from 'next/link'
 import React from 'react'
 import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { getSerieBannerDetail } from '@/services/serieService'
 import { PopupRelatedSeries, SerieSeasons } from '..'
+import { useRouter } from 'next/navigation'
+import { addToList } from '@/services/listService'
 
 interface ISerieDetailPopupProps {
 	id: number
@@ -15,9 +17,18 @@ interface ISerieDetailPopupProps {
 }
 
 const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
+	const router = useRouter()
+
 	const { data, isLoading } = useQuery({
 		queryKey: ['serieBannerDetail'],
 		queryFn: () => getSerieBannerDetail(id),
+	})
+
+	const addToListMutation = useMutation({
+		mutationFn: addToList,
+		onSuccess: () => {
+			router.push('/user/list')
+		},
 	})
 
 	data?.title ? (document.title = `${data.title} - Netflix`) : ''
@@ -27,12 +38,19 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 		setSelectedSerie(-1)
 	}
 
+	const handleAddToList = () => {
+		addToListMutation.mutate({ mediaId: id, mediaType: 'serie' })
+	}
+
 	return (
 		<>
 			{!isLoading && (
 				<>
 					<div onClick={handleClosePopup} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
-					<div id='serieDetailPopup' className='fixed left-1/2 top-6 bottom-0 overflow-y-auto -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'>
+					<div
+						id='serieDetailPopup'
+						className='fixed left-1/2 top-6 bottom-0 overflow-y-auto -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'
+					>
 						<div className='relative h-[512px] bg-gradient-to-b from-transparent to-black'>
 							<div
 								onClick={handleClosePopup}
@@ -55,7 +73,10 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									<FaPlay />
 									<span className='font-bold'>Oynat</span>
 								</Link>
-								<div className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'>
+								<div
+									onClick={handleAddToList}
+									className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'
+								>
 									<FaPlus />
 								</div>
 								<div className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'>
