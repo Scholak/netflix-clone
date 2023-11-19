@@ -20,7 +20,7 @@ const SearchPage = async ({ searchParams }: ISearchParams) => {
 
   return (
 		<div className='px-4 py-20 md:px-8 xl:px-16 bg-neutral-900'>
-			<h5 className='flex flex-wrap items-end gap-2 text-3xl text-white font-bold mb-auto'>
+			<h5 className='flex flex-wrap items-end gap-2 text-3xl text-white font-bold mb-4 md:mb-8'>
 				{movieResponse.data.movies.length === 0 && serieResponse.data.series.length === 0 ? (
 					<>
 						<span>{searchParams.q}</span>
