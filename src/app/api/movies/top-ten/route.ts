@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
 				image: `${process.env.TMDB_IMAGE_PATH}/original${movie.poster_path}`,
 			}
 		})
+		.filter((movie: any) => !movie.image.includes('null'))
 		.slice(0, 10)
 
 	return new Response(JSON.stringify({ movies }))

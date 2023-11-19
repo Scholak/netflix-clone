@@ -18,7 +18,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 					id: movie.id,
 					image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
 				}
-			})
+			}).filter((movie: any) => !movie.image.includes('null'))
 
 			return {
 				id: genre.id,

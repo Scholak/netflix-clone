@@ -20,7 +20,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 						id: serie.id,
 						image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
 					}
-				})
+				}).filter((serie: any) => !serie.image.includes('null'))
 
 				return {
 					id: genre.id,

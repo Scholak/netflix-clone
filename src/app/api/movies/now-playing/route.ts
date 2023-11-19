@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
 			id: movie.id,
 			image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
 		}
-	})
+	}).filter((movie: any) => !movie.image.includes('null'))
 
 	return new Response(JSON.stringify({ movies }))
 }
