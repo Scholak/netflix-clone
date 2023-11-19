@@ -16,9 +16,9 @@ const ProfileCard = ({ profile, editing }: IProfileCardProps) => {
 	const router = useRouter()
 	const session = useSession()
 
-	const handleRedirectUser = () => {
+	const handleRedirectUser = async () => {
 		if (session.data) {
-			session.update({ profileId: profile.id })
+			await session.update({ profileId: profile.id })
 			router.push('/user')
 		}
 	}
