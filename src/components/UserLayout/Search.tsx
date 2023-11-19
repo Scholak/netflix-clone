@@ -22,7 +22,7 @@ const Search = () => {
   return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className={`p-2 flex items-center gap-4 cursor-pointer border ${
+			className={`hidden p-2 items-center gap-4 cursor-pointer border sm:flex ${
 				active ? 'px-4 border-white' : 'border-transparent'
 			}`}
 		>
@@ -31,7 +31,7 @@ const Search = () => {
 				{...register('query')}
 				type='text'
 				className={`bg-transparent active:bg-transparent focus:bg-transparent text-white rounded outline-none transition-all duration-300 ${
-					active ? 'w-48' : 'w-0'
+					active ? 'sm:w-32 md:w-40 lg:w-48' : 'w-0'
 				}`}
 				placeholder='içerik, kişi, tür'
 			/>

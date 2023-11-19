@@ -1,7 +1,7 @@
 import { Search, UserFooter, UserMenu } from '@/components'
 import Link from 'next/link'
 import React from 'react'
-import { FaRegBell } from 'react-icons/fa'
+import { FaCaretDown, FaRegBell } from 'react-icons/fa'
 
 interface IUserLayoutProps {
 	children: React.ReactNode
@@ -10,9 +10,9 @@ interface IUserLayoutProps {
 const UserLayout = ({ children }: IUserLayoutProps) => {
 	return (
 		<div>
-			<nav className='bg-neutral-900 fixed w-full flex items-center justify-between text-neutral-200 py-2 px-4 z-10 md:px-8 md:py-3 xl:py-4 xl:px-16'>
-				<div className='flex items-center gap-4'>
-					<Link href='/user' className='mr-8'>
+			<nav className='bg-neutral-900 fixed w-full flex items-center justify-between text-neutral-200 py-4 px-4 z-10 md:px-8 md:py-3 xl:py-4 xl:px-16'>
+				<div className='flex items-center gap-1 md:gap-2 lg:gap-4'>
+					<Link href='/user' className='mr-2 md:mr-4 lg:mr-8'>
 						<svg
 							viewBox='0 0 111 30'
 							version='1.1'
@@ -27,25 +27,34 @@ const UserLayout = ({ children }: IUserLayoutProps) => {
 							</g>
 						</svg>
 					</Link>
-					<ul className='flex items-center gap-4 text-sm'>
-						<li>
-							<Link href='/user'>Ana Sayfa</Link>
-						</li>
-						<li>
-							<Link href='/user/series'>Diziler</Link>
-						</li>
-						<li>
-							<Link href='/user/movies'>Filmler</Link>
-						</li>
-						<li>
-							<Link href='/user/latest'>Yeni ve Popüler</Link>
-						</li>
-						<li>
-							<Link href='/user/list'>Listem</Link>
-						</li>
-					</ul>
+					<div className='group relative'>
+						<button className='flex items-center gap-1 text-white cursor-pointer md:hidden'>
+							<span>Göz At</span>
+							<FaCaretDown />
+						</button>
+						<ul
+							className='absolute hidden flex-col gap-6 text-xs bg-neutral-900 pt-8 pb-2 px-12 group-hover:flex 
+							md:static md:flex md:items-center md:flex-row md:pt-0 md:pb-0 md:px-0 md:text-sm md:gap-4'
+						>
+							<li className='whitespace-nowrap'>
+								<Link href='/user'>Ana Sayfa</Link>
+							</li>
+							<li className='whitespace-nowrap'>
+								<Link href='/user/series'>Diziler</Link>
+							</li>
+							<li className='whitespace-nowrap'>
+								<Link href='/user/movies'>Filmler</Link>
+							</li>
+							<li className='whitespace-nowrap'>
+								<Link href='/user/latest'>Yeni ve Popüler</Link>
+							</li>
+							<li className='whitespace-nowrap'>
+								<Link href='/user/list'>Listem</Link>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div className='flex items-center gap-6 text-white'>
+				<div className='flex items-center text-white gap-2 md:gap-4 lg:gap-6'>
 					<Search />
 					<FaRegBell />
 					<UserMenu />
