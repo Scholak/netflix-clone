@@ -27,3 +27,29 @@ export async function POST(request: NextRequest) {
     return new Response(JSON.stringify({ message: error.message }), { status: 500 }) 
   }
 }
+
+export async function DELETE(request: NextRequest) {
+	const session = await getServerSession(authOptions)
+	const body = await request.json()
+
+	if (!session?.user.profileId) {
+		return new Response(JSON.stringify({ message: 'Profil mevcut değil' }), { status: 400 })
+	}
+
+	try {
+		const removeFromList = await prisma.list.deleteMany({
+			where: {
+        profileId: session.user.profileId,
+        mediaId: body.mediaId,
+        mediaType: body.mediaType
+      }
+		})
+
+		if (removeFromList) {
+			return new Response(JSON.stringify({ message: 'Listeden silme işlemi başarılı' }), { status: 200 })
+		}
+		return new Response(JSON.stringify({ message: 'Listeden silme işlemi başarısız oldu' }), { status: 422 })
+	} catch (error: any) {
+		return new Response(JSON.stringify({ message: error.message }), { status: 500 })
+	}
+}

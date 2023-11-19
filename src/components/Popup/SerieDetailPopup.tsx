@@ -3,13 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
+import { FaCheck, FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { getSerieBannerDetail } from '@/services/serieService'
 import { PopupRelatedSeries, SerieSeasons } from '..'
 import { useRouter } from 'next/navigation'
-import { addToList } from '@/services/listService'
+import { addToList, removeFromList } from '@/services/listService'
+import { queryClient } from '@/lib/queryClient'
 
 interface ISerieDetailPopupProps {
 	id: number
@@ -27,7 +28,16 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 	const addToListMutation = useMutation({
 		mutationFn: addToList,
 		onSuccess: () => {
-			router.push('/user/list')
+			queryClient.invalidateQueries()
+			router.refresh()
+		},
+	})
+
+	const removeFromListMutation = useMutation({
+		mutationFn: removeFromList,
+		onSuccess: () => {
+			queryClient.invalidateQueries()
+			router.refresh()
 		},
 	})
 
@@ -40,6 +50,10 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 
 	const handleAddToList = () => {
 		addToListMutation.mutate({ mediaId: id, mediaType: 'serie' })
+	}
+
+	const handleRemoveFromList = () => {
+		removeFromListMutation.mutate({ mediaId: id, mediaType: 'serie' })
 	}
 
 	return (
@@ -73,12 +87,21 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									<FaPlay />
 									<span className='font-bold'>Oynat</span>
 								</Link>
-								<div
-									onClick={handleAddToList}
-									className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'
-								>
-									<FaPlus />
-								</div>
+								{data.existsInList ? (
+									<div
+										onClick={handleRemoveFromList}
+										className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'
+									>
+										<FaCheck />
+									</div>
+								) : (
+									<div
+										onClick={handleAddToList}
+										className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'
+									>
+										<FaPlus />
+									</div>
+								)}
 								<div className='flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-neutral-700 text-white border border-white cursor-pointer'>
 									<AiOutlineLike />
 								</div>

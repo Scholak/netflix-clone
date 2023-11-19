@@ -1,6 +1,9 @@
+import { authOptions } from '@/lib/authOptions'
+import { prisma } from '@/lib/prisma'
 import { tmdbApi } from '@/lib/tmdbApi'
 import { calculateRating } from '@/utils/calculateRating'
 import { generateTeaser } from '@/utils/generateTeaser'
+import { getServerSession } from 'next-auth'
 import { NextRequest } from 'next/server'
 
 interface Params {
@@ -13,6 +16,14 @@ export async function GET(request: NextRequest, { params }: Params) {
 	const serieResponse = await tmdbApi.get(`/tv/${params.id}?append_to_response=episode_groups`)
 	const peopleResponse = await tmdbApi.get(`/tv/${params.id}/credits`)
 	const relatedSeries = await tmdbApi.get(`/tv/${params.id}/similar`)
+	const session = await getServerSession(authOptions)
+	const existsInList = await prisma.list.findFirst({
+		where: {
+			profileId: Number(session?.user.profileId),
+			mediaId: Number(params.id),
+			mediaType: 'serie',
+		},
+	})
 
 	let producerFound: boolean = false
 	let directorFound: boolean = false
@@ -25,6 +36,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 		genres: serieResponse.data.genres,
 		rating: calculateRating(serieResponse.data.vote_average),
 		runtime: serieResponse.data.runtime,
+		existsInList: !!existsInList,
 		seasons: serieResponse.data.seasons.map((season: any) => {
 			return {
 				id: season.id,
