@@ -6,7 +6,7 @@ const ManageProfilesPage = () => {
   return (
 		<div className='min-h-[100dvh] mx-auto flex items-center justify-center bg-neutral-900'>
 			<div className='flex flex-col items-center mx-auto'>
-				<h1 className='mt-8 mb-12 text-white font-medium text-center text-4xl md:text-6xl md:mt-0'>Kim izliyor?</h1>
+				<h1 className='mt-8 mb-12 text-white font-medium text-center text-4xl md:text-6xl md:mt-0'>Profil Düzenle</h1>
 				<div className='flex flex-wrap justify-center gap-8'>
 					<Profiles isEditingMode={true} />
 					<AddProfileCard />
