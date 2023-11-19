@@ -1,18 +1,24 @@
 'use client'
 
 import { ISearch } from '@/types/forms/searchType'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import { searchSchema } from '@/validations/searchSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter, useSearchParams } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaSearch } from 'react-icons/fa'
 
 const Search = () => {
 	const router = useRouter()
+	const searchParams = useSearchParams()
 	
 	const [active, setActive] = useState<boolean>(false)
 
 	const { register, handleSubmit } = useForm<ISearch>({
-		
+		defaultValues: {
+			query: searchParams.get('q') as string
+		},
+		resolver: zodResolver(searchSchema)
 	})
 
 	const onSubmit = (data: ISearch) => {
