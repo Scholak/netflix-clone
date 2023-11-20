@@ -69,7 +69,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 						id='movieDetailPopup'
 						className='fixed left-1/2 top-6 bottom-0 overflow-y-auto -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'
 					>
-						<div className='relative h-[512px] bg-gradient-to-b from-transparent to-black'>
+						<div className='relative bg-gradient-to-b from-transparent to-black h-[216px] md:h-[512px]'>
 							<div
 								onClick={handleClosePopup}
 								className='absolute top-4 right-4 flex items-center justify-center w-10 h-10 bg-neutral-900 text-white rounded-full cursor-pointer'
