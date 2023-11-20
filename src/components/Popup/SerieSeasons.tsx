@@ -16,17 +16,19 @@ const SerieSeasons = ({seasons}: ISerieSeasonsProps) => {
 						className='flex items-start gap-2 py-6 px-3 shadow overflow-hidden border-b border-neutral-500 text-neutral-300 cursor-pointer'
 					>
 						<p className='mr-6 self-center text-2xl font-bold'>{idx + 1}</p>
-						<Image
-							unoptimized
-							src={season.poster}
-							alt='related serie image'
-							width={200}
-							height={120}
-							className='shrink-0 rounded aspect-video object-cover'
-						/>
-						<div className='flex-1'>
-							<p className='mb-2 text-lg font-medium'>{season.name}</p>
-							<p className='text-sm'>{season.overview}</p>
+						<div className='flex flex-col gap-2 md:flex-row'>
+							<Image
+								unoptimized
+								src={season.poster}
+								alt='related serie image'
+								width={200}
+								height={120}
+								className='shrink-0 rounded aspect-video object-cover'
+							/>
+							<div className='flex-1'>
+								<p className='mb-2 text-lg font-medium'>{season.name}</p>
+								<p className='text-sm'>{season.overview}</p>
+							</div>
 						</div>
 					</div>
 				))}
