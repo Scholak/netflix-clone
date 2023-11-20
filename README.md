@@ -31,4 +31,4 @@ In this project, Next.js and TMDB API used. The project contains most of the fea
 - Axios
 
 ## Live Demo
-https://netflix-clone-gycere1b9-scholaksebahattin-gmailcom.vercel.app
+https://netflix-clone-one-beryl.vercel.app
