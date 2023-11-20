@@ -64,8 +64,6 @@ const Banner = ({ mediaType }: IBannerProps) => {
 						unoptimized
 						src={data.image}
 						alt='poster'
-						width={1200}
-						height={700}
 						fill
 						className='inset-0 object-cover'
 					/>
