@@ -11,6 +11,7 @@ import { PopupRelatedSeries, SerieSeasons } from '..'
 import { useRouter } from 'next/navigation'
 import { addToList, removeFromList } from '@/services/listService'
 import { queryClient } from '@/lib/queryClient'
+import PopupLoader from './PopupLoader'
 
 interface ISerieDetailPopupProps {
 	id: number
@@ -58,7 +59,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 
 	return (
 		<>
-			{!isLoading && (
+			{isLoading ? (<PopupLoader />) : (
 				<>
 					<div onClick={handleClosePopup} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
 					<div
