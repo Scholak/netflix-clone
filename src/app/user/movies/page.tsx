@@ -5,8 +5,12 @@ import React from 'react'
 export const revalidate = 0
 
 const MoviesPage = async () => {
-	const popularMovieResponse = await api.get('/movies/popular')
-	const sliderMoviesResponse = await api.get('/movies/slider')
+	const popularMoviePromise = api.get('/movies/popular')
+	const sliderMoviesPromise = api.get('/movies/slider')
+
+	const promises = [popularMoviePromise, sliderMoviesPromise]
+
+	const [popularMovieResponse, sliderMoviesResponse] = await Promise.all(promises)
 
 	return (
 		<div className='bg-neutral-900'>

@@ -5,12 +5,30 @@ import React from 'react'
 export const revalidate = 0
 
 const LatestPage = async () => {
-  const upcomingMovieResponse = await api.get('/movies/upcoming')
-  const nowPayingMovieResponse = await api.get('/movies/now-playing')
-  const upcomingSerieResponse = await api.get('/series/upcoming')
-  const nowPayingSerieResponse = await api.get('/series/now-playing')
-  const topTenMovieResponse = await api.get('/movies/top-ten')
-  const topTenSerieResponse = await api.get('/series/top-ten')
+  const upcomingMoviePromise = await api.get('/movies/upcoming')
+  const nowPayingMoviePromise = await api.get('/movies/now-playing')
+  const upcomingSeriePromise = await api.get('/series/upcoming')
+  const nowPayingSeriePromise = await api.get('/series/now-playing')
+  const topTenMoviePromise = await api.get('/movies/top-ten')
+  const topTenSeriePromise = await api.get('/series/top-ten')
+
+	const promises = [
+		upcomingMoviePromise,
+		nowPayingMoviePromise,
+		upcomingSeriePromise,
+		nowPayingSeriePromise,
+		topTenMoviePromise,
+		topTenSeriePromise,
+	]
+
+	const [
+		upcomingMovieResponse,
+		nowPayingMovieResponse,
+		upcomingSerieResponse,
+		nowPayingSerieResponse,
+		topTenMovieResponse,
+		topTenSerieResponse,
+	] = await Promise.all(promises)
 
   return (
 		<div className='pt-20  bg-neutral-900'>

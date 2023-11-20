@@ -15,8 +15,12 @@ const SearchPage = async ({ searchParams }: ISearchParams) => {
     redirect('/user')
   }
 
-  const movieResponse = await api.get(`/movies/search?q=${searchParams.q}`)
-  const serieResponse = await api.get(`/series/search?q=${searchParams.q}`)
+  const moviePromise = api.get(`/movies/search?q=${searchParams.q}`)
+  const seriePromise = api.get(`/series/search?q=${searchParams.q}`)
+
+	const promises = [moviePromise, seriePromise]
+
+	const [movieResponse, serieResponse] = await Promise.all(promises)
 
   return (
 		<div className='px-4 py-20 md:px-8 xl:px-16 bg-neutral-900'>

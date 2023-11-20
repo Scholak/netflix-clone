@@ -5,8 +5,12 @@ import React from 'react'
 export const revalidate = 0
 
 const SeriesPage = async () => {
-	const popularSerieResponse = await api.get('/series/popular')
-	const sliderSeriesResponse = await api.get('/series/slider')
+	const popularSeriePromise = api.get('/series/popular')
+	const sliderSeresPromise = api.get('/series/slider')
+
+	const promises = [popularSeriePromise, sliderSeresPromise]
+
+	const [popularSerieResponse, sliderSeriesResponse] = await Promise.all(promises)
 
   return (
 		<div className='bg-neutral-900'>
