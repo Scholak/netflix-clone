@@ -1,5 +1,8 @@
 import { Search, UserFooter, UserMenu } from '@/components'
+import { authOptions } from '@/lib/authOptions'
+import { getServerSession } from 'next-auth'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import React from 'react'
 import { FaCaretDown, FaRegBell } from 'react-icons/fa'
 
@@ -7,7 +10,13 @@ interface IUserLayoutProps {
 	children: React.ReactNode
 }
 
-const UserLayout = ({ children }: IUserLayoutProps) => {
+const UserLayout = async ({ children }: IUserLayoutProps) => {
+	const session = await getServerSession(authOptions)
+
+	if (!session?.user.profileId) {
+		redirect('/browse')
+	}
+
 	return (
 		<div className='flex flex-col min-h-screen'>
 			<nav className='bg-neutral-900 fixed w-full flex items-center justify-between text-neutral-200 py-4 px-4 z-10 md:px-8 md:py-3 xl:py-4 xl:px-16'>
