@@ -8,7 +8,7 @@ interface ISerieSeasonsProps {
 const SerieSeasons = ({seasons}: ISerieSeasonsProps) => {
   return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
-			<h3 className='mb-6 text-2xl text-white font-bold'>Benzerleri</h3>
+			<h3 className='mb-6 text-2xl text-white font-bold'>Sezonlar</h3>
 			<div className='grid gap-2'>
 				{seasons.map((season: any, idx: number) => (
 					<div
