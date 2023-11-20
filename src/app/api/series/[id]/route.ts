@@ -90,7 +90,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 				image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
 				releaseDate: serie.first_air_date,
 			}
-		}),
+		}).filter((serie: any) => !serie.image.includes('null')),
 	}
 
 	return new Response(JSON.stringify({ serie }))
