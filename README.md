@@ -30,6 +30,15 @@ In this project, Next.js and TMDB API used. The project contains most of the fea
 - React Icons
 - Axios
 
+## Installation Guide
+- clone the project &nbsp; `git clone https://github.com/Scholak/netflix-clone.git`
+- install dependencies &nbsp; `npm install` &nbsp; or &nbsp; `yarn install` 
+- create `.env` file and paste `.env.example` file content
+- create `.env.local` file and paste `.env.local.example` file content
+- define environment variables
+- run `yarn dev` &nbsp; or &nbsp; `npm run dev`
+- visit http://localhost:3000
+
 ## Live Demo
 https://netflix-clone-one-beryl.vercel.app
 
