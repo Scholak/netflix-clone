@@ -11,6 +11,7 @@ import { PopupRelatedMovies } from '..'
 import { useRouter } from 'next/navigation'
 import { addToList, removeFromList } from '@/services/listService'
 import { queryClient } from '@/lib/queryClient'
+import MoviePopupLoader from './MoviePopupLoader'
 
 interface IMovieDetailPopupProps {
 	id: number
@@ -58,7 +59,9 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 
 	return (
 		<>
-			{!isLoading && (
+			{isLoading ? (
+				<MoviePopupLoader />
+			) : (
 				<>
 					<div onClick={handleClosePopup} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
 					<div
