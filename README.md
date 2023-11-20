@@ -3,6 +3,9 @@
 ## Project Description
 In this project, Next.js and TMDB API used. The project contains most of the features of Netflix such as registration, profile management, movie/serie sections, search functionality, my list page.
 
+## Gift Option Code
+12345678910
+
 ## Features
 - Sign up
 - Login
