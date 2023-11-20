@@ -13,9 +13,9 @@ interface Params {
 }
 
 export async function GET(request: NextRequest, { params }: Params) {
-	const serieResponse = await tmdbApi.get(`/tv/${params.id}?append_to_response=episode_groups`)
-	const peopleResponse = await tmdbApi.get(`/tv/${params.id}/credits`)
-	const relatedSeries = await tmdbApi.get(`/tv/${params.id}/similar`)
+	const serieResponsePromise = tmdbApi.get(`/tv/${params.id}?append_to_response=episode_groups`)
+	const peopleResponsePromise = tmdbApi.get(`/tv/${params.id}/credits`)
+	const relatedSeriesPromise = tmdbApi.get(`/tv/${params.id}/similar`)
 	const session = await getServerSession(authOptions)
 	const existsInList = await prisma.list.findFirst({
 		where: {
@@ -24,6 +24,10 @@ export async function GET(request: NextRequest, { params }: Params) {
 			mediaType: 'serie',
 		},
 	})
+
+	const promises = [serieResponsePromise, peopleResponsePromise, relatedSeriesPromise]
+
+	const [serieResponse, peopleResponse, relatedSeries] = await Promise.all(promises)
 
 	let producerFound: boolean = false
 	let directorFound: boolean = false
