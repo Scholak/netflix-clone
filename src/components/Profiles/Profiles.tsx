@@ -5,23 +5,20 @@ import React from 'react'
 import { ProfileCard } from '..'
 import { useQuery } from '@tanstack/react-query'
 import { getProfiles } from '@/services/profileService'
+import ProfileLoader from './ProfileLoader'
 
 interface IProfilesProps {
   isEditingMode?: boolean
 }
 
 const Profiles = ({ isEditingMode }: IProfilesProps) => {
-	const { data: profiles, isLoading, error } = useQuery({
+	const { data: profiles, isLoading } = useQuery({
 		queryKey: ['profiles'],
 		queryFn: getProfiles,
 	})
 
-	if (error) {
-		// will be implemented later...
-	}
-
 	if (isLoading) {
-		// skeleton loader will be implemented later...
+		return <ProfileLoader />
 	}
 
 	return (
