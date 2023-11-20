@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { FaInfo, FaPlay } from 'react-icons/fa'
 import { MovieDetailPopup, SerieDetailPopup } from '.'
 import { getFeaturedSerie } from '@/services/serieService'
+import BannerLoader from './BannerLoader'
 
 interface IBannerProps {
   mediaType: 'movie' | 'serie'
@@ -32,7 +33,9 @@ const Banner = ({ mediaType }: IBannerProps) => {
 
   return (
 		<>
-			{!isLoading && (
+			{isLoading ? (
+				<BannerLoader />
+			) : (
 				<div className='relative w-full h-[90vh] flex items-end'>
 					<div className='absolute inset-0 bg-black bg-opacity-30 z-[9]'></div>
 					<div className='px-4 w-full text-white z-[9] -translate-y-8 md:px-8 lg:w-1/2 xl:px-16'>
