@@ -3,12 +3,14 @@ import { generateTeaser } from '@/utils/generateTeaser'
 import { NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const response = await tmdbApi.get('/movie/top_rated')
+	const year = new Date().getFullYear()
+  const response = await tmdbApi.get(`/discover/movie?&primary_release_date.gte=${year - 1}`)
+	const randomNumber = Math.ceil(Math.random() * 20)
 	const movie = {
-		id: response.data.results[0].id,
-		title: response.data.results[0].title,
-		overview: generateTeaser(response.data.results[0].overview, 300),
-		image: `${process.env.TMDB_IMAGE_PATH}/original${response.data.results[0].backdrop_path}`,
+		id: response.data.results[randomNumber].id,
+		title: response.data.results[randomNumber].title,
+		overview: generateTeaser(response.data.results[randomNumber].overview, 300),
+		image: `${process.env.TMDB_IMAGE_PATH}/original${response.data.results[randomNumber].backdrop_path}`,
 	}
 
   return new Response(JSON.stringify({ movie }))
