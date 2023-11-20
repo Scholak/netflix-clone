@@ -7,7 +7,7 @@ import homeBg from '@/assets/homeBg.jpg'
 const LoginPage = () => {
   return (
 		<div className='relative'>
-			<Image src={homeBg} alt='home background image' fill className='object-cover -z-10' />
+			<Image unoptimized src={homeBg} alt='home background image' fill className='object-cover -z-10' />
 			<nav className='login-navbar-gradient-bg px-2 py-6 sm:px-4 md:px-6 lg:px-12 xl:px-20 2xl:px-40'>
 				<Link href='/'>
 					<svg

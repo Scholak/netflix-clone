@@ -77,6 +77,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 								<FaTimes />
 							</div>
 							<Image
+								unoptimized
 								src={data.image}
 								alt='serie image'
 								width={800}

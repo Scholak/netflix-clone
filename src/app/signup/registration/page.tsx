@@ -6,7 +6,7 @@ import Link from 'next/link'
 const RegistrationPage = () => {
   return (
 		<div className='my-12 mx-4 flex flex-col items-center gap-2 text-neutral-900 sm:my-20 sm:w-72 sm:mx-auto md:my-32 md:w-80 lg:my-40 lg:w-96'>
-			<Image src={stepImg} alt='step image' />
+			<Image unoptimized src={stepImg} alt='step image' />
 			<h2 className='text-center'>
 				ADIM <span className='font-bold'>1 / 3</span>
 			</h2>

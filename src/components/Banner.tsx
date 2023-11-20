@@ -60,7 +60,15 @@ const Banner = ({ mediaType }: IBannerProps) => {
 							</button>
 						</div>
 					</div>
-					<Image src={data.image} alt='poster' width={1200} height={700} fill className='inset-0 object-cover' />
+					<Image
+						unoptimized
+						src={data.image}
+						alt='poster'
+						width={1200}
+						height={700}
+						fill
+						className='inset-0 object-cover'
+					/>
 					{selectedMovie !== -1 && <MovieDetailPopup id={data.id} setSelectedMovie={setSelectedMovie} />}
 					{selectedSerie !== -1 && <SerieDetailPopup id={data.id} setSelectedSerie={setSelectedSerie} />}
 				</div>

@@ -35,6 +35,7 @@ const ProfileCard = ({ profile, editing }: IProfileCardProps) => {
 				</div>
 				<div className='w-48 h-48 flex items-center justify-center'>
 					<Image
+						unoptimized
 						src={`/avatars/${profile.avatar}.jpg`}
 						alt='avatar image'
 						width={400}
@@ -51,6 +52,7 @@ const ProfileCard = ({ profile, editing }: IProfileCardProps) => {
 		<button onClick={handleRedirectUser} className='group flex flex-col gap-4 items-center hover:cursor-pointer'>
 			<div className='w-48 h-48 flex items-center justify-center border-4 border-transparent group-hover:border-white'>
 				<Image
+					unoptimized
 					src={`/avatars/${profile.avatar}.jpg`}
 					alt='avatar image'
 					width={400}

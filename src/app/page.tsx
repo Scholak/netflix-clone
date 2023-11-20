@@ -23,7 +23,7 @@ const HomePage = async () => {
 			<CookiePreferences />
 			{/* Navbar and Hero Section */}
 			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
-				<Image src={homeBg} alt='home background image' fill className='object-cover -z-10' />
+				<Image unoptimized src={homeBg} alt='home background image' fill className='object-cover -z-10' />
 				<nav className='flex items-center justify-between py-6'>
 					<svg
 						viewBox='0 0 111 30'
@@ -77,7 +77,7 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image src={tvImg} alt='tv image' fill className='object-contain' />
+						<Image unoptimized src={tvImg} alt='tv image' fill className='object-contain' />
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
@@ -90,7 +90,7 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image src={phoneImg} alt='tv image' fill className='object-contain' />
+						<Image unoptimized src={phoneImg} alt='tv image' fill className='object-contain' />
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
@@ -103,7 +103,7 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image src={tv2Img} alt='tv image' fill className='object-contain' />
+						<Image unoptimized src={tv2Img} alt='tv image' fill className='object-contain' />
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
@@ -117,7 +117,7 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image src={childImg} alt='tv image' fill className='object-contain' />
+						<Image unoptimized src={childImg} alt='tv image' fill className='object-contain' />
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>

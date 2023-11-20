@@ -10,7 +10,7 @@ const PayWithCreditCardPage = () => {
 				ADIM <span className='font-bold'>3 / 3</span>
 			</h2>
 			<h1 className='mb-2 text-3xl font-bold'>Ödemenizi ayarlayın: Kredi Kartı/Banka Kartı</h1>
-			<Image src={paymentMethods} alt='payment methods' className='translate-y-0.5' />
+			<Image unoptimized src={paymentMethods} alt='payment methods' className='translate-y-0.5' />
 			<PaymentWithCardForm />
 			<p className='text-sm text-neutral-600'>
 				Bu sayfa robot olmadığınızı kanıtlamak için Google reCAPTCHA tarafından korunuyor.{' '}

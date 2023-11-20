@@ -12,15 +12,15 @@ const PlanFormPage = () => {
 			<h1 className='mb-4 text-3xl font-bold'>Kendinize uygun bir plan seçin</h1>
 			<ul className='flex flex-col'>
 				<li className='flex gap-1'>
-					<Image src={tick} alt='tick' className='-translate-y-2 shrink-0' />
+					<Image unoptimized src={tick} alt='tick' className='-translate-y-2 shrink-0' />
 					Binlerce seçenek, sınırsız eğlence. Reklamsız.
 				</li>
 				<li className='flex gap-1'>
-					<Image src={tick} alt='tick' className='-translate-y-2 shrink-0' />
+					<Image unoptimized src={tick} alt='tick' className='-translate-y-2 shrink-0' />
 					Sadece sizin için önerilen içerikler.
 				</li>
 				<li className='flex gap-1'>
-					<Image src={tick} alt='tick' className='-translate-y-2 shrink-0' />
+					<Image unoptimized src={tick} alt='tick' className='-translate-y-2 shrink-0' />
 					Planınızı istediğiniz zaman değiştirebilir ya da iptal edebilirsiniz.
 				</li>
 			</ul>

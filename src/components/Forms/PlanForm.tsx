@@ -122,13 +122,25 @@ const PlanForm = () => {
 					</span>
 					<div className='w-full flex items-center justify-between md:justify-end md:gap-28'>
 						<span className='w-full flex justify-center items-center md:w-20' onClick={() => setPlanId(0)}>
-							{planId === 0 ? <Image src={tick} alt='red tick' /> : <Image src={tickGray} alt='gray tick' />}
+							{planId === 0 ? (
+								<Image unoptimized src={tick} alt='red tick' />
+							) : (
+								<Image unoptimized src={tickGray} alt='gray tick' />
+							)}
 						</span>
 						<span className='w-full flex justify-center items-center md:w-20' onClick={() => setPlanId(1)}>
-							{planId === 1 ? <Image src={tick} alt='red tick' /> : <Image src={tickGray} alt='gray tick' />}
+							{planId === 1 ? (
+								<Image unoptimized src={tick} alt='red tick' />
+							) : (
+								<Image unoptimized src={tickGray} alt='gray tick' />
+							)}
 						</span>
 						<span className='w-full flex justify-center items-center md:w-20' onClick={() => setPlanId(2)}>
-							{planId === 2 ? <Image src={tick} alt='red tick' /> : <Image src={tickGray} alt='gray tick' />}
+							{planId === 2 ? (
+								<Image unoptimized src={tick} alt='red tick' />
+							) : (
+								<Image unoptimized src={tickGray} alt='gray tick' />
+							)}
 						</span>
 					</div>
 				</div>

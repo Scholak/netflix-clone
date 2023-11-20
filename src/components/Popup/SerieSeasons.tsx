@@ -17,6 +17,7 @@ const SerieSeasons = ({seasons}: ISerieSeasonsProps) => {
 					>
 						<p className='mr-6 self-center text-2xl font-bold'>{idx + 1}</p>
 						<Image
+							unoptimized
 							src={season.poster}
 							alt='related serie image'
 							width={200}

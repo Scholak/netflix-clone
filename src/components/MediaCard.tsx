@@ -25,6 +25,7 @@ const MediaCard = ({ media, type }: IMediaCardProps) => {
 		<>
 			<div onClick={handleToggleDetail} className='w-full cursor-pointer sm:h-20 md:h-28 lg:h-36'>
 				<Image
+					unoptimized
 					src={media.image}
 					alt='search result'
 					width={300}

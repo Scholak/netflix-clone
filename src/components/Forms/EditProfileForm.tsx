@@ -64,6 +64,7 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 			<div className='flex flex-col items-center gap-4 md:flex-row'>
 				<div className='shrink-0 w-40 h-40 flex items-center justify-center'>
 					<Image
+						unoptimized
 						src={`/avatars/${profile.avatar}.jpg`}
 						alt='avatar image'
 						width={400}

@@ -10,7 +10,7 @@ import Link from 'next/link'
 const PaymentPickerPage = () => {
   return (
 		<div className='my-4 mx-4 flex flex-col items-center gap-2 text-neutral-800 sm:my-8 sm:w-96 sm:mx-auto md:my-16 lg:w-[540px]'>
-			<Image src={lock} alt='lock image' className='mb-4 lg:mb-8' />
+			<Image unoptimized src={lock} alt='lock image' className='mb-4 lg:mb-8' />
 			<h2 className='text-center'>
 				ADIM <span className='font-bold'>3 / 3</span>
 			</h2>
@@ -27,7 +27,7 @@ const PaymentPickerPage = () => {
 					className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'
 				>
 					<span>Kredi Kartı veya Banka Kartı</span>
-					<Image src={paymentMethods} alt='payment methods' className='translate-y-0.5' />
+					<Image unoptimized src={paymentMethods} alt='payment methods' className='translate-y-0.5' />
 					<FaAngleRight className='ml-auto text-2xl' />
 				</Link>
 				<Link
@@ -35,7 +35,7 @@ const PaymentPickerPage = () => {
 					className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'
 				>
 					<span>Cep telefonu faturasına ekle</span>
-					<Image src={payViaPhone} alt='pay via phone' className='translate-y-0.5' />
+					<Image unoptimized src={payViaPhone} alt='pay via phone' className='translate-y-0.5' />
 					<FaAngleRight className='ml-auto text-2xl' />
 				</Link>
 				<Link
@@ -43,7 +43,7 @@ const PaymentPickerPage = () => {
 					className='w-full flex items-center gap-3 p-3 border-2 border-neutral-400 rounded cursor-pointer'
 				>
 					<span>Hediye Kartı</span>
-					<Image src={netflix} alt='netflix' className='translate-y-0.5' />
+					<Image unoptimized src={netflix} alt='netflix' className='translate-y-0.5' />
 					<FaAngleRight className='ml-auto text-2xl' />
 				</Link>
 			</div>

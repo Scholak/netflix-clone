@@ -74,6 +74,7 @@ const Slider = ({ title, link, items, type }: IMovieSliderProps) => {
 					{items.map((item: any) => (
 						<SwiperSlide key={item.id} onClick={() => handleTogglePopup(item.id)} className='cursor-pointer h-full'>
 							<Image
+								unoptimized
 								src={item.image}
 								alt='media image'
 								width={200}

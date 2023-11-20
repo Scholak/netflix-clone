@@ -42,6 +42,7 @@ const UserMenu = () => {
 			<div className='w-8 h-8'>
 				{profiles && session.data?.user.profileId && (
 					<Image
+						unoptimized
 						src={`/avatars/${
 							profiles.filter((profile: IProfile) => profile.id === session.data?.user.profileId)[0].avatar
 						}.jpg`}
@@ -64,6 +65,7 @@ const UserMenu = () => {
 							>
 								<div className='w-6 h-6'>
 									<Image
+										unoptimized
 										src={`/avatars/${profile.avatar}.jpg`}
 										alt='avatar image'
 										width={50}

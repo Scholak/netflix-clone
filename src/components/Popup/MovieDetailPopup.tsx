@@ -77,6 +77,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 								<FaTimes />
 							</div>
 							<Image
+								unoptimized
 								src={data.image}
 								alt='movie image'
 								width={800}
