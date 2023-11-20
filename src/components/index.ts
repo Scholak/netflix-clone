@@ -17,7 +17,6 @@ export { default as AddProfileCard } from './Profiles/AddProfileCard'
 
 // Movie / Serie Slider Related Components
 export { default as Slider } from './Sliders/Slider'
-export { default as SliderLoader } from './Sliders/SliderLoader'
 export { default as TopTenSlider } from './Sliders/TopTenSlider'
 
 // Form Components
