@@ -26,7 +26,7 @@ const Navbar = () => {
 						</g>
 					</svg>
 				</Link>
-				<div onClick={() => setToggleMenu(!toggleMenu)} className='relative'>
+				<div onClick={() => setToggleMenu(true)} className='relative'>
 					<button className='flex items-center gap-1 text-white cursor-pointer md:hidden'>
 						<span>Göz At</span>
 						<FaCaretDown />
