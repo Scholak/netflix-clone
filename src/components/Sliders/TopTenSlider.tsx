@@ -81,7 +81,7 @@ const TopTenSlider = ({ title, items, type }: ITopTenSliderProps) => {
 							<Image
 								src={item.image}
 								alt='media image'
-								width={200}
+								width={100}
 								height={150}
 								className={
 									idx === 9
