@@ -6,6 +6,7 @@ export { default as PopupRelatedSeries } from './Popup/PopupRelatedSeries'
 export { default as SerieSeasons } from './Popup/SerieSeasons'
 
 // User Layout Related Components
+export { default as Navbar } from './UserLayout/Navbar'
 export { default as UserMenu } from './UserLayout/UserMenu'
 export { default as Search } from './UserLayout/Search'
 export { default as UserFooter } from './UserLayout/UserFooter'
