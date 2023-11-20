@@ -26,7 +26,7 @@ const Navbar = () => {
 						</g>
 					</svg>
 				</Link>
-				<div onClick={() => setToggleMenu(true)} className='relative'>
+				<div onClick={() => setToggleMenu(!toggleMenu)} className='relative'>
 					<button className='flex items-center gap-1 text-white cursor-pointer md:hidden'>
 						<span>Göz At</span>
 						<FaCaretDown />
@@ -35,19 +35,19 @@ const Navbar = () => {
 						className={`absolute ${toggleMenu ? 'flex' : 'hidden'} flex-col gap-6 text-xs bg-neutral-900 pt-8 pb-2 px-12  
 							md:static md:flex md:items-center md:flex-row md:pt-0 md:pb-0 md:px-0 md:text-sm md:gap-4`}
 					>
-						<li onClick={() => setToggleMenu(false)} className='whitespace-nowrap'>
+						<li className='whitespace-nowrap'>
 							<Link href='/user'>Ana Sayfa</Link>
 						</li>
-						<li onClick={() => setToggleMenu(false)} className='whitespace-nowrap'>
+						<li className='whitespace-nowrap'>
 							<Link href='/user/series'>Diziler</Link>
 						</li>
-						<li onClick={() => setToggleMenu(false)} className='whitespace-nowrap'>
+						<li className='whitespace-nowrap'>
 							<Link href='/user/movies'>Filmler</Link>
 						</li>
-						<li onClick={() => setToggleMenu(false)} className='whitespace-nowrap'>
+						<li className='whitespace-nowrap'>
 							<Link href='/user/latest'>Yeni ve Popüler</Link>
 						</li>
-						<li onClick={() => setToggleMenu(false)} className='whitespace-nowrap'>
+						<li className='whitespace-nowrap'>
 							<Link href='/user/list'>Listem</Link>
 						</li>
 					</ul>
