@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaInfo, FaPlay } from 'react-icons/fa'
 import Skeleton from 'react-loading-skeleton'
 
 const BannerLoader = () => {
