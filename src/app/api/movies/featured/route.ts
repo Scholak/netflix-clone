@@ -5,7 +5,7 @@ import { NextRequest } from 'next/server'
 export async function GET(request: NextRequest) {
 	const year = new Date().getFullYear()
   const response = await tmdbApi.get(`/discover/movie?&primary_release_date.gte=${year - 1}`)
-	const randomNumber = Math.ceil(Math.random() * 20)
+	const randomNumber = Math.floor(Math.random() * 19)
 	const movie = {
 		id: response.data.results[randomNumber].id,
 		title: response.data.results[randomNumber].title,
