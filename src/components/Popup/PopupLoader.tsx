@@ -1,8 +1,8 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-const MoviePopupLoader = () => {
-  return (
+const PopupLoader = () => {
+	return (
 		<div className='fixed left-1/2 top-6 bottom-0 overflow-y-auto -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'>
 			<Skeleton height='512px' />
 			<div className='flex justify-between p-3'>
@@ -20,4 +20,4 @@ const MoviePopupLoader = () => {
 	)
 }
 
-export default MoviePopupLoader
+export default PopupLoader
