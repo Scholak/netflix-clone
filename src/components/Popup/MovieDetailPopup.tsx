@@ -22,14 +22,14 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 	const router = useRouter()
 
 	const { data, isLoading } = useQuery({
-		queryKey: ['movieBannerDetail'],
+		queryKey: ['movieDetail'],
 		queryFn: () => getMovieBannerDetail(id),
 	})
 
 	const addToListMutation = useMutation({
 		mutationFn: addToList,
 		onSuccess: () => {
-			queryClient.invalidateQueries()
+			queryClient.invalidateQueries({ queryKey: ['movieDetail'] })
 			router.refresh()
 		}
 	})
@@ -37,7 +37,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 	const removeFromListMutation = useMutation({
 		mutationFn: removeFromList,
 		onSuccess: () => {
-			queryClient.invalidateQueries()
+			queryClient.invalidateQueries({ queryKey: ['movieDetail'] })
 			router.refresh()
 		},
 	})
@@ -45,6 +45,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 	data?.title ? (document.title = `${data.title} - Netflix`) : ''
 
 	const handleClosePopup = () => {
+		queryClient.removeQueries({ queryKey: ['movieDetail'] })
 		document.title = 'Netflix Türkiye'
 		setSelectedMovie(-1)
 	}

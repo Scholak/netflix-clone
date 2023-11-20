@@ -22,14 +22,14 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 	const router = useRouter()
 
 	const { data, isLoading } = useQuery({
-		queryKey: ['serieBannerDetail'],
+		queryKey: ['serieDetail'],
 		queryFn: () => getSerieBannerDetail(id),
 	})
 
 	const addToListMutation = useMutation({
 		mutationFn: addToList,
 		onSuccess: () => {
-			queryClient.invalidateQueries()
+			queryClient.invalidateQueries({ queryKey: ['serieDetail'] })
 			router.refresh()
 		},
 	})
@@ -37,7 +37,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 	const removeFromListMutation = useMutation({
 		mutationFn: removeFromList,
 		onSuccess: () => {
-			queryClient.invalidateQueries()
+			queryClient.invalidateQueries({ queryKey: ['serieDetail'] })
 			router.refresh()
 		},
 	})
@@ -45,6 +45,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 	data?.title ? (document.title = `${data.title} - Netflix`) : ''
 
 	const handleClosePopup = () => {
+		queryClient.removeQueries({ queryKey: ['serieDetail'] })
 		document.title = 'Netflix Türkiye'
 		setSelectedSerie(-1)
 	}
