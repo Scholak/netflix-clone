@@ -5,7 +5,7 @@ export const getFeaturedMovie = async () => {
 	return response.data.movie
 }
 
-export const getMovieBannerDetail = async (id: number) => {
-  const response = await api.get(`/movies/${id}`)
-  return response.data.movie
+export const getMovieDetail = async (id: number) => {
+	const response = await api.get(`/movies/${id}`)
+	return response.data.movie
 }

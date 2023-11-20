@@ -5,7 +5,7 @@ export const getFeaturedSerie = async () => {
 	return response.data.serie
 }
 
-export const getSerieBannerDetail = async (id: number) => {
+export const getSerieDetail = async (id: number) => {
 	const response = await api.get(`/series/${id}`)
 	return response.data.serie
 }

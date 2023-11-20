@@ -6,7 +6,7 @@ import React from 'react'
 import { FaCheck, FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { getSerieBannerDetail } from '@/services/serieService'
+import { getSerieDetail } from '@/services/serieService'
 import { PopupRelatedSeries, SerieSeasons } from '..'
 import { useRouter } from 'next/navigation'
 import { addToList, removeFromList } from '@/services/listService'
@@ -23,7 +23,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 
 	const { data, isLoading } = useQuery({
 		queryKey: ['serieDetail'],
-		queryFn: () => getSerieBannerDetail(id),
+		queryFn: () => getSerieDetail(id),
 	})
 
 	const addToListMutation = useMutation({

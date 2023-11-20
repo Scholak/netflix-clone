@@ -6,7 +6,7 @@ import React from 'react'
 import { FaCheck, FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { getMovieBannerDetail } from '@/services/movieService'
+import { getMovieDetail } from '@/services/movieService'
 import { PopupRelatedMovies } from '..'
 import { useRouter } from 'next/navigation'
 import { addToList, removeFromList } from '@/services/listService'
@@ -23,7 +23,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 
 	const { data, isLoading } = useQuery({
 		queryKey: ['movieDetail'],
-		queryFn: () => getMovieBannerDetail(id),
+		queryFn: () => getMovieDetail(id),
 	})
 
 	const addToListMutation = useMutation({
