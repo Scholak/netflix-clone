@@ -1,5 +1,6 @@
 import { Banner, Slider } from '@/components'
 import { api } from '@/lib/api'
+import { ISlider } from '@/types/sliderTypes'
 import React from 'react'
 
 export const revalidate = 0
@@ -17,7 +18,7 @@ const SeriesPage = async () => {
 			<Banner mediaType='serie' />
 			<div className='py-4 md:py-6 lg:py-12'>
 				<Slider title='Gündemdekiler' link='/popular' items={popularSerieResponse.data.series} type='serie' />
-				{sliderSeriesResponse.data.sliders.map((slider: any) => {
+				{sliderSeriesResponse.data.sliders.map((slider: ISlider) => {
 					if (slider.items.length) {
 						return <Slider key={slider.id} title={slider.title} link={slider.link} items={slider.items} type='serie' />
 					}

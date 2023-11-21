@@ -15,7 +15,7 @@ import PopupLoader from './PopupLoader'
 
 interface IMovieDetailPopupProps {
 	id: number
-	setSelectedMovie: any
+	setSelectedMovie: (id: number) => void
 }
 
 const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {

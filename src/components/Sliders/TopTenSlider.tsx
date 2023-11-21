@@ -9,10 +9,12 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import Image from 'next/image'
 import { MovieDetailPopup, SerieDetailPopup } from '..'
+import { IMovieOverview } from '@/types/movieType'
+import { ISerieOverview } from '@/types/serieType'
 
 interface ITopTenSliderProps {
 	title: string
-	items: any[]
+	items: IMovieOverview[] | ISerieOverview[]
 	type: 'movie' | 'serie'
 }
 

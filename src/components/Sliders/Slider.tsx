@@ -9,17 +9,19 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import Image from 'next/image'
 import { MovieDetailPopup, SerieDetailPopup } from '..'
+import { ISerieOverview } from '@/types/serieType'
+import { IMovieOverview } from '@/types/movieType'
 
-interface IMovieSliderProps {
+interface ISliderProps {
 	title: string
 	link: string
-	items: any[]
+	items: IMovieOverview[] | ISerieOverview[]
 	type: 'movie' | 'serie'
 }
 
-const Slider = ({ title, link, items, type }: IMovieSliderProps) => {
-  const [selectedMovie, setSelectedMovie] = useState<number>(-1)
-  const [selectedSerie, setSelectedSerie] = useState<number>(-1)
+const Slider = ({ title, link, items, type }: ISliderProps) => {
+	const [selectedMovie, setSelectedMovie] = useState<number>(-1)
+	const [selectedSerie, setSelectedSerie] = useState<number>(-1)
 
 	const handleTogglePopup = (id: number) => {
 		if (type === 'movie') {

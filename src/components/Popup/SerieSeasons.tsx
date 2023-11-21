@@ -1,16 +1,17 @@
+import { ISerieSeason } from '@/types/serieType'
 import Image from 'next/image'
 import React from 'react'
 
 interface ISerieSeasonsProps {
-	seasons: any[]
+	seasons: ISerieSeason[]
 }
 
-const SerieSeasons = ({seasons}: ISerieSeasonsProps) => {
+const SerieSeasons = ({ seasons }: ISerieSeasonsProps) => {
   return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
 			<h3 className='mb-6 text-2xl text-white font-bold'>Sezonlar</h3>
 			<div className='grid gap-2'>
-				{seasons.map((season: any, idx: number) => (
+				{seasons.map((season: ISerieSeason, idx: number) => (
 					<div
 						key={season.id}
 						className='flex items-start gap-2 py-6 px-3 shadow overflow-hidden border-b border-neutral-500 text-neutral-300 cursor-pointer'

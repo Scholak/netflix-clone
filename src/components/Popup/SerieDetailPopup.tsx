@@ -15,7 +15,7 @@ import PopupLoader from './PopupLoader'
 
 interface ISerieDetailPopupProps {
 	id: number
-	setSelectedSerie: any
+	setSelectedSerie: (id: number) => void
 }
 
 const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
