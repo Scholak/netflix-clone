@@ -12,6 +12,8 @@ import { useRouter } from 'next/navigation'
 import { addToList, removeFromList } from '@/services/listService'
 import { queryClient } from '@/lib/queryClient'
 import PopupLoader from './PopupLoader'
+import { ICast, IDirector, IProducer } from '@/types/personType'
+import { IGenre } from '@/types/genreType'
 
 interface ISerieDetailPopupProps {
 	id: number
@@ -122,7 +124,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 								<div>
 									<p className='mb-2 text-sm text-neutral-400'>
 										Oyuncu Kadrosu:{' '}
-										{data.cast.map((cast: any, idx: number) => {
+										{data.cast.map((cast: ICast, idx: number) => {
 											if (idx < 5) {
 												return (
 													<span key={idx} className='text-white hover:underline'>
@@ -135,7 +137,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									</p>
 									<p className='text-sm text-neutral-400'>
 										Türler:{' '}
-										{data.genres.map((genre: any, idx: number) => (
+										{data.genres.map((genre: IGenre, idx: number) => (
 											<span key={idx} className='text-white hover:underline'>
 												{idx !== 0 ? ', ' : ''}
 												{genre.name}
@@ -151,7 +153,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 								<p>
 									Yönetmen:{' '}
 									<span className='text-white'>
-										{data.producers.map((producer: any, idx: number) => (
+										{data.producers.map((producer: IProducer, idx: number) => (
 											<span key={idx} className='text-white hover:underline'>
 												{idx !== 0 ? ', ' : ''}
 												{producer.name}
@@ -161,7 +163,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 								</p>
 								<p>
 									Oyuncu Kadrosu:{' '}
-									{data.cast.map((cast: any, idx: number) => (
+									{data.cast.map((cast: ICast, idx: number) => (
 										<span key={idx} className='text-white hover:underline'>
 											{idx !== 0 ? ', ' : ''}
 											{cast.name}
@@ -170,7 +172,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 								</p>
 								<p>
 									Senarist:{' '}
-									{data.directors.map((director: any, idx: number) => (
+									{data.directors.map((director: IDirector, idx: number) => (
 										<span key={idx} className='text-white hover:underline'>
 											{idx !== 0 ? ', ' : ''}
 											{director.name}
