@@ -30,7 +30,7 @@ const CookiePreferences = () => {
 						</p>
 						<FaTimes className='translate-y-1 text-lg shrink-0 cursor-pointer' onClick={() => setIsActive(false)} />
 					</div>
-					<div className='flex items-center gap-4'>
+					<div className='flex flex-col gap-2 md:flex-row md:items-center mg:gap-4'>
 						<button
 							className='py-1.5 px-4 rounded-md bg-red text-white text-sm font-bold'
 							onClick={() => setIsActive(false)}
