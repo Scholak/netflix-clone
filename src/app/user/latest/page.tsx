@@ -5,12 +5,12 @@ import React from 'react'
 export const revalidate = 0
 
 const LatestPage = async () => {
-  const upcomingMoviePromise = await api.get('/movies/upcoming')
-  const nowPayingMoviePromise = await api.get('/movies/now-playing')
-  const upcomingSeriePromise = await api.get('/series/upcoming')
-  const nowPayingSeriePromise = await api.get('/series/now-playing')
-  const topTenMoviePromise = await api.get('/movies/top-ten')
-  const topTenSeriePromise = await api.get('/series/top-ten')
+  const upcomingMoviePromise = api.get('/movies/upcoming')
+  const nowPayingMoviePromise = api.get('/movies/now-playing')
+  const upcomingSeriePromise = api.get('/series/upcoming')
+  const nowPayingSeriePromise = api.get('/series/now-playing')
+  const topTenMoviePromise = api.get('/movies/top-ten')
+  const topTenSeriePromise = api.get('/series/top-ten')
 
 	const promises = [
 		upcomingMoviePromise,
