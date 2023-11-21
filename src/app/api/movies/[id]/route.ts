@@ -62,7 +62,10 @@ export async function GET(request: NextRequest, { params }: Params) {
 
 				if (crew.job === 'Producer') {
 					producerFound = true
-					return crew
+					return {
+						id: crew.id,
+						name: crew.name,
+					}
 				}
 			})
 			.filter((crew: any) => crew),
@@ -74,7 +77,10 @@ export async function GET(request: NextRequest, { params }: Params) {
 
 				if (crew.job === 'Director') {
 					directorFound = true
-					return crew
+					return {
+						id: crew.id,
+						name: crew.name,
+					}
 				}
 			})
 			.filter((crew: any) => crew),
