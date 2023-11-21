@@ -38,7 +38,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 			) : (
 				<div className='relative w-full h-[90vh] flex items-end'>
 					<div className='absolute inset-0 bg-black bg-opacity-30 z-[9]'></div>
-					<div className='px-4 w-full text-white z-[9] -translate-y-8 md:px-8 lg:w-1/2 xl:px-16'>
+					<div className='px-4 w-full text-white z-[9] -translate-y-2 md:px-8 lg:w-1/2 xl:px-16'>
 						<h1 className='text-5xl text-center font-bold md:text-left'>{data.title}</h1>
 						<p className='my-4 text-lg text-center text-medium md:my-8 md:text-xl md:text-left'>{data?.overview}</p>
 						<div className='flex flex-col gap-2 md:flex-row md:gap-4'>
