@@ -1,14 +1,18 @@
-import NextAuth, { DefaultSession } from 'next-auth'
+import NextAuth, { type DefaultSession, type DefaultUser } from 'next-auth'
 
 declare module 'next-auth' {
-	interface Session {
-		user: {
-			id: number
-			email: string
-			password: string
-			planId: number
-			cardNumber: string
-			profileId?: number
-		} & DefaultSession['user']
+	interface User {
+		id: number
+		email: string
+		password: string
+		planId: number
+		cardNumber: string
+		profileId?: number
+		language: 'TURKISH' | 'ENGLISH'
+	}
+
+	interface Session extends DefaultSession {
+		user: User
+		expires: DateTime
 	}
 }

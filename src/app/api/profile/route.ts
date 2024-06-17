@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 		const newProfile = await prisma.profile.create({
 			data: {
 				name: body.name,
-				userId: session.user.id,
+				userId: Number(session.user.id),
 				avatar: String(Math.ceil(Math.random() * 5)),
 			},
 		})
