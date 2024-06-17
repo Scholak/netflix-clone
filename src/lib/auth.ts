@@ -1,9 +1,9 @@
-import { AuthOptions } from 'next-auth'
 import { prisma } from './prisma'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
+import NextAuth from 'next-auth'
 
-export const authOptions: AuthOptions = {
+export const { handlers, signIn, signOut, auth } = NextAuth({
 	providers: [
 		CredentialsProvider({
 			credentials: {
@@ -11,7 +11,7 @@ export const authOptions: AuthOptions = {
 				password: { label: 'Password', type: 'password' },
 			},
 			// @ts-ignore
-			async authorize(credentials, req) {
+			async authorize(credentials: { email: string; password: string }, req) {
 				if (!credentials?.email || !credentials.password) {
 					return null
 				}
@@ -54,4 +54,4 @@ export const authOptions: AuthOptions = {
 			return session
 		},
 	},
-}
+})

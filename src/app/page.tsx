@@ -7,23 +7,28 @@ import phoneImg from '@/assets/phone.png'
 import childImg from '@/assets/child.png'
 import Image from 'next/image'
 import { Faq, GetStartedForm, HomeFooter, CookiePreferences } from '@/components'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/authOptions'
 import { redirect } from 'next/navigation'
+import { auth } from '@/lib/auth'
 
 const HomePage = async () => {
-	const session = await getServerSession(authOptions)
+	const session = await auth()
 
 	if (!!session) {
 		redirect('/user')
 	}
 
-  return (
+	return (
 		<div className='relative'>
 			<CookiePreferences />
 			{/* Navbar and Hero Section */}
 			<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
-				<Image unoptimized src={homeBg} alt='home background image' fill className='object-cover -z-10' />
+				<Image
+					unoptimized
+					src={homeBg}
+					alt='home background image'
+					fill
+					className='object-cover -z-10'
+				/>
 				<nav className='flex items-center justify-between py-6'>
 					<svg
 						viewBox='0 0 111 30'
@@ -43,14 +48,23 @@ const HomePage = async () => {
 							defaultValue='tr'
 							className='py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'
 						>
-							<option value='tr' className='text-black'>
+							<option
+								value='tr'
+								className='text-black'
+							>
 								Türkçe
 							</option>
-							<option value='en' className='text-black'>
+							<option
+								value='en'
+								className='text-black'
+							>
 								English
 							</option>
 						</select>
-						<Link href='/login' className='py-1.5 px-4 rounded-md bg-red text-white text-sm font-bold'>
+						<Link
+							href='/login'
+							className='py-1.5 px-4 rounded-md bg-red text-white text-sm font-bold'
+						>
 							Oturum Aç
 						</Link>
 					</div>
@@ -77,7 +91,13 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image unoptimized src={tvImg} alt='tv image' fill className='object-contain' />
+						<Image
+							unoptimized
+							src={tvImg}
+							alt='tv image'
+							fill
+							className='object-contain'
+						/>
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
@@ -90,7 +110,13 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image unoptimized src={phoneImg} alt='tv image' fill className='object-contain' />
+						<Image
+							unoptimized
+							src={phoneImg}
+							alt='tv image'
+							fill
+							className='object-contain'
+						/>
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
@@ -103,7 +129,13 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image unoptimized src={tv2Img} alt='tv image' fill className='object-contain' />
+						<Image
+							unoptimized
+							src={tv2Img}
+							alt='tv image'
+							fill
+							className='object-contain'
+						/>
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>
@@ -117,7 +149,13 @@ const HomePage = async () => {
 						</p>
 					</div>
 					<div className='relative w-full h-full lg:w-1/2'>
-						<Image unoptimized src={childImg} alt='tv image' fill className='object-contain' />
+						<Image
+							unoptimized
+							src={childImg}
+							alt='tv image'
+							fill
+							className='object-contain'
+						/>
 					</div>
 				</div>
 				<div className='bg-neutral-700 h-1.5 w-full'></div>

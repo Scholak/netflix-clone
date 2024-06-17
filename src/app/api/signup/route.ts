@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 
 export async function POST(request: NextRequest) {
-  const body = await request.json()
+	const body = await request.json()
 
 	const signedupUser = await prisma.user.create({
 		data: {

@@ -1,9 +1,9 @@
-import { authOptions } from '@/lib/authOptions'
+// import { authOptions } from '@/lib/authOptions'
+import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { tmdbApi } from '@/lib/tmdbApi'
 import { calculateRating } from '@/utils/calculateRating'
 import { generateTeaser } from '@/utils/generateTeaser'
-import { getServerSession } from 'next-auth'
 import { NextRequest } from 'next/server'
 
 interface Params {
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 	const serieResponsePromise = tmdbApi.get(`/tv/${params.id}?append_to_response=episode_groups`)
 	const peopleResponsePromise = tmdbApi.get(`/tv/${params.id}/credits`)
 	const relatedSeriesPromise = tmdbApi.get(`/tv/${params.id}/similar`)
-	const session = await getServerSession(authOptions)
+	const session = await auth()
 	const existsInList = await prisma.list.findFirst({
 		where: {
 			profileId: Number(session?.user.profileId),
@@ -93,14 +93,16 @@ export async function GET(request: NextRequest, { params }: Params) {
 				}
 			})
 			.filter((crew: any) => crew),
-		relatedSeries: relatedSeries.data.results.map((serie: any) => {
-			return {
-				id: serie.id,
-				title: serie.name,
-				image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
-				releaseDate: serie.first_air_date,
-			}
-		}).filter((serie: any) => !serie.image.includes('null')),
+		relatedSeries: relatedSeries.data.results
+			.map((serie: any) => {
+				return {
+					id: serie.id,
+					title: serie.name,
+					image: `${process.env.TMDB_IMAGE_PATH}/original${serie.poster_path}`,
+					releaseDate: serie.first_air_date,
+				}
+			})
+			.filter((serie: any) => !serie.image.includes('null')),
 	}
 
 	return new Response(JSON.stringify({ serie }))

@@ -33,7 +33,10 @@ const Slider = ({ title, link, items, type }: ISliderProps) => {
 
 	return (
 		<div className='select-none p-4 md:p-8 xl:px-16'>
-			<Link href={link} className='group inline-flex items-center gap-1 mb-3 text-2xl text-white font-bold md:mb-6'>
+			<Link
+				href={link}
+				className='group inline-flex items-center gap-1 mb-3 text-2xl text-white font-bold md:mb-6'
+			>
 				<h4>{title}</h4>
 				<p className='text-sm text-sky-600 font-medium -translate-x-8 opacity-0 transition delay-100 duration-500 group-hover:opacity-100 group-hover:translate-x-0'>
 					Tümüne Göz At
@@ -73,8 +76,12 @@ const Slider = ({ title, link, items, type }: ISliderProps) => {
 					id='swiper'
 					className='text-white text-4xl'
 				>
-					{items.map((item: any) => (
-						<SwiperSlide key={item.id} onClick={() => handleTogglePopup(item.id)} className='cursor-pointer h-full'>
+					{items?.map((item: any) => (
+						<SwiperSlide
+							key={item.id}
+							onClick={() => handleTogglePopup(item.id)}
+							className='cursor-pointer h-full'
+						>
 							<Image
 								unoptimized
 								src={item.image}
@@ -86,8 +93,18 @@ const Slider = ({ title, link, items, type }: ISliderProps) => {
 						</SwiperSlide>
 					))}
 				</Swiper>
-				{selectedMovie !== -1 && <MovieDetailPopup id={selectedMovie} setSelectedMovie={setSelectedMovie} />}
-				{selectedSerie !== -1 && <SerieDetailPopup id={selectedSerie} setSelectedSerie={setSelectedSerie} />}
+				{selectedMovie !== -1 && (
+					<MovieDetailPopup
+						id={selectedMovie}
+						setSelectedMovie={setSelectedMovie}
+					/>
+				)}
+				{selectedSerie !== -1 && (
+					<SerieDetailPopup
+						id={selectedSerie}
+						setSelectedSerie={setSelectedSerie}
+					/>
+				)}
 			</div>
 		</div>
 	)

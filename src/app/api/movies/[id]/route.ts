@@ -1,23 +1,22 @@
-import { authOptions } from '@/lib/authOptions'
+import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { tmdbApi } from '@/lib/tmdbApi'
 import { calculateRating } from '@/utils/calculateRating'
 import { generateTeaser } from '@/utils/generateTeaser'
-import { getServerSession } from 'next-auth'
 import { NextRequest } from 'next/server'
 
 interface Params {
-  params: {
-    id: string
-  }
+	params: {
+		id: string
+	}
 }
 
 export async function GET(request: NextRequest, { params }: Params) {
 	const movieResponsePromise = tmdbApi.get(`/movie/${params.id}`)
 	const peopleResponsePromise = tmdbApi.get(`/movie/${params.id}/credits`)
 	const relatedMoviesPromise = tmdbApi.get(`/movie/${params.id}/similar`)
-	
-	const session = await getServerSession(authOptions)
+
+	const session = await auth()
 	const existsInList = await prisma.list.findFirst({
 		where: {
 			profileId: Number(session?.user.profileId),
@@ -30,8 +29,8 @@ export async function GET(request: NextRequest, { params }: Params) {
 
 	const [movieResponse, peopleResponse, relatedMovies] = await Promise.all(promises)
 
-  let producerFound: boolean = false
-  let directorFound: boolean = false
+	let producerFound: boolean = false
+	let directorFound: boolean = false
 
 	const movie = {
 		id: movieResponse.data.id,
@@ -84,14 +83,16 @@ export async function GET(request: NextRequest, { params }: Params) {
 				}
 			})
 			.filter((crew: any) => crew),
-		relatedMovies: relatedMovies.data.results.map((movie: any) => {
-			return {
-				id: movie.id,
-				overview: generateTeaser(movie.overview),
-				image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
-				releaseDate: movie.release_date,
-			}
-		}).filter((movie: any) => !movie.image.includes('null')),
+		relatedMovies: relatedMovies.data.results
+			.map((movie: any) => {
+				return {
+					id: movie.id,
+					overview: generateTeaser(movie.overview),
+					image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
+					releaseDate: movie.release_date,
+				}
+			})
+			.filter((movie: any) => !movie.image.includes('null')),
 	}
 
 	return new Response(JSON.stringify({ movie }))

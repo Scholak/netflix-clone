@@ -1,6 +1,5 @@
 import { Navbar, UserFooter } from '@/components'
-import { authOptions } from '@/lib/authOptions'
-import { getServerSession } from 'next-auth'
+import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
@@ -9,7 +8,7 @@ interface IUserLayoutProps {
 }
 
 const UserLayout = async ({ children }: IUserLayoutProps) => {
-	const session = await getServerSession(authOptions)
+	const session = await auth()
 
 	if (!session?.user.profileId) {
 		redirect('/browse')
