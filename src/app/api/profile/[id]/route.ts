@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
 
 interface Params {
@@ -8,13 +9,13 @@ interface Params {
 }
 
 export async function GET(request: NextRequest, { params }: Params) {
-  const profile = await prisma.profile.findUnique({
-    where: {
-      id: Number(params.id)
-    }
-  })
+	const profile = await prisma.profile.findUnique({
+		where: {
+			id: Number(params.id),
+		},
+	})
 
-  return new Response(JSON.stringify({ profile }))
+	return new Response(JSON.stringify({ profile }))
 }
 
 export async function PUT(request: NextRequest, { params }: Params) {
@@ -27,10 +28,12 @@ export async function PUT(request: NextRequest, { params }: Params) {
 			},
 			data: {
 				name: body.name,
+				language: body.language === 'tr' ? 'TURKISH' : 'ENGLISH',
 			},
 		})
 
 		if (updatedProfile) {
+			cookies().set('language', body.language)
 			return new Response(JSON.stringify({ message: 'Profil başarıyla güncellendi.' }), { status: 203 })
 		} else {
 			return new Response(JSON.stringify({ message: 'Profil güncellenirken hata oluştu.' }), { status: 400 })
@@ -41,11 +44,11 @@ export async function PUT(request: NextRequest, { params }: Params) {
 }
 
 export async function DELETE(request: NextRequest, { params }: Params) {
-  await prisma.profile.delete({
-    where: {
-      id: Number(params.id),
-    },
-  })
+	await prisma.profile.delete({
+		where: {
+			id: Number(params.id),
+		},
+	})
 
-  return new Response(null, { status: 204 })
+	return new Response(null, { status: 204 })
 }

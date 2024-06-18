@@ -9,6 +9,8 @@ import Image from 'next/image'
 import { Faq, GetStartedForm, HomeFooter, CookiePreferences } from '@/components'
 import { redirect } from 'next/navigation'
 import { auth } from '@/lib/auth'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { cookies } from 'next/headers'
 
 const HomePage = async () => {
 	const session = await auth()
@@ -16,6 +18,8 @@ const HomePage = async () => {
 	if (!!session) {
 		redirect('/user')
 	}
+
+	const language = (cookies().get('language')?.value ?? 'tr') as 'tr' | 'en'
 
 	return (
 		<div className='relative'>
@@ -44,23 +48,7 @@ const HomePage = async () => {
 						</g>
 					</svg>
 					<div className='flex items-center gap-6'>
-						<select
-							defaultValue='tr'
-							className='py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'
-						>
-							<option
-								value='tr'
-								className='text-black'
-							>
-								Türkçe
-							</option>
-							<option
-								value='en'
-								className='text-black'
-							>
-								English
-							</option>
-						</select>
+						<LanguageSwitcher defaultValue={language} />
 						<Link
 							href='/login'
 							className='py-1.5 px-4 rounded-md bg-red text-white text-sm font-bold'

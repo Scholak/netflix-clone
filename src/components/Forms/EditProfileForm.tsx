@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 interface IEditProfileFormProps {
-  profile: IProfile
+	profile: IProfile
 }
 
 const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
@@ -36,6 +36,10 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 		formState: { errors },
 	} = useForm<IEditProfile>({
 		resolver: zodResolver(editProfileSchema),
+		defaultValues: {
+			name: profile.name,
+			language: profile.language === 'TURKISH' ? 'tr' : 'en',
+		},
 	})
 
 	const onSubmit = async (data: IEditProfile) => {
@@ -55,7 +59,6 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 		} catch (error: any) {
 			setResponseError(error.response.data.message)
 		}
-
 	}
 
 	return (
@@ -72,15 +75,36 @@ const EditProfileForm = ({ profile }: IEditProfileFormProps) => {
 						className='w-full h-full object-cover'
 					/>
 				</div>
-				<div className='w-full flex-1'>
-					<input
-						type='text'
-						defaultValue={profile.name}
-						{...register('name')}
-						className='w-full p-3 text-xl bg-neutral-500 text-white outline-none rounded placeholder:text-white placeholder:text-xl'
-						placeholder='Adı'
-					/>
-					{errors.name && <p className='mt-1 text-red text-sm'>{errors.name.message}</p>}
+				<div className='w-full flex flex-col gap-4'>
+					<div className='w-full flex-1'>
+						<input
+							type='text'
+							{...register('name')}
+							className='w-full p-3 text-xl bg-neutral-500 text-white outline-none rounded placeholder:text-white placeholder:text-xl'
+							placeholder='Adı'
+						/>
+						{errors.name && <p className='mt-1 text-red text-sm'>{errors.name.message}</p>}
+					</div>
+					<div className='w-full flex-1'>
+						<select
+							{...register('language')}
+							className='w-full p-3 text-xl bg-neutral-500 text-white outline-none rounded placeholder:text-white placeholder:text-xl'
+						>
+							<option
+								value='tr'
+								selected={profile.language === 'TURKISH'}
+							>
+								Türkçe
+							</option>
+							<option
+								value='en'
+								selected={profile.language === 'ENGLISH'}
+							>
+								English
+							</option>
+						</select>
+						{errors.language && <p className='mt-1 text-red text-sm'>{errors.language.message}</p>}
+					</div>
 				</div>
 			</div>
 			<div className='h-px mt-8 mb-12 bg-neutral-600'></div>

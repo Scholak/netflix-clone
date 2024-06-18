@@ -1,7 +1,6 @@
 import { EditProfileForm } from '@/components'
 import axios from 'axios'
 import { redirect } from 'next/navigation'
-import React from 'react'
 
 interface Params {
 	params: {
@@ -16,7 +15,7 @@ const EditProfilePage = async ({ params }: Params) => {
 		redirect('/manageProfiles')
 	}
 
-  return (
+	return (
 		<div className='min-h-[100dvh] py-6 bg-neutral-900 md:py-10 lg:py-16'>
 			<div className='mx-auto md:w-1/2 lg:w-1/3'>
 				<h1 className='text-6xl text-white text-center font-medium md:text-left'>Profili Düzenle</h1>
