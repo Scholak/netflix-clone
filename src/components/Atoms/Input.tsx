@@ -37,36 +37,34 @@ const inputVariants = {
 	white: '',
 }
 
-const Input = forwardRef(
-	(
-		{ onChange, onBlur, name, type = 'text', placeholder, label, variant = 'white', className }: IInputProps,
-		ref: any,
-	) => {
-		const id = useId()
+const Input = (
+	{ onChange, onBlur, name, type = 'text', placeholder, label, variant = 'white', className }: IInputProps,
+	ref: any,
+) => {
+	const id = useId()
 
-		return (
-			<>
-				{!!label && (
-					<label
-						htmlFor={id}
-						className={labelVariants[variant]}
-					>
-						{label}
-					</label>
-				)}
-				<input
-					id={id}
-					ref={ref}
-					type={type}
-					name={name}
-					onChange={onChange}
-					onBlur={onBlur}
-					placeholder={placeholder}
-					className={cn(inputVariants[variant], className)}
-				></input>
-			</>
-		)
-	},
-)
+	return (
+		<>
+			{!!label && (
+				<label
+					htmlFor={id}
+					className={labelVariants[variant]}
+				>
+					{label}
+				</label>
+			)}
+			<input
+				id={id}
+				ref={ref}
+				type={type}
+				name={name}
+				onChange={onChange}
+				onBlur={onBlur}
+				placeholder={placeholder}
+				className={cn(inputVariants[variant], className)}
+			></input>
+		</>
+	)
+}
 
-export default Input
+export default forwardRef(Input)

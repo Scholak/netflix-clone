@@ -19,7 +19,7 @@ type ICheckboxProps = {
 	className?: string
 }
 
-const Checkbox = forwardRef(({ onChange, onBlur, name, label, className }: ICheckboxProps, ref: any) => {
+const Checkbox = ({ onChange, onBlur, name, label, className }: ICheckboxProps, ref: any) => {
 	const id = useId()
 
 	return (
@@ -36,6 +36,6 @@ const Checkbox = forwardRef(({ onChange, onBlur, name, label, className }: IChec
 			{!!label && <label htmlFor={id}>{label}</label>}
 		</div>
 	)
-})
+}
 
-export default Checkbox
+export default forwardRef(Checkbox)
