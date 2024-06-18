@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn'
 
 type IButtonProps = {
 	/** Click event handler */
-	onClick: MouseEventHandler<HTMLButtonElement>
+	onClick?: MouseEventHandler<HTMLButtonElement>
 	/** Button size */
 	size?: 'sm' | 'md' | 'lg'
 	/** Button display type */
@@ -23,7 +23,7 @@ const sizes = {
 	lg: '',
 }
 
-const Button = ({ onClick, size = 'md', outlined, className, children }: IButtonProps) => {
+const Button = ({ onClick = () => {}, size = 'md', outlined, className, children }: IButtonProps) => {
 	const outlinedStyle = outlined ? 'bg-white border border-black' : 'bg-red text-white'
 
 	return (

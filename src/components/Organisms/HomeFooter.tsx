@@ -20,23 +20,6 @@ const HomeFooter = () => {
 				numaralı telefonu arayın
 			</Text>
 			<HomeFooterLinks />
-			{/* <select
-				defaultValue='tr'
-				className='my-4 py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'
-			>
-				<option
-					value='tr'
-					className='text-black'
-				>
-					Türkçe
-				</option>
-				<option
-					value='en'
-					className='text-black'
-				>
-					English
-				</option>
-			</select> */}
 			<LanguageSwitcher />
 			<Text size='sm'>Netflix Türkiye</Text>
 		</footer>

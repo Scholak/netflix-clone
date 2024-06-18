@@ -27,13 +27,11 @@ export { default as PlanForm } from './Forms/PlanForm'
 export { default as EditPlanForm } from './Forms/EditPlanForm'
 export { default as PaymentWithCardForm } from './Forms/PaymentWithCardForm'
 export { default as GiftOptionForm } from './Forms/GiftOptionForm'
-export { default as LoginForm } from './Forms/LoginForm'
 export { default as CreateProfileForm } from './Forms/CreateProfileForm'
 export { default as EditProfileForm } from './Forms/EditProfileForm'
 
 // Other Components
 export { default as CookiePreferences } from './Organisms/CookiePreferences'
 export { default as HomeFooter } from './Organisms/HomeFooter'
-export { default as LoginFooter } from './LoginFooter'
 export { default as Banner } from './Banner'
 export { default as MediaCard } from './MediaCard'

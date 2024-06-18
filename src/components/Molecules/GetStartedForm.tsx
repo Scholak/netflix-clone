@@ -11,6 +11,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Type Imports
 import { IGetStarted } from '@/types/forms/getStrartedType'
 
+// Component Imports
+import Text from '@/components/Atoms/Text'
+import Input from '@/components/Atoms/Input'
+import Button from '@/components/Atoms/Button'
+
 // Store Imports
 import { setEmail } from '@/redux/slices/signupReducer'
 
@@ -59,21 +64,25 @@ const GetStartedForm = () => {
 				onSubmit={handleSubmit(onSubmit)}
 				className='flex flex-col items-center justify-center gap-2 sm:flex-row'
 			>
-				<input
+				<Input
 					{...register('email')}
-					type='text'
-					className='py-3 px-6 bg-transparent rounded border border-gray-300 placeholder:text-gray-200'
+					variant='transparent'
 					placeholder='E-posta adresi'
 				/>
-				<button
-					type='submit'
-					className='flex items-center gap-3 bg-red text-white rounded py-3 px-6 text-xl font-medium transition duration-300 hover:bg-redHover'
-				>
-					<span>Başlayın</span>
+				<Button className='flex items-center gap-3 transition duration-300 hover:bg-redHover'>
+					Başlayın
 					<FaChevronRight />
-				</button>
+				</Button>
 			</form>
-			{errors.email && <p className='mt-1 text-center text-red text-sm'>{errors.email.message}</p>}
+			{errors.email && (
+				<Text
+					size='sm'
+					align='center'
+					className='mt-1 text-red'
+				>
+					{errors.email.message}
+				</Text>
+			)}
 		</>
 	)
 }
