@@ -1,10 +1,8 @@
 import { getRequestConfig } from 'next-intl/server'
-import { auth } from './lib/auth'
+import { cookies } from 'next/headers'
 
 export default getRequestConfig(async () => {
-	const session = await auth()
-
-	const locale = session?.user?.language === 'TURKISH' ? 'tr' : 'en'
+	const locale = cookies().get('language')?.value ?? 'tr'
 
 	return {
 		locale,

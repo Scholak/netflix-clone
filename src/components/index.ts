@@ -21,7 +21,7 @@ export { default as Slider } from './Sliders/Slider'
 export { default as TopTenSlider } from './Sliders/TopTenSlider'
 
 // Form Components
-export { default as GetStartedForm } from './Forms/GetStartedForm'
+export { default as GetStartedForm } from './Molecules/GetStartedForm'
 export { default as RegisterForm } from './Forms/RegisterForm'
 export { default as PlanForm } from './Forms/PlanForm'
 export { default as EditPlanForm } from './Forms/EditPlanForm'
@@ -32,9 +32,8 @@ export { default as CreateProfileForm } from './Forms/CreateProfileForm'
 export { default as EditProfileForm } from './Forms/EditProfileForm'
 
 // Other Components
-export { default as Faq } from './Faq'
-export { default as CookiePreferences } from './CookiePreferences'
-export { default as HomeFooter } from './HomeFooter'
+export { default as CookiePreferences } from './Organisms/CookiePreferences'
+export { default as HomeFooter } from './Organisms/HomeFooter'
 export { default as LoginFooter } from './LoginFooter'
 export { default as Banner } from './Banner'
 export { default as MediaCard } from './MediaCard'

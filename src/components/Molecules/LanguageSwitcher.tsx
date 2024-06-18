@@ -1,16 +1,17 @@
 'use client'
 
-import { changeLanguage } from '@/services/languageService'
-import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
+// Library Imports
 import { ChangeEvent } from 'react'
+import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
 
-interface ILanguageSwitcherProps {
-	defaultValue: 'tr' | 'en'
-}
+// Service Imports
+import { changeLanguage } from '@/services/languageService'
 
-const LanguageSwitcher = ({ defaultValue }: ILanguageSwitcherProps) => {
+const LanguageSwitcher = () => {
 	const router = useRouter()
+	const locale = useLocale()
 
 	const languageMutation = useMutation({
 		mutationFn: changeLanguage,
@@ -26,7 +27,7 @@ const LanguageSwitcher = ({ defaultValue }: ILanguageSwitcherProps) => {
 	return (
 		<select
 			onChange={(event: ChangeEvent<HTMLSelectElement>) => handleChange(event.target.value as 'tr' | 'en')}
-			defaultValue={defaultValue}
+			defaultValue={locale}
 			className='py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'
 		>
 			<option
