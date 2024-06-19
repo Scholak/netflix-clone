@@ -1,17 +1,25 @@
 'use client'
 
-import Link from 'next/link'
-import React, { useState } from 'react'
+// Library Imports
+import { useState } from 'react'
 import { FaCaretDown, FaRegBell } from 'react-icons/fa'
-import { Search, UserMenu } from '..'
+import Link from 'next/link'
 
-const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState<boolean>(false)
+// Component Imports
+import Text from '@/components/Atoms/Text'
+import UserMenu from '@/components/Molecules/UserMenu'
+import UserSearch from '@/components/Molecules/UserSearch'
 
-  return (
+const UserNavbar = () => {
+	const [toggleMenu, setToggleMenu] = useState<boolean>(false)
+
+	return (
 		<nav className='bg-neutral-900 fixed w-full flex items-center justify-between text-neutral-200 py-4 px-4 z-10 md:px-8 md:py-3 xl:py-4 xl:px-16'>
 			<div className='flex items-center gap-1 md:gap-2 lg:gap-4'>
-				<Link href='/user' className='mr-2 md:mr-4 lg:mr-8'>
+				<Link
+					href='/user'
+					className='mr-2 md:mr-4 lg:mr-8'
+				>
 					<svg
 						viewBox='0 0 111 30'
 						version='1.1'
@@ -26,13 +34,18 @@ const Navbar = () => {
 						</g>
 					</svg>
 				</Link>
-				<div onClick={() => setToggleMenu(!toggleMenu)} className='relative'>
+				<div
+					onClick={() => setToggleMenu(!toggleMenu)}
+					className='relative'
+				>
 					<button className='flex items-center gap-1 text-white cursor-pointer md:hidden'>
-						<span>Göz At</span>
+						<Text element='span'>Göz At</Text>
 						<FaCaretDown />
 					</button>
 					<ul
-						className={`absolute ${toggleMenu ? 'flex' : 'hidden'} flex-col gap-6 text-xs bg-neutral-900 pt-8 pb-2 px-12  
+						className={`absolute ${
+							toggleMenu ? 'flex' : 'hidden'
+						} flex-col gap-6 text-xs bg-neutral-900 pt-8 pb-2 px-12  
 							md:static md:flex md:items-center md:flex-row md:pt-0 md:pb-0 md:px-0 md:text-sm md:gap-4`}
 					>
 						<li className='whitespace-nowrap'>
@@ -54,7 +67,7 @@ const Navbar = () => {
 				</div>
 			</div>
 			<div className='flex items-center text-white gap-2 md:gap-4 lg:gap-6'>
-				<Search />
+				<UserSearch />
 				<FaRegBell />
 				<UserMenu />
 			</div>
@@ -62,4 +75,4 @@ const Navbar = () => {
 	)
 }
 
-export default Navbar
+export default UserNavbar

@@ -1,7 +1,12 @@
-import { Banner, Slider } from '@/components'
-import { api } from '@/lib/api'
+// Type Imports
 import { ISlider } from '@/types/sliderTypes'
-import React from 'react'
+
+// Component Imports
+import Slider from '@/components/Organisms/Slider'
+import Banner from '@/components/Organisms/Banner'
+
+// Utility Imports
+import { api } from '@/lib/api'
 
 export const revalidate = 0
 

@@ -22,7 +22,7 @@ type IInputProps = {
 	/** Input label */
 	label?: string
 	/** Input display style */
-	variant?: 'transparent' | 'gray' | 'outlined'
+	variant?: 'transparent' | 'gray' | 'lightGray' | 'outlined'
 	/** Additional classes */
 	className?: string
 }
@@ -30,12 +30,15 @@ type IInputProps = {
 const labelVariants = {
 	transparent: 'py-3 px-6 bg-transparent rounded border border-gray-300 placeholder:text-gray-200',
 	gray: 'mb-2 text-white font-medium',
+	lightGray: 'mb-2 text-white font-medium',
 	outlined: 'block text-sm mb-1',
 }
 
 const inputVariants = {
 	transparent: 'py-3 px-6 bg-transparent rounded border border-gray-300 placeholder:text-gray-200',
 	gray: 'w-full p-2 bg-neutral-700 text-white rounded outline-none border-none',
+	lightGray:
+		'w-full p-3 text-xl bg-neutral-500 text-white outline-none rounded placeholder:text-white placeholder:text-xl',
 	outlined: 'w-full py-2 px-4 text-black rounded border border-neutral-600',
 }
 

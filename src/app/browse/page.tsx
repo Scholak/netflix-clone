@@ -1,12 +1,25 @@
-import { AddProfileCard, Profiles } from '@/components'
+// Library Imports
 import Link from 'next/link'
-import React from 'react'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
+import AddProfileCard from '@/components/Molecules/AddProfileCard'
+import Profiles from '@/components/Organisms/Profiles'
 
 const BrowsePage = () => {
-  return (
+	return (
 		<div className='min-h-[100dvh] mx-auto flex items-center justify-center bg-neutral-900'>
 			<div className='flex flex-col items-center mx-auto'>
-				<h1 className='mt-8 mb-12 text-white font-medium text-center text-4xl md:text-6xl md:mt-0'>Kim izliyor?</h1>
+				<Text
+					element='h1'
+					size='4xl'
+					weight='medium'
+					align='center'
+					dark
+					className='mt-8 mb-12 md:text-6xl md:mt-0'
+				>
+					Kim izliyor?
+				</Text>
 				<div className='flex flex-wrap justify-center gap-8'>
 					<Profiles />
 					<AddProfileCard />

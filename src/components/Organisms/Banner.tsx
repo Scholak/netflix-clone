@@ -1,21 +1,28 @@
 'use client'
 
-import { getFeaturedMovie } from '@/services/movieService'
+// Library Imports
+import { useState } from 'react'
+import { FaInfo, FaPlay } from 'react-icons/fa'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
-import { FaInfo, FaPlay } from 'react-icons/fa'
-import { MovieDetailPopup, SerieDetailPopup } from '.'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
+import BannerLoader from '@/components/Organisms/BannerLoader'
+import MovieDetailPopup from '@/components/Organisms/MovieDetailPopup'
+import SerieDetailPopup from '@/components/Organisms/SerieDetailPopup'
+
+// Service Imports
+import { getFeaturedMovie } from '@/services/movieService'
 import { getFeaturedSerie } from '@/services/serieService'
-import BannerLoader from './BannerLoader'
 
 interface IBannerProps {
-  mediaType: 'movie' | 'serie'
+	mediaType: 'movie' | 'serie'
 }
 
 const Banner = ({ mediaType }: IBannerProps) => {
-  const { data, isLoading } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: mediaType === 'movie' ? ['featuredMovie'] : ['featuredSerie'],
 		queryFn: mediaType === 'movie' ? getFeaturedMovie : getFeaturedSerie,
 	})
@@ -31,7 +38,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 		}
 	}
 
-  return (
+	return (
 		<>
 			{isLoading ? (
 				<BannerLoader />
@@ -39,15 +46,35 @@ const Banner = ({ mediaType }: IBannerProps) => {
 				<div className='relative w-full h-[90vh] flex items-end'>
 					<div className='absolute inset-0 bg-black bg-opacity-30 z-[9]'></div>
 					<div className='px-4 w-full text-white z-[9] -translate-y-2 md:px-8 lg:w-1/2 xl:px-16'>
-						<h1 className='text-5xl text-center font-bold md:text-left'>{data.title}</h1>
-						<p className='my-4 text-lg text-center text-medium md:my-8 md:text-xl md:text-left'>{data?.overview}</p>
+						<Text
+							element='h1'
+							size='5xl'
+							align='center'
+							weight='bold'
+							className=' md:text-left'
+						>
+							{data.title}
+						</Text>
+						<Text
+							size='lg'
+							align='center'
+							weight='medium'
+							className='my-4 md:my-8 md:text-xl md:text-left'
+						>
+							{data?.overview}
+						</Text>
 						<div className='flex flex-col gap-2 md:flex-row md:gap-4'>
 							<Link
 								href='/'
 								className='flex items-center justify-center gap-2 rounded bg-white py-3 px-6 text-neutral-900 text-xl'
 							>
 								<FaPlay />
-								<span className='font-bold'>Oynat</span>
+								<Text
+									element='span'
+									weight='bold'
+								>
+									Oynat
+								</Text>
 							</Link>
 							<button
 								onClick={handleToggleDetail}
@@ -56,7 +83,12 @@ const Banner = ({ mediaType }: IBannerProps) => {
 								<div className='h-min flex items-center justify-center p-1 border-2 border-white rounded-full aspect-square'>
 									<FaInfo className='shrink-0 text-white' />
 								</div>
-								<span className='font-bold'>Daha Fazla Bilgi</span>
+								<Text
+									element='span'
+									weight='bold'
+								>
+									Daha Fazla Bilgi
+								</Text>
 							</button>
 						</div>
 					</div>
@@ -67,8 +99,18 @@ const Banner = ({ mediaType }: IBannerProps) => {
 						fill
 						className='inset-0 object-cover'
 					/>
-					{selectedMovie !== -1 && <MovieDetailPopup id={data.id} setSelectedMovie={setSelectedMovie} />}
-					{selectedSerie !== -1 && <SerieDetailPopup id={data.id} setSelectedSerie={setSelectedSerie} />}
+					{selectedMovie !== -1 && (
+						<MovieDetailPopup
+							id={data.id}
+							setSelectedMovie={setSelectedMovie}
+						/>
+					)}
+					{selectedSerie !== -1 && (
+						<SerieDetailPopup
+							id={data.id}
+							setSelectedSerie={setSelectedSerie}
+						/>
+					)}
 				</div>
 			)}
 		</>

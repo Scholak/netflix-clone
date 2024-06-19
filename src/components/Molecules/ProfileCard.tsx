@@ -1,12 +1,17 @@
 'use client'
 
-import { IProfile } from '@/types/profileType'
+// Library Imports
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { FaPencilAlt } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import { FaPencilAlt } from 'react-icons/fa'
+
+// Type Imports
+import { IProfile } from '@/types/profileType'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
 
 interface IProfileCardProps {
 	profile: IProfile
@@ -43,13 +48,21 @@ const ProfileCard = ({ profile, editing }: IProfileCardProps) => {
 						className='w-full h-full object-cover'
 					/>
 				</div>
-				<p className='text-neutral-400 text-2xl group-hover:text-white'>{profile.name}</p>
+				<Text
+					size='2xl'
+					className='text-neutral-400 group-hover:text-white'
+				>
+					{profile.name}
+				</Text>
 			</Link>
 		)
 	}
 
 	return (
-		<button onClick={handleRedirectUser} className='group flex flex-col gap-4 items-center hover:cursor-pointer'>
+		<button
+			onClick={handleRedirectUser}
+			className='group flex flex-col gap-4 items-center hover:cursor-pointer'
+		>
 			<div className='w-48 h-48 flex items-center justify-center border-4 border-transparent group-hover:border-white'>
 				<Image
 					unoptimized
@@ -60,7 +73,12 @@ const ProfileCard = ({ profile, editing }: IProfileCardProps) => {
 					className='w-full h-full object-cover'
 				/>
 			</div>
-			<p className='text-neutral-400 text-2xl group-hover:text-white'>{profile.name}</p>
+			<Text
+				size='2xl'
+				className='text-neutral-400 group-hover:text-white'
+			>
+				{profile.name}
+			</Text>
 		</button>
 	)
 }

@@ -1,4 +1,5 @@
 // Library Imports
+import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 	title: 'Netflix Türkiye',
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
 	const locale = await getLocale()
 	const messages = await getMessages()
 

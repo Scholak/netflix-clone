@@ -1,6 +1,11 @@
-import { ISerieOverview } from '@/types/serieType'
+// Library Imports
 import Image from 'next/image'
-import React from 'react'
+
+// Type Imports
+import { ISerieOverview } from '@/types/serieType'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
 
 interface IBannerRelatedMoviesProps {
 	series: ISerieOverview[]
@@ -9,10 +14,21 @@ interface IBannerRelatedMoviesProps {
 const PopupRelatedMovies = ({ series }: IBannerRelatedMoviesProps) => {
 	return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
-			<h3 className='mb-6 text-2xl text-white font-bold'>Benzerleri</h3>
+			<Text
+				element='h3'
+				size='2xl'
+				weight='bold'
+				className='mb-6'
+				dark
+			>
+				Benzerleri
+			</Text>
 			<div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
 				{series.map((serie: ISerieOverview) => (
-					<div key={serie.id} className='shadow rounded overflow-hidden bg-neutral-800 text-neutral-300 cursor-pointer'>
+					<div
+						key={serie.id}
+						className='shadow rounded overflow-hidden bg-neutral-800 text-neutral-300 cursor-pointer'
+					>
 						<Image
 							unoptimized
 							src={serie.image}
@@ -21,7 +37,12 @@ const PopupRelatedMovies = ({ series }: IBannerRelatedMoviesProps) => {
 							height={200}
 							className='w-full aspect-video object-cover'
 						/>
-						<p className='p-3 text-sm'>{serie.title}</p>
+						<Text
+							size='sm'
+							className='p-3'
+						>
+							{serie.title}
+						</Text>
 					</div>
 				))}
 			</div>

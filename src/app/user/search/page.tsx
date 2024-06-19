@@ -1,50 +1,83 @@
-import { MediaCard } from '@/components'
-import { api } from '@/lib/api'
+// Library Imports
+import { redirect } from 'next/navigation'
+
+// Type Imports
 import { IMovieMedia } from '@/types/movieType'
 import { ISerieMedia } from '@/types/serieType'
-import Image from 'next/image'
-import { redirect } from 'next/navigation'
-import React from 'react'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
+import MediaCard from '@/components/Organisms/MediaCard'
+
+// Utility Imports
+import { api } from '@/lib/api'
 
 interface ISearchParams {
 	searchParams: {
-    q?: string
-  }
+		q?: string
+	}
 }
 
 const SearchPage = async ({ searchParams }: ISearchParams) => {
-  if (!searchParams.q || searchParams.q === '') {
-    redirect('/user')
-  }
+	if (!searchParams.q || searchParams.q === '') {
+		redirect('/user')
+	}
 
-  const moviePromise = api.get(`/movies/search?q=${searchParams.q}`)
-  const seriePromise = api.get(`/series/search?q=${searchParams.q}`)
+	const moviePromise = api.get(`/movies/search?q=${searchParams.q}`)
+	const seriePromise = api.get(`/series/search?q=${searchParams.q}`)
 
 	const promises = [moviePromise, seriePromise]
 
 	const [movieResponse, serieResponse] = await Promise.all(promises)
 
-  return (
+	return (
 		<div className='px-4 py-20 md:px-8 xl:px-16 bg-neutral-900'>
-			<h5 className='flex flex-wrap items-end gap-2 text-3xl text-white font-bold mb-4 md:mb-8'>
+			<Text
+				element='h5'
+				size='3xl'
+				weight='bold'
+				className='flex flex-wrap items-end gap-2 mb-4 md:mb-8'
+				dark
+			>
 				{movieResponse.data.movies.length === 0 && serieResponse.data.series.length === 0 ? (
 					<>
-						<span>{searchParams.q}</span>
-						<span className='whitespace-nowrap text-neutral-300 text-lg font-medium'>için sonuç bulunamadı</span>
+						<Text element='span'>{searchParams.q}</Text>
+						<Text
+							element='span'
+							size='lg'
+							weight='medium'
+							className='whitespace-nowrap text-neutral-300 '
+						>
+							için sonuç bulunamadı
+						</Text>
 					</>
 				) : (
 					<>
-						<span>{searchParams.q}</span>
-						<span className='whitespace-nowrap text-neutral-300 text-lg font-medium'>için arama sonuçları</span>
+						<Text>{searchParams.q}</Text>
+						<Text
+							size='lg'
+							weight='medium'
+							className='whitespace-nowrap text-neutral-300'
+						>
+							için arama sonuçları
+						</Text>
 					</>
 				)}
-			</h5>
+			</Text>
 			<div className='grid gap-4 md:gap-y-16 lg:gap-y-32 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
 				{movieResponse.data.movies.map((movie: IMovieMedia) => (
-					<MediaCard media={movie} type='movie' key={movie.id} />
+					<MediaCard
+						media={movie}
+						type='movie'
+						key={movie.id}
+					/>
 				))}
 				{serieResponse.data.series.map((serie: ISerieMedia) => (
-					<MediaCard media={serie} type='serie' key={serie.id} />
+					<MediaCard
+						media={serie}
+						type='serie'
+						key={serie.id}
+					/>
 				))}
 			</div>
 		</div>

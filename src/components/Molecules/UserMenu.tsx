@@ -1,21 +1,27 @@
 'use client'
 
-import { queryClient } from '@/lib/queryClient'
-import { getProfiles } from '@/services/profileService'
-import { IProfile } from '@/types/profileType'
+// Library Imports
+import { useRouter } from 'next/navigation'
 import { useQuery } from '@tanstack/react-query'
 import { signOut, useSession } from 'next-auth/react'
+import { FaCaretDown, FaFileExport, FaPencilAlt, FaRegQuestionCircle, FaRegUser } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import { FaCaretDown, FaFileExport, FaPencilAlt, FaRegQuestionCircle, FaRegUser } from 'react-icons/fa'
+
+// Type Imports
+import { IProfile } from '@/types/profileType'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
+
+// Service Imports
+import { getProfiles } from '@/services/profileService'
 
 const UserMenu = () => {
 	const session = useSession()
 	const router = useRouter()
-	
-  const {
+
+	const {
 		data: profiles,
 		isLoading,
 		error,
@@ -37,7 +43,7 @@ const UserMenu = () => {
 		router.refresh()
 	}
 
-  return (
+	return (
 		<div className='group relative flex items-center gap-2 text-sm cursor-pointer'>
 			<div className='w-8 h-8'>
 				{profiles && session.data?.user.profileId && (
@@ -73,28 +79,34 @@ const UserMenu = () => {
 										className='w-full h-full object-cover'
 									/>
 								</div>
-								<p className='text-white'>{profile.name}</p>
+								<Text dark>{profile.name}</Text>
 							</div>
 						))}
 					</div>
-					<Link href='/manageProfiles' className='mb-3 px-3 flex items-center gap-2 hover:underline'>
+					<Link
+						href='/manageProfiles'
+						className='mb-3 px-3 flex items-center gap-2 hover:underline'
+					>
 						<FaPencilAlt className='text-lg' />
-						<p>Profil Yönetimi</p>
+						<Text>Profil Yönetimi</Text>
 					</Link>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaFileExport className='text-lg' />
-						<p>Profili Aktar</p>
+						<Text>Profili Aktar</Text>
 					</div>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaRegUser className='text-lg' />
-						<p>Hesap</p>
+						<Text>Hesap</Text>
 					</div>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaRegQuestionCircle className='text-lg' />
-						<p>Yarım Merkezi</p>
+						<Text>Yarım Merkezi</Text>
 					</div>
 					<div className='h-px bg-neutral-300'></div>
-					<button onClick={() => signOut()} className='py-3 pl-6 hover:underline'>
+					<button
+						onClick={() => signOut()}
+						className='py-3 pl-6 hover:underline'
+					>
 						Netflix oturumunu kapat
 					</button>
 				</div>

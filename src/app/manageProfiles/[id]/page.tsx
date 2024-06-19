@@ -1,6 +1,9 @@
-import { EditProfileForm } from '@/components'
-import axios from 'axios'
+// Library Imports
 import { redirect } from 'next/navigation'
+import axios from 'axios'
+
+// Component Imports
+import EditProfileForm from '@/components/Molecules/EditProfileForm'
 
 interface Params {
 	params: {

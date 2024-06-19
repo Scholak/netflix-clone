@@ -1,14 +1,20 @@
 'use client'
 
-import { IProfile } from '@/types/profileType'
-import React from 'react'
-import { ProfileCard } from '..'
+// Library Imports
 import { useQuery } from '@tanstack/react-query'
+
+// Type Imports
+import { IProfile } from '@/types/profileType'
+
+// Component Imports
+import ProfileCard from '@/components/Molecules/ProfileCard'
+import ProfileLoader from '@/components/Organisms/ProfileLoader'
+
+// Service Imports
 import { getProfiles } from '@/services/profileService'
-import ProfileLoader from './ProfileLoader'
 
 interface IProfilesProps {
-  isEditingMode?: boolean
+	isEditingMode?: boolean
 }
 
 const Profiles = ({ isEditingMode }: IProfilesProps) => {
@@ -24,7 +30,11 @@ const Profiles = ({ isEditingMode }: IProfilesProps) => {
 	return (
 		<>
 			{profiles?.map((profile: IProfile) => (
-				<ProfileCard key={profile.id} profile={profile} editing={isEditingMode} />
+				<ProfileCard
+					key={profile.id}
+					profile={profile}
+					editing={isEditingMode}
+				/>
 			))}
 		</>
 	)

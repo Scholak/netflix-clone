@@ -1,22 +1,41 @@
-import { ISerieSeason } from '@/types/serieType'
+// Library Imports
 import Image from 'next/image'
-import React from 'react'
+
+// Type Imports
+import { ISerieSeason } from '@/types/serieType'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
 
 interface ISerieSeasonsProps {
 	seasons: ISerieSeason[]
 }
 
 const SerieSeasons = ({ seasons }: ISerieSeasonsProps) => {
-  return (
+	return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
-			<h3 className='mb-6 text-2xl text-white font-bold'>Sezonlar</h3>
+			<Text
+				element='h3'
+				size='2xl'
+				weight='bold'
+				className='mb-6'
+				dark
+			>
+				Sezonlar
+			</Text>
 			<div className='grid gap-2'>
 				{seasons.map((season: ISerieSeason, idx: number) => (
 					<div
 						key={season.id}
 						className='flex items-start gap-2 py-6 px-3 shadow overflow-hidden border-b border-neutral-500 text-neutral-300 cursor-pointer'
 					>
-						<p className='mr-6 self-center text-2xl font-bold'>{idx + 1}</p>
+						<Text
+							size='2xl'
+							weight='bold'
+							className='mr-6 self-center'
+						>
+							{idx + 1}
+						</Text>
 						<div className='flex flex-col gap-2 md:flex-row'>
 							<Image
 								unoptimized
@@ -27,8 +46,14 @@ const SerieSeasons = ({ seasons }: ISerieSeasonsProps) => {
 								className='shrink-0 rounded aspect-video object-cover'
 							/>
 							<div className='flex-1'>
-								<p className='mb-2 text-lg font-medium'>{season.name}</p>
-								<p className='text-sm'>{season.overview}</p>
+								<Text
+									size='lg'
+									weight='medium'
+									className='mb-2'
+								>
+									{season.name}
+								</Text>
+								<Text size='sm'>{season.overview}</Text>
 							</div>
 						</div>
 					</div>

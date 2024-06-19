@@ -1,8 +1,12 @@
 'use client'
 
+// Library Imports
+import { useState } from 'react'
 import Image from 'next/image'
-import React, { useState } from 'react'
-import { MovieDetailPopup, SerieDetailPopup } from '.'
+
+// Components Imports
+import MovieDetailPopup from '@/components/Organisms/MovieDetailPopup'
+import SerieDetailPopup from '@/components/Organisms/SerieDetailPopup'
 
 interface IMediaCardProps {
 	media: any
@@ -23,7 +27,10 @@ const MediaCard = ({ media, type }: IMediaCardProps) => {
 
 	return (
 		<>
-			<div onClick={handleToggleDetail} className='w-full cursor-pointer sm:h-20 md:h-28 lg:h-36'>
+			<div
+				onClick={handleToggleDetail}
+				className='w-full cursor-pointer sm:h-20 md:h-28 lg:h-36'
+			>
 				<Image
 					unoptimized
 					src={media.image}
@@ -33,8 +40,18 @@ const MediaCard = ({ media, type }: IMediaCardProps) => {
 					className='w-full h-full object-cover rounded'
 				/>
 			</div>
-			{selectedMovie !== -1 && <MovieDetailPopup id={media.id} setSelectedMovie={setSelectedMovie} />}
-			{selectedSerie !== -1 && <SerieDetailPopup id={media.id} setSelectedSerie={setSelectedSerie} />}
+			{selectedMovie !== -1 && (
+				<MovieDetailPopup
+					id={media.id}
+					setSelectedMovie={setSelectedMovie}
+				/>
+			)}
+			{selectedSerie !== -1 && (
+				<SerieDetailPopup
+					id={media.id}
+					setSelectedSerie={setSelectedSerie}
+				/>
+			)}
 		</>
 	)
 }

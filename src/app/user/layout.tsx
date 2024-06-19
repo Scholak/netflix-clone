@@ -1,10 +1,16 @@
-import { Navbar, UserFooter } from '@/components'
-import { auth } from '@/lib/auth'
+// Library Imports
+import { ReactNode } from 'react'
 import { redirect } from 'next/navigation'
-import React from 'react'
+
+// Component Imports
+import UserNavbar from '@/components/Organisms/UserNavbar'
+import UserFooter from '@/components/Organisms/UserFooter'
+
+// Utility Imports
+import { auth } from '@/lib/auth'
 
 interface IUserLayoutProps {
-	children: React.ReactNode
+	children: ReactNode
 }
 
 const UserLayout = async ({ children }: IUserLayoutProps) => {
@@ -16,7 +22,7 @@ const UserLayout = async ({ children }: IUserLayoutProps) => {
 
 	return (
 		<div className='flex flex-col min-h-screen'>
-			<Navbar />
+			<UserNavbar />
 			<main className='flex-1 bg-neutral-900'>{children}</main>
 			<UserFooter />
 		</div>

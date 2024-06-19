@@ -1,5 +1,6 @@
 // Library Imports
 import { Metadata } from 'next'
+import { ReactNode } from 'react'
 
 // Component Imports
 import SignupNavbar from '@/components/Organisms/SignupNavbar'
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 interface ISignupProps {
-	children: React.ReactNode
+	children: ReactNode
 }
 
 const SignupLayout = ({ children }: ISignupProps) => {

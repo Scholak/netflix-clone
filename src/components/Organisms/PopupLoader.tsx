@@ -1,4 +1,4 @@
-import React from 'react'
+// Library Imports
 import Skeleton from 'react-loading-skeleton'
 
 const PopupLoader = () => {
@@ -7,12 +7,21 @@ const PopupLoader = () => {
 			<Skeleton height='512px' />
 			<div className='flex justify-between p-3'>
 				<div className='w-1/2'>
-					<Skeleton height='20px' className='mb-12' />
-					<Skeleton height='24px' className='mb-4' />
+					<Skeleton
+						height='20px'
+						className='mb-12'
+					/>
+					<Skeleton
+						height='24px'
+						className='mb-4'
+					/>
 					<Skeleton height='196px' />
 				</div>
 				<div className='w-1/3'>
-					<Skeleton height='48px' className='mb-4' />
+					<Skeleton
+						height='48px'
+						className='mb-4'
+					/>
 					<Skeleton height='48px' />
 				</div>
 			</div>

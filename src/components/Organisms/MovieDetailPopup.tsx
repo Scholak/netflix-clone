@@ -1,19 +1,28 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { FaCheck, FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
+// Library Imports
+import { useRouter } from 'next/navigation'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { getMovieDetail } from '@/services/movieService'
-import { PopupRelatedMovies } from '..'
-import { useRouter } from 'next/navigation'
-import { addToList, removeFromList } from '@/services/listService'
-import { queryClient } from '@/lib/queryClient'
-import PopupLoader from './PopupLoader'
-import { ICast, IDirector, IProducer } from '@/types/personType'
+import { FaCheck, FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
+import Image from 'next/image'
+import Link from 'next/link'
+
+// Type Imports
 import { IGenre } from '@/types/genreType'
+import { ICast, IDirector, IProducer } from '@/types/personType'
+
+// Component Imports
+import Text from '@/components/Atoms/Text'
+import PopupLoader from '@/components/Organisms/PopupLoader'
+import PopupRelatedMovies from '@/components/Organisms/PopupRelatedMovies'
+
+// Utility Imports
+import { queryClient } from '@/lib/queryClient'
+
+// Service Imports
+import { getMovieDetail } from '@/services/movieService'
+import { addToList, removeFromList } from '@/services/listService'
 
 interface IMovieDetailPopupProps {
 	id: number
@@ -33,7 +42,7 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['movieDetail'] })
 			router.refresh()
-		}
+		},
 	})
 
 	const removeFromListMutation = useMutation({
@@ -66,7 +75,10 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 				<PopupLoader />
 			) : (
 				<>
-					<div onClick={handleClosePopup} className='fixed inset-0 bg-black bg-opacity-80 z-20'></div>
+					<div
+						onClick={handleClosePopup}
+						className='fixed inset-0 bg-black bg-opacity-80 z-20'
+					></div>
 					<div
 						id='movieDetailPopup'
 						className='fixed left-1/2 top-6 bottom-0 overflow-y-auto -translate-x-1/2 w-11/12 rounded-md bg-neutral-900 text-white z-30 md:w-3/4 lg:w-2/3'
@@ -92,7 +104,12 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 									className='flex items-center justify-center gap-2 rounded bg-white py-1 px-4 text-neutral-900 text-xl'
 								>
 									<FaPlay />
-									<span className='font-bold'>Oynat</span>
+									<Text
+										element='span'
+										weight='bold'
+									>
+										Oynat
+									</Text>
 								</Link>
 								{data.existsInList ? (
 									<div
@@ -117,67 +134,122 @@ const MovieDetailPopup = ({ id, setSelectedMovie }: IMovieDetailPopupProps) => {
 						<div>
 							<div className='grid gap-6 p-3 md:grid-cols-3 md:p-6 lg:p-12'>
 								<div className='md:col-span-2'>
-									<p className='mb-8 text-sm font-medium'>{data.rating}</p>
-									<h3 className='text-2xl font-bold mb-4'>{data.title}</h3>
-									<p>{data.overview}</p>
+									<Text
+										size='sm'
+										weight='medium'
+										className='mb-8'
+									>
+										{data.rating}
+									</Text>
+									<Text
+										element='h3'
+										size='2xl'
+										weight='bold'
+										className='mb-4'
+									>
+										{data.title}
+									</Text>
+									<Text>{data.overview}</Text>
 								</div>
 								<div>
-									<p className='mb-2 text-sm text-neutral-400'>
+									<Text
+										size='sm'
+										className='mb-2 text-neutral-400'
+									>
 										Oyuncu Kadrosu:{' '}
 										{data.cast.map((cast: ICast, idx: number) => {
 											if (idx < 5) {
 												return (
-													<span key={idx} className='text-white hover:underline'>
+													<Text
+														key={idx}
+														element='span'
+														className=' hover:underline'
+														dark
+													>
 														{idx !== 0 ? ', ' : ''}
 														{cast.name}
-													</span>
+													</Text>
 												)
 											}
 										})}
-									</p>
-									<p className='text-sm text-neutral-400'>
+									</Text>
+									<Text
+										size='sm'
+										className='text-neutral-400'
+									>
 										Türler:{' '}
 										{data.genres.map((genre: IGenre, idx: number) => (
-											<span key={idx} className='text-white hover:underline'>
+											<Text
+												key={idx}
+												element='span'
+												className='hover:underline'
+												dark
+											>
 												{idx !== 0 ? ', ' : ''}
 												{genre.name}
-											</span>
+											</Text>
 										))}
-									</p>
+									</Text>
 								</div>
 							</div>
-							<PopupRelatedMovies movieId={data.id} movies={data.relatedMovies} />
+							<PopupRelatedMovies
+								movieId={data.id}
+								movies={data.relatedMovies}
+							/>
 							<div className='grid gap-3 px-3 pb-3 lg:pb-12 font-medium text-sm text-white md:px-6 md:pb-6 lg:px-12'>
-								<p className='text-2xl font-bold'>{data.title} Hakkında</p>
-								<p>
+								<Text
+									size='2xl'
+									weight='bold'
+								>
+									{data.title} Hakkında
+								</Text>
+								<Text>
 									Yönetmen:{' '}
-									<span className='text-white'>
+									<Text
+										element='span'
+										dark
+									>
 										{data.producers.map((producer: IProducer, idx: number) => (
-											<span key={idx} className='text-white hover:underline'>
+											<Text
+												key={idx}
+												element='span'
+												className='hover:underline'
+												dark
+											>
 												{idx !== 0 ? ', ' : ''}
 												{producer.name}
-											</span>
+											</Text>
 										))}
-									</span>
-								</p>
-								<p>
+									</Text>
+								</Text>
+								<Text>
 									Oyuncu Kadrosu:{' '}
 									{data.cast.map((cast: ICast, idx: number) => (
-										<span key={idx} className='text-white hover:underline'>
+										<Text
+											key={idx}
+											element='span'
+											className='hover:underline'
+											dark
+										>
 											{idx !== 0 ? ', ' : ''}
 											{cast.name}
-										</span>
+										</Text>
 									))}
-								</p>
-								<p>
+								</Text>
+								<Text>
 									Senarist:{' '}
 									{data.directors.map((director: IDirector, idx: number) => (
-										<span key={idx} className='text-white hover:underline'>
+										<Text
+											key={idx}
+											element='span'
+											className='hover:underline'
+											dark
+										>
 											{idx !== 0 ? ', ' : ''}
 											{director.name}
-										</span>
+										</Text>
 									))}
-								</p>
+								</Text>
 							</div>
 						</div>
 					</div>
