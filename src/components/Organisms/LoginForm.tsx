@@ -99,11 +99,9 @@ const LoginForm = () => {
 							</Text>
 						)}
 					</div>
-					<Button className='w-full mt-4 mb-2 py-2 shadow hover:bg-[#F6121D]'>Oturum Aç</Button>
+					<Button className='w-full mt-4 mb-2 py-2 shadow'>Oturum Aç</Button>
 					<div className='flex flex-col gap-2 text-neutral-400 text-sm sm:flex-row sm:items-center sm:justify-between sm:gap-0'>
 						<Checkbox
-							onChange={() => {}}
-							onBlur={() => {}}
 							name='remember'
 							label='Beni Hatırla'
 						/>
@@ -119,6 +117,7 @@ const LoginForm = () => {
 						</Link>
 					</Text>
 					<Text
+						element='span'
 						size='xs'
 						className='text-neutral-500'
 					>

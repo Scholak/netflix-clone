@@ -1,5 +1,5 @@
 // Library Imports
-import { ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 // Utility Imports
 import { cn } from '@/utils/cn'
 
@@ -9,15 +9,19 @@ type ITextProps = {
 	/** It defines the font size of the text */
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl'
 	/** It defines the font weight of the text */
-	weight?: 'light' | 'regular' | 'medium' | 'semibold' | 'bold'
+	weight?: 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'extrabold'
 	/** It defines the alignment of the text */
 	align?: 'left' | 'center' | 'right' | 'justify'
 	/** It defines the text color of the text */
 	dark?: boolean
 	/** Any Html element can be passed. */
 	element?: any
+	/** Click event handler */
+	onClick?: MouseEventHandler<HTMLElement>
 	/** Text content */
 	children?: ReactNode
+	/** Any other props */
+	[key: string]: any
 }
 
 const sizes = {
@@ -39,6 +43,7 @@ const weights = {
 	medium: 'font-medum',
 	semibold: 'font-semibold',
 	bold: 'font-bold',
+	extrabold: 'font-extrabold',
 }
 
 const aligns = {
@@ -55,12 +60,18 @@ const Text = ({
 	align = 'left',
 	dark,
 	element = 'p',
+	onClick,
 	children,
+	rest,
 }: ITextProps) => {
 	const Element = element
 
 	return (
-		<Element className={cn(dark && 'text-white', sizes[size], weights[weight], aligns[align], className)}>
+		<Element
+			className={cn(dark && 'text-white', sizes[size], weights[weight], aligns[align], className)}
+			onClick={onClick}
+			{...rest}
+		>
 			{children}
 		</Element>
 	)

@@ -6,7 +6,14 @@ const LoginFooter = () => {
 	return (
 		<footer className='transparent-login-footer text-neutral-400 font-medium py-12 px-4 sm:px-10 md:px-20 lg:px-40 xl:px-60 2xl:px-80'>
 			<Text className='mb-4'>
-				Sorularınız mı var? <Text className='underline'>0850-390-7444</Text> numaralı telefonu arayın
+				Sorularınız mı var?{' '}
+				<Text
+					element='span'
+					className='underline'
+				>
+					0850-390-7444
+				</Text>{' '}
+				numaralı telefonu arayın
 			</Text>
 			<ul className='mb-4 text-sm columns-2 lg:columns-4'>
 				<li className='underline mb-2'>SSS</li>

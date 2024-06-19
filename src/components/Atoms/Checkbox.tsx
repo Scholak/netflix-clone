@@ -8,9 +8,9 @@ import { cn } from '@/utils/cn'
 
 type ICheckboxProps = {
 	/** Change Event handler */
-	onChange: ChangeEventHandler<HTMLInputElement>
+	onChange?: ChangeEventHandler<HTMLInputElement>
 	/** Focus Event handler */
-	onBlur: FocusEventHandler<HTMLInputElement>
+	onBlur?: FocusEventHandler<HTMLInputElement>
 	/** Input name */
 	name: string
 	/** Input placeholder */
@@ -19,7 +19,7 @@ type ICheckboxProps = {
 	className?: string
 }
 
-const Checkbox = ({ onChange, onBlur, name, label, className }: ICheckboxProps, ref: any) => {
+const Checkbox = ({ onChange = () => {}, onBlur = () => {}, name, label, className }: ICheckboxProps, ref: any) => {
 	const id = useId()
 
 	return (

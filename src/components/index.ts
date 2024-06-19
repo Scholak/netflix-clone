@@ -21,17 +21,9 @@ export { default as Slider } from './Sliders/Slider'
 export { default as TopTenSlider } from './Sliders/TopTenSlider'
 
 // Form Components
-export { default as GetStartedForm } from './Molecules/GetStartedForm'
-export { default as RegisterForm } from './Forms/RegisterForm'
-export { default as PlanForm } from './Forms/PlanForm'
-export { default as EditPlanForm } from './Forms/EditPlanForm'
-export { default as PaymentWithCardForm } from './Forms/PaymentWithCardForm'
-export { default as GiftOptionForm } from './Forms/GiftOptionForm'
 export { default as CreateProfileForm } from './Forms/CreateProfileForm'
 export { default as EditProfileForm } from './Forms/EditProfileForm'
 
 // Other Components
-export { default as CookiePreferences } from './Organisms/CookiePreferences'
-export { default as HomeFooter } from './Organisms/HomeFooter'
 export { default as Banner } from './Banner'
 export { default as MediaCard } from './MediaCard'
