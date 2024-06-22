@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 // Component Imports
@@ -18,6 +19,7 @@ import tick from '@/assets/tick.png'
 import tickGray from '@/assets/tickGray.png'
 
 const PlanForm = () => {
+	const t = useTranslations('Molecules.PlanForm')
 	const router = useRouter()
 	const dispatch = useDispatch()
 	const [planId, setPlanId] = useState<number>(0)
@@ -37,7 +39,7 @@ const PlanForm = () => {
 							planId === 0 ? 'bg-red shadow-md' : 'bg-[#EF6B72]'
 						} text-white rounded-sm cursor-pointer md:ml-auto md:w-32`}
 					>
-						Temel
+						{t('planOneTitle')}
 					</div>
 					<div
 						onClick={() => setPlanId(1)}
@@ -45,7 +47,7 @@ const PlanForm = () => {
 							planId === 1 ? 'bg-red shadow-md' : 'bg-[#EF6B72]'
 						} text-white rounded-sm cursor-pointer md:w-32`}
 					>
-						Standard
+						{t('planTwoTitle')}
 					</div>
 					<div
 						onClick={() => setPlanId(2)}
@@ -53,7 +55,7 @@ const PlanForm = () => {
 							planId === 2 ? 'bg-red shadow-md' : 'bg-[#EF6B72]'
 						} text-white rounded-sm cursor-pointer md:w-32`}
 					>
-						Özel
+						{t('planThreeTitle')}
 					</div>
 				</div>
 				<div className='flex items-center justify-center py-4 border-b border-neutral-600 md:justify-between'>
@@ -62,7 +64,7 @@ const PlanForm = () => {
 						size='sm'
 						className='hidden text-neutral-700 md:w-1/2 md:block'
 					>
-						Aylık ücret
+						{t('monthlyPrice')}
 					</Text>
 					<div className='w-full flex items-center justify-between md:justify-end md:gap-28'>
 						<Text
@@ -100,7 +102,7 @@ const PlanForm = () => {
 						size='sm'
 						className='hidden text-neutral-700 md:w-1/2 md:block'
 					>
-						Video kalitesi
+						{t('videoQuality')}
 					</Text>
 					<div className='w-full flex items-center justify-between md:justify-end md:gap-28'>
 						<Text
@@ -110,7 +112,7 @@ const PlanForm = () => {
 							className={`w-full md:w-20 ${planId === 0 && 'text-red'}`}
 							onClick={() => setPlanId(0)}
 						>
-							İyi
+							{t('good')}
 						</Text>
 						<Text
 							element='span'
@@ -119,7 +121,7 @@ const PlanForm = () => {
 							className={`w-full md:w-20 ${planId === 1 && 'text-red'}`}
 							onClick={() => setPlanId(1)}
 						>
-							Daha iyi
+							{t('better')}
 						</Text>
 						<Text
 							element='span'
@@ -128,7 +130,7 @@ const PlanForm = () => {
 							className={`w-full md:w-20 ${planId === 2 && 'text-red'}`}
 							onClick={() => setPlanId(2)}
 						>
-							En yüksek
+							{t('highest')}
 						</Text>
 					</div>
 				</div>
@@ -138,7 +140,7 @@ const PlanForm = () => {
 						size='sm'
 						className='hidden text-neutral-700 md:w-1/2 md:block'
 					>
-						Çözünürlük
+						{t('resolution')}
 					</Text>
 					<div className='w-full flex items-center justify-between md:justify-end md:gap-28'>
 						<Text
@@ -176,7 +178,7 @@ const PlanForm = () => {
 						size='sm'
 						className='hidden text-neutral-700 md:w-1/2 md:block'
 					>
-						Televizyon, bilgisayar, cep telefonu ve tabletinizde seyredin
+						{t('platforms')}
 					</Text>
 					<div className='w-full flex items-center justify-between md:justify-end md:gap-28'>
 						<div
@@ -240,29 +242,29 @@ const PlanForm = () => {
 				size='xs'
 				className='mb-1 text-neutral-600'
 			>
-				HD (720p), Tam HD (1080p), Ultra HD (4K) ve HDR kullanılabilirliği internet hizmetinize ve cihazınızın
-				özelliklerine bağlıdır. Tüm içerikler bütün çözünürlüklerde mevcut olmayabilir. Ayrıntılar için{' '}
-				<Text
-					element='span'
-					size='sm'
-					className='text-sky-500'
-				>
-					Kullanım Koşulları
-				</Text>{' '}
-				sözleşmemize bakın.
+				{t.rich('descriptionTextOne', {
+					link: chunks => (
+						<Text
+							element='span'
+							size='sm'
+							className='text-sky-500'
+						>
+							{chunks}
+						</Text>
+					),
+				})}
 			</Text>
 			<Text
 				size='xs'
 				className='text-neutral-600'
 			>
-				Bu hesabı sadece sizinle birlikte yaşayanlar kullanabilir. Özel planda aynı anda 4 farklı cihazda içerik
-				izleyin. Standart planda bu sayı 2, Temel planda ise 1&apos;dir.
+				{t('descriptionTextTwo')}
 			</Text>
 			<Button
 				onClick={handleNextStep}
 				className='mt-4 py-4 w-full lg:w-min lg:px-48 lg:mx-auto lg:block'
 			>
-				İleri
+				{t('next')}
 			</Button>
 		</div>
 	)

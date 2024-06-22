@@ -1,3 +1,6 @@
+// Library Imports
+import { getTranslations } from 'next-intl/server'
+
 // Component Imports
 import Text from '@/components/Atoms/Text'
 
@@ -6,14 +9,16 @@ type ISignupStepperProps = {
 	align?: 'left' | 'center' | 'right'
 }
 
-const SignupStepper = ({ step, align = 'center' }: ISignupStepperProps) => {
+const SignupStepper = async ({ step, align = 'center' }: ISignupStepperProps) => {
+	const t = await getTranslations('Molecules.SignupStepper')
+
 	return (
 		<Text
 			element='h2'
 			size='lg'
 			align={align}
 		>
-			ADIM{' '}
+			{t('step')}{' '}
 			<Text
 				element='span'
 				weight='bold'

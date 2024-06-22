@@ -27,7 +27,7 @@ const SignupLanguageSwitcher = () => {
 	return (
 		<select
 			onChange={(event: ChangeEvent<HTMLSelectElement>) => handleChange(event.target.value as 'tr' | 'en')}
-			defaultValue={locale}
+			value={locale}
 			className='py-2 px-4 bg-transparent outline-none border border-neutral-400 rounded-md cursor-pointer'
 		>
 			<option value='tr'>Türkçe</option>

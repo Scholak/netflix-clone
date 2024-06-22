@@ -1,7 +1,10 @@
 // Library Imports
+import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
-const SignupNavbar = () => {
+const SignupNavbar = async () => {
+	const t = await getTranslations('Organisms.SignupNavbar')
+
 	return (
 		<nav className='flex items-center justify-between border-b border-neutral-300 py-3 px-4 sm:py-6 sm:px-10 md:px-20 lg:px-32'>
 			<Link href='/'>
@@ -23,7 +26,7 @@ const SignupNavbar = () => {
 				href='/login'
 				className='text-neutral-700 font-bold text-xl hover:underline'
 			>
-				Oturum Aç
+				{t('link')}
 			</Link>
 		</nav>
 	)

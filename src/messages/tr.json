@@ -1,5 +1,244 @@
 {
-	"Test": {
-		"title": "Merhaba Dünya!"
+	"Validation": {
+		"email": {
+			"required": "Lütfen e-posta adresini girin!",
+			"invalid": "Lütfen geçerli bir e-posta adresini girin.",
+			"max": "E-posta adresi maksimum 50 karakter olabilir."
+		},
+		"password": {
+			"required": "Lütfen parola girin!",
+			"min": "Parola en az 6 karakter olmalıdır.",
+			"max": "Parola en fazla 60 karakter olmalıdır."
+		},
+		"giftOption": {
+			"invalid": "Lütfen geçerli bir hediye kodu girin."
+		},
+		"creditCard": {
+			"invalid": "Lütfen geçerli bir kredi kartı numarası girin."
+		},
+		"expiryDate": {
+			"invalid": "Lütfen Geçerli bir tarih girin."
+		},
+		"cvv": {
+			"invalid": "Lütfen geçerli bir CVV girin."
+		},
+		"cardHolder": {
+			"invalid": "Lütfen geçerli bir isim girin."
+		}
+	},
+	"Molecules": {
+		"GetStartedForm": {
+			"placeholder": "E-posta adresi",
+			"button": "Başlayın",
+			"alreadyRegistered": "Kullanıcı zaten kayıtlı"
+		},
+		"HomeFooterLinks": {
+			"link1": "SSS",
+			"link2": "Yardım Merkezi",
+			"link3": "Hesap",
+			"link4": "Medya Merkezi",
+			"link5": "Yatırımcı İlişkileri",
+			"link6": "İş İmkanları",
+			"link7": "Hediye Kartı Kullan",
+			"link8": "İzleme Yolları",
+			"link9": "Kullanım Koşulları",
+			"link10": "Gizlilik",
+			"link11": "Çerez Tercihleri",
+			"link12": "Kurumsal Bilgiler",
+			"link13": "Bize Ulaşın",
+			"link14": "Hız Testi",
+			"link15": "Yasal Hükümler",
+			"link16": "Sadece Netflix'te"
+		},
+		"LoginForm": {
+			"title": "Oturum Aç",
+			"emailLabel": "E-Posta Adresi",
+			"passwordLabel": "Parola",
+			"button": "Oturum Aç",
+			"rememberMe": "Beni Hatırla",
+			"help": "Yardım ister misiniz?",
+			"signup": "Netflix'e katılmak ister misiniz? <link>Şimdi kaydolun.</link>",
+			"captcha": "Bu sayfa robot olmadığınızı kanıtlamak için Google reCAPTCHA tarafından korunuyor. <link>Daha fazlasını öğrenin.</link>"
+		},
+		"SignupStepper": {
+			"step": "ADIM"
+		},
+		"RegisterForm": {
+			"emailLabel": "E-posta",
+			"passwordLabel": "Bir parola ekleyin",
+			"checkbox": "Netflix özel teklifleri e-posta ile gönderilmesin.",
+			"next": "İleri",
+			"alreadyRegistered": "Kullanıcı zaten kayıtlı"
+		},
+		"PlanForm": {
+			"planOneTitle": "Temel",
+			"planTwoTitle": "Standard",
+			"planThreeTitle": "Özel",
+			"monthlyPrice": "Aylık ücret",
+			"videoQuality": "Video kalitesi",
+			"good": "İyi",
+			"better": "Daha iyi",
+			"highest": "En yüksek",
+			"resolution": "Çözünürlük",
+			"platforms": "Televizyon, bilgisayar, cep telefonu ve tabletinizde seyredin",
+			"descriptionTextOne": "HD (720p), Tam HD (1080p), Ultra HD (4K) ve HDR kullanılabilirliği internet hizmetinize ve cihazınızın özelliklerine bağlıdır. Tüm içerikler bütün çözünürlüklerde mevcut olmayabilir. Ayrıntılar için <link>Kullanım Koşulları</link> sözleşmemize bakın.",
+			"descriptionTextTwo": "Bu hesabı sadece sizinle birlikte yaşayanlar kullanabilir. Özel planda aynı anda 4 farklı cihazda içerik izleyin. Standart planda bu sayı 2, Temel planda ise 1'dir.",
+			"next": "İleri"
+		},
+		"GiftOptionForm": {
+			"monthlyPrice": "TL/ay",
+			"basic": "Temel",
+			"standard": "Standard",
+			"premium": "Özel",
+			"change": "Değiştir",
+			"start": "Üyeliğinizi Başlatın",
+			"responseError": "Bir hata oluştu",
+			"invalidCode": "Geçersiz hediye kodu"
+		},
+		"EditPlanForm": {
+			"planOneTitle": "Temel",
+			"planTwoTitle": "Standard",
+			"planThreeTitle": "Özel",
+			"monthlyPrice": "Aylık ücret",
+			"videoQuality": "Video kalitesi",
+			"good": "İyi",
+			"better": "Daha iyi",
+			"highest": "En yüksek",
+			"resolution": "Çözünürlük",
+			"platforms": "Televizyon, bilgisayar, cep telefonu ve tabletinizde seyredin",
+			"descriptionTextOne": "HD (720p), Tam HD (1080p), Ultra HD (4K) ve HDR kullanılabilirliği internet hizmetinize ve cihazınızın özelliklerine bağlıdır. Tüm içerikler bütün çözünürlüklerde mevcut olmayabilir. Ayrıntılar için <link>Kullanım Koşulları</link> sözleşmemize bakın.",
+			"descriptionTextTwo": "Bu hesabı sadece sizinle birlikte yaşayanlar kullanabilir. Özel planda aynı anda 4 farklı cihazda içerik izleyin. Standart planda bu sayı 2, Temel planda ise 1'dir.",
+			"next": "İleri"
+		},
+		"PaymentWithCardForm": {
+			"cardLabel": "Kart Numarası",
+			"expiryLabel": "Son kullanma tarihi",
+			"cardHolderLabel": "Kart üzerindeki ad",
+			"basic": "Temel",
+			"standard": "Standard",
+			"premium": "Özel",
+			"monthlyPrice": "TL/ay",
+			"change": "Değiştir",
+			"descriptionTextOne": "Ödemeleriniz uluslararası olarak işlenecektir. İlave banka ücretleri uygulanabilir.",
+			"descriptionTextTwo": "Aşağıdaki onay kutusunu işaretleyerek <link>Kullanım Koşullarımızı, </link><link>Gizlilik Bildirimimizi</link> ve 18 yaşından büyük olduğunuzu kabul edersiniz. Netflix, üyeliğinizi otomatik olarak devam ettirecek ve siz iptal edene kadar üyelik ücretini (şu anda aylık 99,99 TL) ödeme yönteminizden tahsil edecektir. Gelecekte ücret alınmasını istemiyorsanız üyeliğinizi istediğiniz zaman iptal edebilirsiniz.",
+			"confirm": "Kabul ediyorum",
+			"start": "Üyeliğinizi Başlatın",
+			"responseError": "Bir hata oluştu",
+			"confirmError": "Lütfen onaylayın!"
+		}
+	},
+	"Organisms": {
+		"CookiePreferences": {
+			"descriptionLong": "Netflix ve <underline>üçüncü taraflar</underline> bu web sitesi üzerinde <underline>çerezleri ve benzeri teknolojileri</underline> kullanarak tarayıcı aktiviteleriniz hakkında bilgi toplar. Bu bilgiler; web sitesi kullanımınızı analiz etmek, hizmetlerimizi kişiselleştirmek ve çevrimiçi reklamlarımızı özelleştirmek için kullanılır. Onayınız gerektiğinde kabul edebilir, reddedebilir veya seçimlerinizi kişiselleştirebilirsiniz. Ayrıca her sayfanın alt kısmındaki “Çerez Tercihleri”ne tıklayarak tercihlerinizi istediğiniz zaman değiştirebilirsiniz. Netflix, Digital Advertising Alliance (Dijital Reklam Birliği) İlkelerini destekliyor. <underline>Çerezleri ve bilgileri kullanımımız hakkında daha fazla bilgi alın.</underline>",
+			"descriptionShort": "Netflix ve üçüncü taraflar çerez kullanır. <underline>(Neden?) Çerez tercihlerinizi</underline> değiştirebilirsiniz.",
+			"accept": "Kabul Et",
+			"decline": "Reddet",
+			"customizePreferences": "Seçimleri kişiselleştir"
+		},
+		"Hero": {
+			"title": "Âlâsı var!",
+			"subTitleOne": "En iyi dizi, film, belgesel ve çok daha fazlası burada.",
+			"subTitleTwo": "İzlemeye hazır mısınız? Üye olmak ya da hesabınıza tekrar ulaşmak için tek yapmanız gereken e-posta adresinizi girmek."
+		},
+		"Features": {
+			"featureOneTitle": "Televizyonunuzda izleyin",
+			"featureOneDescription": "Akıllı TV, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray oynatıcılar ve daha fazlasında seyredin.",
+			"featureTwoTitle": "Çevrimdışı izlemek için içerikleri indirin",
+			"featureTwoDescription": "En sevdiğiniz içerikleri kolayca kaydedin ve her zaman izleyecek bir şeyleriniz olsun.",
+			"featureThreeTitle": "İstediğiniz her yerde izleyin",
+			"featureThreeDescription": "Telefonda, tablette, bilgisayarda, televizyonda sınırsız film ve dizi izleyin.",
+			"featureFourTitle": "Çocuklarınız için profiller oluşturun",
+			"featureFourDescription": "Üyeliğinize dâhil olan bu ücretsiz deneyim sayesinde çocuklarınız, sadece onlara özel bir alanda en sevdikleri karakterlerle maceralara atılabilir."
+		},
+		"Faq": {
+			"title": "Sıkça Sorulan Sorular",
+			"questionOne": "Netflix nedir?",
+			"questionOneAnswer": "Netflix; internet bağlantılı binlerce cihazda ödüllü diziler, filmler, animeler, belgeseller ve daha fazlasını içeren geniş bir arşiv sunan bir streaming hizmetidir. Tek bir reklam olmadan, istediğiniz kadar, istediğiniz zaman izleyebilirsiniz - hepsi aylık düşük bir ücret karşılığında. Her zaman keşfedilecek yeni bir şeyler var, üstelik her hafta yeni diziler ve filmler ekleniyor!",
+			"questionTwo": "Netflix'in maliyeti nedir?",
+			"questionTwoAnswer": "Netflix'i akıllı telefonunuz, tabletiniz, Akıllı TV'niz, dizüstü bilgisayarınız veya yayın cihazınızda sabit bir aylık ücretle izleyin. Aylık plan ücretleri 119,99 TL ile 229,99 TL arasında değişmektedir. Ekstra maliyet yok, sözleşme yok.",
+			"questionThree": "Nerede izleyebilirim?",
+			"questionThreeAnswer": "İstediğiniz yerde, istediğiniz zaman izleyin. Bilgisayarınızda netflix.com adresinden veya akıllı TV'ler, akıllı telefonlar, tabletler, medya oynatıcılar ve oyun konsolları dahil Netflix uygulamasını sunan, internet bağlantılı herhangi bir cihazda anında izlemek için Netflix hesabınızla oturum açın. Favori içeriklerinizi iOS, Android veya Windows 10 uygulamasıyla da indirebilirsiniz. Seyahatteyken ve internet bağlantısı olmadan izlemek için indirilenleri kullanın. Netflix'i her yere beraberinizde götürün.",
+			"questionFour": "Nasıl iptal ederim?",
+			"questionFourAnswer": "Netflix esnektir. Sinir bozucu hiçbir sözleşme ve taahhüt yoktur. Hesabınızı çevrimiçi olarak iki tıklamayla kolayca iptal edebilirsiniz. İptal ücreti yoktur - hesabınızı istediğiniz zaman başlatın veya durdurun.",
+			"questionFive": "Netflix'te ne izleyebilirim?",
+			"questionFiveAnswer": "Netflix, uzun metrajlı filmler, belgeseller, diziler ve programlar, anime, ödüllü Netflix orijinal içerikleri ve daha fazlasından oluşan kapsamlı bir kütüphaneye sahiptir. İstediğiniz her zaman, istediğiniz kadar çok şey izleyin.",
+			"questionSix": "Netflix çocuklar için uygun mudur?",
+			"questionSixAnswer": "Üyeliğinize dâhil olan Netflix Çocuk deneyimi, çocukların ailece izlenebilecek dizi ve filmleri kendilerine özel bir alanda izlemelerini sağlarken kontrolü ebeveynlere verir. Çocuk profillerinde bulunan PIN korumalı ebeveyn kontrolleri sayesinde, çocukların izleyebileceği içeriklerin yetişkinlik düzeylerini kısıtlayabilir ve onların görmesini istemediğiniz belirli içerikleri engelleyebilirsiniz."
+		},
+		"GetStarted": {
+			"title": "İzlemeye hazır mısınız? Üye olmak ya da hesabınıza tekrar ulaşmak için tek yapmanız gereken e-posta adresinizi girmek."
+		},
+		"HomeFooter": {
+			"contactText": "Sorularınız mı var? <underline>0850-390-7444</underline> numaralı telefonu arayın",
+			"nextflixText": "Netflix Türkiye"
+		},
+		"LoginFooter": {
+			"contactText": "Sorularınız mı var? <underline>0850-390-7444</underline> numaralı telefonu arayın",
+			"link1": "SSS",
+			"link2": "Yardım Merkezi",
+			"link3": "Kullanım Koşulları",
+			"link4": "Gizlilik",
+			"link5": "Çerez Tercihleri",
+			"link6": "Kurumsal Bilgiler"
+		},
+		"SignupNavbar": {
+			"link": "Oturum Aç"
+		},
+		"SignupFooter": {
+			"contactText": "Sorularınız mı var? <underline>0850-390-7444</underline> numaralı telefonu arayın",
+			"link1": "SSS",
+			"link2": "Yardım Merkezi",
+			"link3": "Kullanım Koşulları",
+			"link4": "Gizlilik",
+			"link5": "Çerez Tercihleri",
+			"link6": "Kurumsal Bilgiler"
+		}
+	},
+	"Pages": {
+		"SignupPage": {
+			"title": "Planınızı seçin.",
+			"itemOne": "Taahhüt yok, istediğiniz zaman iptal edin.",
+			"itemTwo": "Tek ve düşük bir ücretle, Netflix'teki her şey önünüzde.",
+			"itemThree": "Tüm cihazlarınızda sınırsız izleme imkânı.",
+			"next": "İleri"
+		},
+		"SignupRegistrationPage": {
+			"title": "Hesabınızı oluşturalım",
+			"description": "Netflix sizin için kişiselleştirilir. İstediğiniz zaman, istediğiniz cihazda izlemek için bir parola oluşturun.",
+			"next": "İleri"
+		},
+		"SignupRegisterFormPage": {
+			"title": "Üyeliğinizi başlatmak için bir parola oluşturun",
+			"description": "Sadece birkaç adım daha kaldı, sonra bitiyor! Biz de formaliteyi hiç sevmiyoruz."
+		},
+		"SignupPlanFormPage": {
+			"title": "Kendinize uygun bir plan seçin",
+			"featureOne": "Binlerce seçenek, sınırsız eğlence. Reklamsız.",
+			"featureTwo": "Sadece sizin için önerilen içerikler.",
+			"featureThree": "Planınızı istediğiniz zaman değiştirebilir ya da iptal edebilirsiniz."
+		},
+		"PaymentPickerPage": {
+			"title": "Tercih ettiğiniz ödeme yöntemini seçin",
+			"description": "Ödeme yönteminiz şifrelenerek korunur ve dilediğiniz zaman ödeme yönteminizi değiştirebilirsiniz.",
+			"warning": "Endişelenmeyin, güvenlidir. İstediğiniz zaman internet üzerinden kolayca iptal edebilirsiniz.",
+			"otpionOne": "Kredi Kartı veya Banka Kartı",
+			"otpionTwo": "Cep telefonu faturasına ekle",
+			"otpionThree": "Hediye Kartı"
+		},
+		"GiftOptionPage": {
+			"step": "ADIM 3 / 3",
+			"title": "Hediye kodunuzu girin",
+			"description": "Bu sayfa robot olmadığınızı kanıtlamak için Google reCAPTCHA tarafından korunuyor. <link>Daha fazlasını öğrenin.</link>"
+		},
+		"EditPlanFormPage": {
+			"title": "Kendinize uygun bir plan seçin",
+			"featureOne": "Binlerce seçenek, sınırsız eğlence. Reklamsız.",
+			"featureTwo": "Sadece sizin için önerilen içerikler.",
+			"featureThree": "Planınızı istediğiniz zaman değiştirebilir ya da iptal edebilirsiniz."
+		},
+		"PayWithCreditCardPage": {
+			"title": "Ödemenizi ayarlayın: Kredi Kartı/Banka Kartı",
+			"description": "Bu sayfa robot olmadığınızı kanıtlamak için Google reCAPTCHA tarafından korunuyor. <link>Daha fazlasını öğrenin.</link>"
+		}
 	}
 }

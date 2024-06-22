@@ -1,5 +1,244 @@
 {
-	"Test": {
-		"title": "Hello world!"
+	"Validation": {
+		"email": {
+			"required": "Please enter an email address!",
+			"invalid": "lease enter a valid email address!",
+			"max": "Email address can be 50 characters at most!"
+		},
+		"password": {
+			"required": "Please enter a password!",
+			"min": "Password can be 6 characters at least!",
+			"max": "Password can be 60 characters at most!"
+		},
+		"giftOption": {
+			"invalid": "Please enter a valid gift code."
+		},
+		"creditCard": {
+			"invalid": "Please enter a valid credit card number."
+		},
+		"expiryDate": {
+			"invalid": "Please enter a valid date."
+		},
+		"cvv": {
+			"invalid": "Please enter a valid CVV."
+		},
+		"cardHolder": {
+			"invalid": "Please enter a valid name."
+		}
+	},
+	"Molecules": {
+		"GetStartedForm": {
+			"placeholder": "E-Mail Address",
+			"button": "Get Started",
+			"alreadyRegistered": "User already registered"
+		},
+		"HomeFooterLinks": {
+			"link1": "FAQ",
+			"link2": "Help Center",
+			"link3": "Account",
+			"link4": "Media Center",
+			"link5": "Investor Relations",
+			"link6": "Jobs",
+			"link7": "Redeem Gift Cards",
+			"link8": "Ways to Watch",
+			"link9": "Terms of Use",
+			"link10": "Privacy",
+			"link11": "Cookie Preferences",
+			"link12": "Corporate Information",
+			"link13": "Contact Us",
+			"link14": "Speed Test",
+			"link15": "Legal Notices",
+			"link16": "Only on Netflix"
+		},
+		"LoginForm": {
+			"title": "Sign In",
+			"emailLabel": "Email Address",
+			"passwordLabel": "Password",
+			"button": "Sign In",
+			"rememberMe": "Remember Me",
+			"help": "Need help?",
+			"signup": "New to Netflix? <link>Sign up now.</link>",
+			"captcha": "This page is protected by Google reCAPTCHA to ensure you're not a bot. <link>Learn more.</link>"
+		},
+		"SignupStepper": {
+			"step": "STEP"
+		},
+		"RegisterForm": {
+			"emailLabel": "Email",
+			"passwordLabel": "Create a password",
+			"checkbox": "Don't send me Netflix special offers via email.",
+			"next": "Next",
+			"alreadyRegistered": "User already registered"
+		},
+		"PlanForm": {
+			"planOneTitle": "Basic",
+			"planTwoTitle": "Standard",
+			"planThreeTitle": "Premium",
+			"monthlyPrice": "Monthly fee",
+			"videoQuality": "Video quality",
+			"good": "Good",
+			"better": "Better",
+			"highest": "Highest",
+			"resolution": "Resolution",
+			"platforms": "Watch on TV, computer, mobile phone, and tablet",
+			"descriptionTextOne": "HD (720p), Full HD (1080p), Ultra HD (4K), and HDR availability depend on your internet service and device capabilities. Not all content is available in all resolutions. For details, see our <link>Terms of Use</link>.",
+			"descriptionTextTwo": "This account is for household use only. With the Premium plan, enjoy streaming on up to 4 different devices simultaneously. The Standard plan allows for 2 devices at the same time, and the Basic plan allows for 1 device.",
+			"next": "Next"
+		},
+		"GiftOptionForm": {
+			"monthlyPrice": "TL/month",
+			"basic": "Basic",
+			"standard": "Standard",
+			"premium": "Premium",
+			"change": "Change",
+			"start": "Start Your Membership",
+			"responseError": "An error occurred",
+			"invalidCode": "Invalid gift code"
+		},
+		"EditPlanForm": {
+			"planOneTitle": "Basic",
+			"planTwoTitle": "Standard",
+			"planThreeTitle": "Premium",
+			"monthlyPrice": "Monthly fee",
+			"videoQuality": "Video quality",
+			"good": "Good",
+			"better": "Better",
+			"highest": "Highest",
+			"resolution": "Resolution",
+			"platforms": "Watch on TV, computer, mobile phone, and tablet",
+			"descriptionTextOne": "HD (720p), Full HD (1080p), Ultra HD (4K), and HDR availability depend on your internet service and device capabilities. Not all content is available in all resolutions. For details, see our <link>Terms of Use</link>.",
+			"descriptionTextTwo": "This account is for household use only. With the Premium plan, enjoy streaming on up to 4 different devices simultaneously. The Standard plan allows for 2 devices at the same time, and the Basic plan allows for 1 device.",
+			"next": "Next"
+		},
+		"PaymentWithCardForm": {
+			"cardLabel": "Card Number",
+			"expiryLabel": "Expiry Date",
+			"cardHolderLabel": "Name on Card",
+			"basic": "Basic",
+			"standard": "Standard",
+			"premium": "Premium",
+			"monthlyPrice": "TL/month",
+			"change": "Change",
+			"descriptionTextOne": "Your payments will be processed internationally. Additional bank fees may apply.",
+			"descriptionTextTwo": "By checking the box below, you agree to our <link>Terms of Use</link>, <link>Privacy Notice</link>, and confirm that you are over 18 years old. Netflix will automatically renew your membership and charge the membership fee (currently 99.99 TL per month) to your payment method until you cancel. You can cancel your membership anytime if you do not wish to be charged in the future.",
+			"confirm": "Accept",
+			"start": "Start Membership",
+			"responseError": "An error occurred",
+			"confirmError": "Please confirm!"
+		}
+	},
+	"Organisms": {
+		"CookiePreferences": {
+			"descriptionLong": "Netflix and <underline>third parties</underline> collect information about your browser activities using <underline>cookies and similar technologies</underline> on this website. This information; It is used to analyze your use of the website, personalize our services and customize our online advertising. When your consent is required, you can accept, decline, or customize your choices. You can also change your preferences at any time by clicking “Cookie Preferences” at the bottom of each page. Netflix supports the Digital Advertising Alliance Principles. <underline>Learn more about our use of cookies and information.</underline>",
+			"descriptionShort": "Netflix and third parties use cookies. <underline>(Why?) You can change</underline> cookie preferences.",
+			"accept": "Accept",
+			"decline": "Decline",
+			"customizePreferences": "Customize Preferences"
+		},
+		"Hero": {
+			"title": "Unlimited movies, TV shows, and more",
+			"subTitleOne": "Watch anywhere. Cancel anytime.",
+			"subTitleTwo": "Ready to watch? Enter your email to create or restart your membership."
+		},
+		"Features": {
+			"featureOneTitle": "Enjoy on your TV",
+			"featureOneDescription": "Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.",
+			"featureTwoTitle": "Download your shows to watch offline",
+			"featureTwoDescription": "Save your favorites easily and always have something to watch.",
+			"featureThreeTitle": "Watch everywhere",
+			"featureThreeDescription": "Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.",
+			"featureFourTitle": "Create profiles for kids",
+			"featureFourDescription": "Send kids on adventures with their favorite characters in a space made just for them—free with your membership."
+		},
+		"Faq": {
+			"title": "Frequently Asked Questions",
+			"questionOne": "What is Netflix?",
+			"questionOneAnswer": "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices. You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!",
+			"questionTwo": "How much does Netflix cost?",
+			"questionTwoAnswer": "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from 119.99 TL to 229.99 TL a month. No extra costs, no contracts.",
+			"questionThree": "Where can I watch?",
+			"questionThreeAnswer": "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles. You can also download your favorite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.",
+			"questionFour": "How do I cancel?",
+			"questionFourAnswer": "Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
+			"questionFive": "What can I watch on Netflix?",
+			"questionFiveAnswer": "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+			"questionSix": "Is Netflix good for kids?",
+			"questionSixAnswer": "The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space. Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see."
+		},
+		"GetStarted": {
+			"title": "Ready to watch? Enter your email to create or restart your membership."
+		},
+		"HomeFooter": {
+			"contactText": "<underline>Questions? Contact us.</underline>",
+			"nextflixText": "Netflix Türkiye"
+		},
+		"LoginFooter": {
+			"contactText": "<underline>Questions? Contact us.</underline>",
+			"link1": "FAQ",
+			"link2": "Help Center",
+			"link3": "Terms of Use",
+			"link4": "Privacy",
+			"link5": "Cookie Preferences",
+			"link6": "Corporate Information"
+		},
+		"SignupNavbar": {
+			"link": "Sign In"
+		},
+		"SignupFooter": {
+			"contactText": "<underline>Questions? Contact us.</underline>",
+			"link1": "FAQ",
+			"link2": "Help Center",
+			"link3": "Terms of Use",
+			"link4": "Privacy",
+			"link5": "Cookie Preferences",
+			"link6": "Corporate Information"
+		}
+	},
+	"Pages": {
+		"SignupPage": {
+			"title": "Choose Your Plan",
+			"itemOne": "No commitment, cancel anytime.",
+			"itemTwo": "Everything on Netflix is available to you for one low price.",
+			"itemThree": "Unlimited watch on all your devices.",
+			"next": "Next"
+		},
+		"SignupRegistrationPage": {
+			"title": "Let's create your account",
+			"description": "Netflix is personalized for you. Create a password to watch anytime, on any device you want.",
+			"next": "Next"
+		},
+		"SignupRegisterFormPage": {
+			"title": "Create a password to start your membership",
+			"description": "Just a few more steps and you're done! We don't like formalities either."
+		},
+		"SignupPlanFormPage": {
+			"title": "Choose a plan that suits you",
+			"featureOne": "Thousands of options, unlimited entertainment. Ad-free.",
+			"featureTwo": "Content recommendations tailored just for you.",
+			"featureThree": "You can change or cancel your plan anytime."
+		},
+		"PaymentPickerPage": {
+			"title": "Choose your preferred payment method",
+			"description": "Your payment method is encrypted and securely stored. You can change your payment method anytime you want.",
+			"warning": "Don't worry, it's secure. You can easily cancel online anytime.",
+			"optionOne": "Credit or Debit Card",
+			"optionTwo": "Add to Mobile Phone Bill",
+			"optionThree": "Gift Card"
+		},
+		"GiftOptionPage": {
+			"step": "STEP 3 / 3",
+			"title": "Enter your gift code",
+			"description": "This page is protected by Google reCAPTCHA to verify that you are not a robot. <link>Learn more.</link>"
+		},
+		"EditPlanFormPage": {
+			"title": "Choose a plan that suits you",
+			"featureOne": "Thousands of options, unlimited entertainment. Ad-free.",
+			"featureTwo": "Content recommendations tailored just for you.",
+			"featureThree": "You can change or cancel your plan anytime."
+		},
+		"PayWithCreditCardPage": {
+			"title": "Set up your payment: Credit Card/Debit Card",
+			"description": "This page is protected by Google reCAPTCHA to verify that you are not a robot. <link>Learn more.</link>"
+		}
 	}
 }

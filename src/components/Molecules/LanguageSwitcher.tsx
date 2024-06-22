@@ -27,7 +27,7 @@ const LanguageSwitcher = () => {
 	return (
 		<select
 			onChange={(event: ChangeEvent<HTMLSelectElement>) => handleChange(event.target.value as 'tr' | 'en')}
-			defaultValue={locale}
+			value={locale}
 			className='py-1 px-2 text-white bg-transparent outline-none border border-white rounded-md cursor-pointer'
 		>
 			<option

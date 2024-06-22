@@ -4,6 +4,7 @@
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -25,18 +26,20 @@ import { signup } from '@/services/userService'
 import { payWithCardSchema } from '@/validations/payWithCardSchema'
 
 const plans = [
-	{ name: 'Temel', price: '99,99' },
-	{ name: 'Standart', price: '149,99' },
-	{ name: 'Özel', price: '199,99' },
+	{ name: 'basic', price: '99,99' },
+	{ name: 'standard', price: '149,99' },
+	{ name: 'premium', price: '199,99' },
 ]
 
 const PaymentWithCardForm = () => {
+	const t = useTranslations('Molecules.PaymentWithCardForm')
+	const validation = useTranslations('Validation')
 	const router = useRouter()
 
 	const paymentWitchCardMutation = useMutation({
 		mutationFn: signup,
 		onError: () => {
-			alert('bir hata oluştu')
+			alert(t('responseError'))
 		},
 		onSuccess: () => {
 			router.push('/login')
@@ -63,10 +66,10 @@ const PaymentWithCardForm = () => {
 					cardNumber: `**** **** **** ${data.cardNumber.slice(Number(data.cardNumber) - 4)}`,
 				})
 			} catch (error: any) {
-				alert('bir hata oluştu')
+				alert(t('responseError'))
 			}
 		} else {
-			alert('Lütfen onaylayın!')
+			alert(t('confirmError'))
 		}
 	}
 
@@ -74,7 +77,7 @@ const PaymentWithCardForm = () => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<div className='mb-2'>
 				<Input
-					label='Kart Numarası'
+					label={t('cardLabel')}
 					{...register('cardNumber')}
 				/>
 				{errors.cardNumber && (
@@ -83,7 +86,7 @@ const PaymentWithCardForm = () => {
 						size='xs'
 						className='text-red'
 					>
-						{errors.cardNumber.message}
+						{validation(errors.cardNumber.message)}
 					</Text>
 				)}
 			</div>
@@ -91,7 +94,7 @@ const PaymentWithCardForm = () => {
 				<div className='mb-2'>
 					<Input
 						type='month'
-						label='Son kullanma tarihi'
+						label={t('expiryLabel')}
 						{...register('expiryDate')}
 					/>
 					{errors.expiryDate && (
@@ -100,7 +103,7 @@ const PaymentWithCardForm = () => {
 							size='xs'
 							className='text-red'
 						>
-							{errors.expiryDate.message}
+							{validation(errors.expiryDate.message)}
 						</Text>
 					)}
 				</div>
@@ -115,14 +118,14 @@ const PaymentWithCardForm = () => {
 							size='xs'
 							className='text-red'
 						>
-							{errors.cvv.message}
+							{validation(errors.cvv.message)}
 						</Text>
 					)}
 				</div>
 			</div>
 			<div className='mb-2'>
 				<Input
-					label='Kart üzerindeki ad'
+					label={t('cardHolderLabel')}
 					{...register('cardHolder')}
 				/>
 				{errors.cardHolder && (
@@ -131,61 +134,58 @@ const PaymentWithCardForm = () => {
 						size='xs'
 						className='text-red'
 					>
-						{errors.cardHolder.message}
+						{validation(errors.cardHolder.message)}
 					</Text>
 				)}
 			</div>
-			<div className='flex items-center justify-between bg-neutral-100 rounded p-3'>
+			<div className='mt-4 flex items-center justify-between bg-neutral-100 rounded p-3'>
 				<div className='font-medium'>
-					<Text>{plans[planId].price} TL/ay</Text>
+					<Text>
+						{plans[planId].price} {t('monthlyPrice')}
+					</Text>
 					<Text
 						size='sm'
 						className='text-neutral-600'
 					>
-						{plans[planId].name}
+						{t(plans[planId].name)}
 					</Text>
 				</div>
 				<Link
 					href='/signup/editplan'
 					className='text-sky-600 font-medium'
 				>
-					Değiştir
+					{t('change')}
 				</Link>
 			</div>
 			<Text
 				size='xs'
-				className='mb-4 text-neutral-500'
+				className='my-4 text-neutral-500'
 			>
-				Ödemeleriniz uluslararası olarak işlenecektir. İlave banka ücretleri uygulanabilir.
+				{t('descriptionTextOne')}
 			</Text>
 			<Text
 				size='xs'
 				className='text-neutral-500'
 			>
-				Aşağıdaki onay kutusunu işaretleyerek{' '}
-				<Text
-					size='xs'
-					className='text-sky-400 cursor-pointer hover:underline'
-				>
-					Kullanım Koşullarımızı,{' '}
-				</Text>
-				<Text
-					size='xs'
-					className='text-sky-400 cursor-pointer hover:underline'
-				>
-					Gizlilik Bildirimimizi
-				</Text>{' '}
-				ve 18 yaşından büyük olduğunuzu kabul edersiniz. Netflix, üyeliğinizi otomatik olarak devam ettirecek ve siz
-				iptal edene kadar üyelik ücretini (şu anda aylık 99,99 TL) ödeme yönteminizden tahsil edecektir. Gelecekte ücret
-				alınmasını istemiyorsanız üyeliğinizi istediğiniz zaman iptal edebilirsiniz.
+				{t.rich('descriptionTextTwo', {
+					link: chunks => (
+						<Text
+							element='span'
+							size='xs'
+							className='text-sky-400 cursor-pointer hover:underline'
+						>
+							{chunks}
+						</Text>
+					),
+				})}
 			</Text>
 			<div className='my-4 flex items-center gap-3'>
 				<Checkbox
-					label='Kabul ediyorum'
+					label={t('confirm')}
 					{...register('confirm')}
 				/>
 			</div>
-			<Button size='lg'>Üyeliğinizi Başlatın</Button>
+			<Button size='lg'>{t('start')}</Button>
 		</form>
 	)
 }

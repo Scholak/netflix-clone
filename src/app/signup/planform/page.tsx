@@ -1,5 +1,6 @@
 // Library Imports
 import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
 
 // Component Imports
 import Text from '@/components/Atoms/Text'
@@ -9,7 +10,9 @@ import SignupStepper from '@/components/Molecules/SignupStepper'
 // Asset Imports
 import tick from '@/assets/tick.png'
 
-const PlanFormPage = () => {
+const PlanFormPage = async () => {
+	const t = await getTranslations('Pages.SignupPlanFormPage')
+
 	return (
 		<div className='my-4 mx-4 flex flex-col gap-2 text-neutral-800 md:my-8 lg:mx-auto lg:w-2/3'>
 			<SignupStepper
@@ -22,7 +25,7 @@ const PlanFormPage = () => {
 				weight='bold'
 				className='mb-4'
 			>
-				Kendinize uygun bir plan seçin
+				{t('title')}
 			</Text>
 			<ul className='flex flex-col'>
 				<li className='flex gap-1'>
@@ -32,7 +35,7 @@ const PlanFormPage = () => {
 						alt='tick'
 						className='-translate-y-2 shrink-0'
 					/>
-					Binlerce seçenek, sınırsız eğlence. Reklamsız.
+					{t('featureOne')}
 				</li>
 				<li className='flex gap-1'>
 					<Image
@@ -41,7 +44,7 @@ const PlanFormPage = () => {
 						alt='tick'
 						className='-translate-y-2 shrink-0'
 					/>
-					Sadece sizin için önerilen içerikler.
+					{t('featureTwo')}
 				</li>
 				<li className='flex gap-1'>
 					<Image
@@ -50,7 +53,7 @@ const PlanFormPage = () => {
 						alt='tick'
 						className='-translate-y-2 shrink-0'
 					/>
-					Planınızı istediğiniz zaman değiştirebilir ya da iptal edebilirsiniz.
+					{t('featureThree')}
 				</li>
 			</ul>
 			<PlanForm />

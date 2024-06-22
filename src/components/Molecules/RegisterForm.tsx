@@ -2,6 +2,7 @@
 
 // Library Imports
 import { useForm } from 'react-hook-form'
+import { useTranslations } from 'use-intl'
 import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -27,6 +28,8 @@ import { isExistingUser } from '@/services/userService'
 import { registerSchema } from '@/validations/registerSchema'
 
 const RegisterForm = () => {
+	const t = useTranslations('Molecules.RegisterForm')
+	const validation = useTranslations('Validation')
 	const router = useRouter()
 
 	const isExistingUserMutation = useMutation({
@@ -37,7 +40,7 @@ const RegisterForm = () => {
 			} else {
 				dispatch(setEmail(''))
 				dispatch(setPassword(''))
-				alert('Kullanıcı zaten kayıtlı')
+				alert(t('alreadyRegistered'))
 			}
 		},
 	})
@@ -67,7 +70,7 @@ const RegisterForm = () => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<div>
 				<Input
-					label='E-posta'
+					label={t('emailLabel')}
 					{...register('email')}
 					defaultValue={email}
 				/>
@@ -77,14 +80,14 @@ const RegisterForm = () => {
 						size='xs'
 						className='text-red'
 					>
-						{errors.email.message}
+						{validation(errors.email.message)}
 					</Text>
 				)}
 			</div>
 			<div className='my-2'>
 				<Input
 					type='password'
-					label='Bir parola ekleyin'
+					label={t('passwordLabel')}
 					{...register('password')}
 					defaultValue={email}
 				/>
@@ -94,17 +97,17 @@ const RegisterForm = () => {
 						size='xs'
 						className='text-red'
 					>
-						{errors.password.message}
+						{validation(errors.password.message)}
 					</Text>
 				)}
 			</div>
 			<div className='flex items-center justify-between gap-4 mb-1'>
 				<Checkbox
 					name='checkbox'
-					label='Netflix özel teklifleri e-posta ile gönderilmesin.'
+					label={t('checkbox')}
 				/>
 			</div>
-			<Button size='lg'>İleri</Button>
+			<Button size='lg'>{t('next')}</Button>
 		</form>
 	)
 }

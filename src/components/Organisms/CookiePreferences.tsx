@@ -3,12 +3,15 @@
 // Library Imports
 import { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
+import { useTranslations } from 'next-intl'
 
 // Component Imports
 import Text from '@/components/Atoms/Text'
 import Button from '@/components/Atoms/Button'
 
 const CookiePreferences = () => {
+	const t = useTranslations('Organisms.CookiePreferences')
+
 	const [isActive, setIsActive] = useState<boolean>(true)
 
 	return (
@@ -18,46 +21,31 @@ const CookiePreferences = () => {
 					<div className='mb-4 flex justify-between text-neutral-600'>
 						{/* Desktop View */}
 						<Text className='hidden md:block'>
-							Netflix ve{' '}
-							<Text
-								element='span'
-								weight='medium'
-								className='underline'
-							>
-								üçüncü taraflar
-							</Text>{' '}
-							bu web sitesi üzerinde{' '}
-							<Text
-								element='span'
-								weight='medium'
-								className='underline'
-							>
-								çerezleri ve benzeri teknolojileri{' '}
-							</Text>
-							kullanarak tarayıcı aktiviteleriniz hakkında bilgi toplar. Bu bilgiler; web sitesi kullanımınızı analiz
-							etmek, hizmetlerimizi kişiselleştirmek ve çevrimiçi reklamlarımızı özelleştirmek için kullanılır. Onayınız
-							gerektiğinde kabul edebilir, reddedebilir veya seçimlerinizi kişiselleştirebilirsiniz. Ayrıca her sayfanın
-							alt kısmındaki “Çerez Tercihleri”ne tıklayarak tercihlerinizi istediğiniz zaman değiştirebilirsiniz.
-							Netflix, Digital Advertising Alliance (Dijital Reklam Birliği) İlkelerini destekliyor.{' '}
-							<Text
-								element='span'
-								weight='medium'
-								className='underline'
-							>
-								Çerezleri ve bilgileri kullanımımız hakkında daha fazla bilgi alın.
-							</Text>
+							{t.rich('descriptionLong', {
+								underline: chunks => (
+									<Text
+										element='span'
+										weight='medium'
+										className='underline'
+									>
+										{chunks}
+									</Text>
+								),
+							})}
 						</Text>
 						{/* Mobile View */}
-						<Text className='md:hidden'>
-							Netflix ve üçüncü taraflar çerez kullanır.{' '}
-							<Text
-								element='span'
-								weight='medium'
-								className='underline'
-							>
-								(Neden?) Çerez tercihlerinizi
-							</Text>{' '}
-							değiştirebilirsiniz.
+						<Text className='md:hidden block'>
+							{t.rich('descriptionShort', {
+								underline: chunks => (
+									<Text
+										element='span'
+										weight='medium'
+										className='underline'
+									>
+										{chunks}
+									</Text>
+								),
+							})}
 						</Text>
 						<FaTimes
 							className='translate-y-1 text-lg shrink-0 cursor-pointer'
@@ -69,20 +57,20 @@ const CookiePreferences = () => {
 							size='sm'
 							onClick={() => setIsActive(false)}
 						>
-							Kabul Et
+							{t('accept')}
 						</Button>
 						<Button
 							size='sm'
 							onClick={() => setIsActive(false)}
 						>
-							Reddet
+							{t('decline')}
 						</Button>
 						<Button
 							size='sm'
 							onClick={() => setIsActive(false)}
 							outlined
 						>
-							Seçimleri kişiselleştir
+							{t('customizePreferences')}
 						</Button>
 					</div>
 				</div>

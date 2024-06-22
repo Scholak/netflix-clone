@@ -2,18 +2,14 @@
 
 // Library Imports
 import { useState } from 'react'
-
-// Type Imports
-import { IFaq } from '@/types/faqType'
+import { useTranslations } from 'next-intl'
 
 // Component Imports
-import Question from '@/components/Molecules/Question'
 import Text from '@/components/Atoms/Text'
-
-// Asset Imports
-import { faqData } from '@/data/faq'
+import Question from '@/components/Molecules/Question'
 
 const Faq = () => {
+	const t = useTranslations('Organisms.Faq')
 	const [index, setIndex] = useState<number>(0)
 
 	return (
@@ -24,16 +20,16 @@ const Faq = () => {
 				size='5xl'
 				className='mb-6'
 			>
-				Sıkça Sorulan Sorular
+				{t('title')}
 			</Text>
 			<div className='grid gap-3 text-xl font-medium'>
-				{faqData.map((faq: IFaq, idx: number) => (
+				{['One', 'Two', 'Three', 'Four', 'Five', 'Six'].map((number: string, idx: number) => (
 					<Question
-						key={faq.id}
+						key={idx}
 						isActive={idx === index}
 						onClick={() => setIndex(idx)}
-						question={faq.question}
-						answer={faq.answer}
+						question={t(`question${number}`)}
+						answer={t(`question${number}Answer`)}
 					/>
 				))}
 			</div>

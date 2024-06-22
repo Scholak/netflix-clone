@@ -4,6 +4,7 @@
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -24,18 +25,20 @@ import { signup } from '@/services/userService'
 import { giftOptionSchema } from '@/validations/giftOptionSchema'
 
 const plans = [
-	{ name: 'Temel', price: '99,99' },
-	{ name: 'Standart', price: '149,99' },
-	{ name: 'Özel', price: '199,99' },
+	{ name: 'basic', price: '99,99' },
+	{ name: 'standard', price: '149,99' },
+	{ name: 'premium', price: '199,99' },
 ]
 
 const GiftOptionForm = () => {
+	const t = useTranslations('Molecules.GiftOptionForm')
+	const validation = useTranslations('Validation')
 	const router = useRouter()
 
 	const giftOptionMutation = useMutation({
 		mutationFn: signup,
 		onError: () => {
-			alert('bir hata oluştu')
+			alert(t('responseError'))
 		},
 		onSuccess: () => {
 			router.push('/login')
@@ -56,7 +59,7 @@ const GiftOptionForm = () => {
 		if (data.code === '12345678910') {
 			await giftOptionMutation.mutateAsync({ email, password, planId, cardNumber: '' })
 		} else {
-			alert('geçersiz hediye kodu')
+			alert(t('invalidCode'))
 		}
 	}
 
@@ -72,27 +75,29 @@ const GiftOptionForm = () => {
 					size='xs'
 					className='text-red'
 				>
-					{errors.code.message}
+					{validation(errors.code.message)}
 				</Text>
 			)}
 			<div className='my-6 flex items-center justify-between bg-neutral-100 rounded p-3'>
 				<div className='font-medium'>
-					<Text>{plans[planId].price} TL/ay</Text>
+					<Text>
+						{plans[planId].price} {t('monthlyPrice')}
+					</Text>
 					<Text
 						size='sm'
 						className='text-neutral-600'
 					>
-						{plans[planId].name}
+						{t(plans[planId].name)}
 					</Text>
 				</div>
 				<Link
 					href='/signup/editplan'
 					className='text-sky-600 font-medium'
 				>
-					Değiştir
+					{t('change')}
 				</Link>
 			</div>
-			<Button size='lg'>Üyeliğinizi Başlatın</Button>
+			<Button size='lg'>{t('start')}</Button>
 		</form>
 	)
 }

@@ -4,6 +4,7 @@
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { FaChevronRight } from 'react-icons/fa'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -26,6 +27,8 @@ import { isExistingUser } from '@/services/userService'
 import { getStartedSchema } from '@/validations/getStartedSchema'
 
 const GetStartedForm = () => {
+	const t = useTranslations('Molecules.GetStartedForm')
+	const validation = useTranslations('Validation')
 	const dispatch = useDispatch()
 	const router = useRouter()
 
@@ -36,7 +39,7 @@ const GetStartedForm = () => {
 				router.push('/signup/registration')
 			} else {
 				dispatch(setEmail(''))
-				alert('Kullanıcı zaten kayıtlı')
+				alert(t('alreadyRegistered'))
 			}
 		},
 	})
@@ -67,10 +70,10 @@ const GetStartedForm = () => {
 				<Input
 					{...register('email')}
 					variant='transparent'
-					placeholder='E-posta adresi'
+					placeholder={t('placeholder')}
 				/>
 				<Button className='flex items-center gap-3 transition duration-300 hover:bg-redHover'>
-					Başlayın
+					{t('button')}
 					<FaChevronRight />
 				</Button>
 			</form>
@@ -80,7 +83,7 @@ const GetStartedForm = () => {
 					align='center'
 					className='mt-1 text-red'
 				>
-					{errors.email.message}
+					{validation(errors.email.message)}
 				</Text>
 			)}
 		</>

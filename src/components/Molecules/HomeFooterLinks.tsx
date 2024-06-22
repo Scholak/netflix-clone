@@ -1,15 +1,17 @@
-// Asset Imports
-import { footerLinks } from '@/data/footerLinks'
+// Library Imports
+import { getTranslations } from 'next-intl/server'
 
-const HomeFooterLinks = () => {
+const HomeFooterLinks = async () => {
+	const t = await getTranslations('Molecules.HomeFooterLinks')
+
 	return (
-		<ul className='columns-2 lg:columns-4'>
-			{footerLinks.map((link: string, idx: number) => (
+		<ul className='mb-4 columns-2 lg:columns-4'>
+			{Array.from({ length: 16 }, (_, i) => i).map((_: any, idx: number) => (
 				<li
 					key={idx}
-					className='underline mb-2'
+					className='mb-2 underline cursor-pointer'
 				>
-					{link}
+					{t(`link${idx + 1}`)}
 				</li>
 			))}
 		</ul>

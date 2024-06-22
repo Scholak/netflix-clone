@@ -1,4 +1,5 @@
 // Library Imports
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
 // Component Imports
@@ -10,7 +11,9 @@ import SignupStepper from '@/components/Molecules/SignupStepper'
 import tick from '@/assets/tick.png'
 import tickOutlined from '@/assets/tickOutlined.png'
 
-const SelectPlanPage = () => {
+const SelectPlanPage = async () => {
+	const t = await getTranslations('Pages.SignupPage')
+
 	return (
 		<div className='my-12 mx-4 flex flex-col items-center gap-2 text-neutral-800 sm:my-20 sm:w-72 sm:mx-auto md:my-32 lg:my-40 lg:w-72'>
 			<Image
@@ -26,7 +29,7 @@ const SelectPlanPage = () => {
 				weight='bold'
 				className='mb-4'
 			>
-				Planınızı seçin.
+				{t('title')}
 			</Text>
 			<ul className='flex flex-col gap-4'>
 				<li className='flex gap-1'>
@@ -36,7 +39,7 @@ const SelectPlanPage = () => {
 						alt='tick'
 						className='-translate-y-2 shrink-0'
 					/>
-					Taahhüt yok, istediğiniz zaman iptal edin.
+					{t('itemOne')}
 				</li>
 				<li className='flex gap-1'>
 					<Image
@@ -45,7 +48,7 @@ const SelectPlanPage = () => {
 						alt='tick'
 						className='-translate-y-2 shrink-0'
 					/>
-					Tek ve düşük bir ücretle, Netflix&apos;teki her şey önünüzde.
+					{t('itemTwo')}
 				</li>
 				<li className='flex gap-1'>
 					<Image
@@ -54,7 +57,7 @@ const SelectPlanPage = () => {
 						alt='tick'
 						className='-translate-y-2 shrink-0'
 					/>
-					Tüm cihazlarınızda sınırsız izleme imkânı.
+					{t('itemThree')}
 				</li>
 			</ul>
 			<Button
@@ -62,7 +65,7 @@ const SelectPlanPage = () => {
 				href='/signup/planform'
 				size='lg'
 			>
-				İleri
+				{t('next')}
 			</Button>
 		</div>
 	)

@@ -1,5 +1,6 @@
 // Library Imports
 import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
 
 // Component Imports
 import Text from '@/components/Atoms/Text'
@@ -9,7 +10,9 @@ import Navbar from '@/components/Organisms/Navbar'
 // Asset Imports
 import homeBg from '@/assets/homeBg.jpg'
 
-const Hero = () => {
+const Hero = async () => {
+	const t = await getTranslations('Organisms.Hero')
+
 	return (
 		<div className='relative gradient-bg px-2 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 			<Image
@@ -27,23 +30,23 @@ const Hero = () => {
 					weight='bold'
 					align='center'
 				>
-					Âlâsı var!
+					{t('title')}
 				</Text>
 				<Text
 					element='h2'
 					size='xl'
 					align='center'
+					weight='semibold'
 					className='mt-4'
 				>
-					En iyi dizi, film, belgesel ve çok daha fazlası burada.
+					{t('subTitleOne')}
 				</Text>
 				<Text
 					size='xl'
 					align='center'
 					className='leading-6 my-6'
 				>
-					İzlemeye hazır mısınız? Üye olmak ya da hesabınıza tekrar ulaşmak için tek yapmanız gereken e-posta adresinizi
-					girmek.
+					{t('subTitleTwo')}
 				</Text>
 				<GetStartedForm />
 			</div>

@@ -1,5 +1,6 @@
 // Library Imports
 import { FaAngleRight } from 'react-icons/fa'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -13,7 +14,9 @@ import netflix from '@/assets/netflix.png'
 import payViaPhone from '@/assets/payViaPhone.png'
 import paymentMethods from '@/assets/paymentMethods.png'
 
-const PaymentPickerPage = () => {
+const PaymentPickerPage = async () => {
+	const t = await getTranslations('Pages.PaymentPickerPage')
+
 	return (
 		<div className='my-4 mx-4 flex flex-col items-center gap-2 text-neutral-800 sm:my-8 sm:w-96 sm:mx-auto md:my-16 lg:w-[540px]'>
 			<Image
@@ -30,20 +33,20 @@ const PaymentPickerPage = () => {
 				align='center'
 				className='mb-2'
 			>
-				Tercih ettiğiniz ödeme yöntemini seçin
+				{t('title')}
 			</Text>
 			<Text
 				align='center'
 				weight='medium'
 				className='mb-2 xl:max-w-[480px]'
 			>
-				Ödeme yönteminiz şifrelenerek korunur ve dilediğiniz zaman ödeme yönteminizi değiştirebilirsiniz.
+				{t('description')}
 			</Text>
 			<Text
 				align='center'
 				className='text-neutral-800 font-bold xl:max-w-[480px]'
 			>
-				Endişelenmeyin, güvenlidir. İstediğiniz zaman internet üzerinden kolayca iptal edebilirsiniz.
+				{t('warning')}
 			</Text>
 			<div className='mt-4 grid gap-1'>
 				<Link
@@ -54,7 +57,7 @@ const PaymentPickerPage = () => {
 						element='span'
 						size='sm'
 					>
-						Kredi Kartı veya Banka Kartı
+						{t('optionOne')}
 					</Text>
 					<Image
 						unoptimized
@@ -72,7 +75,7 @@ const PaymentPickerPage = () => {
 						element='span'
 						size='sm'
 					>
-						Cep telefonu faturasına ekle
+						{t('optionTwo')}
 					</Text>
 					<Image
 						unoptimized
@@ -90,7 +93,7 @@ const PaymentPickerPage = () => {
 						element='span'
 						size='sm'
 					>
-						Hediye Kartı
+						{t('optionThree')}
 					</Text>
 					<Image
 						unoptimized

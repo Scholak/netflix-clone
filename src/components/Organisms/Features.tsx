@@ -1,3 +1,6 @@
+// Library Imports
+import { getTranslations } from 'next-intl/server'
+
 // Component Imports
 import Feature from '@/components/Molecules/Feature'
 
@@ -7,30 +10,31 @@ import tv2Img from '@/assets/tv2.png'
 import phoneImg from '@/assets/phone.png'
 import childImg from '@/assets/child.png'
 
-const Features = () => {
+const Features = async () => {
+	const t = await getTranslations('Organisms.Features')
+
 	return (
 		<div className='bg-black text-white py-8'>
 			<Feature
 				image={tvImg}
-				title='Televizyonunuzda izleyin'
-				description='Akıllı TV, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray oynatıcılar ve daha fazlasında seyredin.'
+				title={t('featureOneTitle')}
+				description={t('featureOneDescription')}
 			/>
 			<Feature
 				image={phoneImg}
-				title='Çevrimdışı izlemek için içerikleri indirin'
-				description='En sevdiğiniz içerikleri kolayca kaydedin ve her zaman izleyecek bir şeyleriniz olsun.'
+				title={t('featureTwoTitle')}
+				description={t('featureTwoDescription')}
 				reversed
 			/>
 			<Feature
 				image={tv2Img}
-				title='İstediğiniz her yerde izleyin'
-				description='Telefonda, tablette, bilgisayarda, televizyonda sınırsız film ve dizi izleyin.'
+				title={t('featureThreeTitle')}
+				description={t('featureThreeDescription')}
 			/>
 			<Feature
 				image={childImg}
-				title='Çocuklarınız için profiller oluşturun'
-				description='Üyeliğinize dâhil olan bu ücretsiz deneyim sayesinde çocuklarınız, sadece onlara özel bir alanda en
-							sevdikleri karakterlerle maceralara atılabilir.'
+				title={t('featureFourTitle')}
+				description={t('featureFourDescription')}
 				reversed
 			/>
 		</div>

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 
@@ -21,6 +22,8 @@ import Checkbox from '@/components/Atoms/Checkbox'
 import { loginSchema } from '@/validations/loginSchema'
 
 const LoginForm = () => {
+	const t = useTranslations('Molecules.LoginForm')
+	const validation = useTranslations('Validation')
 	const router = useRouter()
 
 	const [authError, setAuthError] = useState<string>('')
@@ -53,7 +56,7 @@ const LoginForm = () => {
 					weight='bold'
 					className='mb-6'
 				>
-					Oturum Aç
+					{t('title')}
 				</Text>
 				{authError && (
 					<Text
@@ -69,7 +72,7 @@ const LoginForm = () => {
 						<Input
 							type='email'
 							variant='gray'
-							label='E Posta Adresi'
+							label={t('emailLabel')}
 							{...register('email')}
 						/>
 						{errors.email && (
@@ -78,7 +81,7 @@ const LoginForm = () => {
 								size='sm'
 								className='text-red'
 							>
-								{errors.email.message}
+								{validation(errors.email.message)}
 							</Text>
 						)}
 					</div>
@@ -86,7 +89,7 @@ const LoginForm = () => {
 						<Input
 							type='password'
 							variant='gray'
-							label='Parola'
+							label={t('passwordLabel')}
 							{...register('password')}
 						/>
 						{errors.password && (
@@ -95,39 +98,46 @@ const LoginForm = () => {
 								size='sm'
 								className='text-red'
 							>
-								{errors.password.message}
+								{validation(errors.password.message)}
 							</Text>
 						)}
 					</div>
-					<Button className='w-full mt-4 mb-2 py-2 shadow'>Oturum Aç</Button>
+					<Button className='w-full mt-4 mb-2 py-2 shadow'>{t('button')}</Button>
 					<div className='flex flex-col gap-2 text-neutral-400 text-sm sm:flex-row sm:items-center sm:justify-between sm:gap-0'>
 						<Checkbox
 							name='remember'
-							label='Beni Hatırla'
+							label={t('rememberMe')}
 						/>
-						<Text className='hover:underline cursor-pointer'>Yardım ister misiniz?</Text>
+						<Text className='hover:underline cursor-pointer'>{t('help')}</Text>
 					</div>
 					<Text className='my-4 text-neutral-400'>
-						Netflix&apos;e katılmak ister misiniz?{' '}
-						<Link
-							href='/'
-							className='text-white'
-						>
-							Şimdi kaydolun.
-						</Link>
+						{t.rich('signup', {
+							link: chunks => (
+								<Link
+									href='/'
+									className='text-white font-semibold hover:underline'
+								>
+									{chunks}
+								</Link>
+							),
+						})}
 					</Text>
 					<Text
 						element='span'
 						size='xs'
 						className='text-neutral-500'
 					>
-						Bu sayfa robot olmadığınızı kanıtlamak için Google reCAPTCHA tarafından korunuyor.
-					</Text>
-					<Text
-						size='xs'
-						className='text-sky-400 cursor-pointer hover:underline'
-					>
-						Daha fazlasını öğrenin.
+						{t.rich('captcha', {
+							link: chunks => (
+								<Text
+									element='span'
+									size='xs'
+									className='text-sky-400 cursor-pointer hover:underline'
+								>
+									{chunks}
+								</Text>
+							),
+						})}
 					</Text>
 				</form>
 			</div>
