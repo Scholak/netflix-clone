@@ -58,10 +58,6 @@ In this project, Next.js and TMDB API used. The project contains most of the fea
 - run `yarn dev` &nbsp; or &nbsp; `npm run dev`
 - visit http://localhost:3000
 
-## Live Demo
-
-https://netflix-clone-one-beryl.vercel.app
-
 ## Project Images
 
 ![](./assets/1.png)
