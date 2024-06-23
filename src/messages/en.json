@@ -1,5 +1,9 @@
 {
 	"Validation": {
+		"name": {
+			"required": "Please enter a profile name.",
+			"max": "Profile name can be maximum 15 characters long."
+		},
 		"email": {
 			"required": "Please enter an email address!",
 			"invalid": "lease enter a valid email address!",
@@ -125,6 +129,36 @@
 			"start": "Start Membership",
 			"responseError": "An error occurred",
 			"confirmError": "Please confirm!"
+		},
+		"AddProfileCard": {
+			"addProfile": "Add Profile"
+		},
+		"CreateProfileForm": {
+			"namePlaceholder": "Name",
+			"continue": "Continue",
+			"cancel": "Cancel"
+		},
+		"EditProfileForm": {
+			"namePlaceholder": "Name",
+			"save": "Save",
+			"cancel": "Cancel",
+			"delete": "Delete Profile"
+		},
+		"SerieSeasons": {
+			"seasons": "Seasons"
+		},
+		"PopupRelatedMovies": {
+			"related": "Related"
+		},
+		"UserSearch": {
+			"placeholder": "content, actor, genre"
+		},
+		"UserMenu": {
+			"profileManagement": "Profile",
+			"transferProfile": "Transfer Profile",
+			"account": "Account",
+			"helpCenter": "Help Center",
+			"signout": "Sign out"
 		}
 	},
 	"Organisms": {
@@ -192,6 +226,53 @@
 			"link4": "Privacy",
 			"link5": "Cookie Preferences",
 			"link6": "Corporate Information"
+		},
+		"Banner": {
+			"play": "Play",
+			"more": "More Information"
+		},
+		"Slider": {
+			"seeAll": "See All"
+		},
+		"MovieDetailPopup": {
+			"play": "Play",
+			"cast": "Cast",
+			"genres": "Genres",
+			"about": "About <about></about>",
+			"director": "Director",
+			"scriptWriter": "Script Writer"
+		},
+		"SerieDetailPopup": {
+			"play": "Play",
+			"noDescription": "No description available",
+			"cast": "Cast",
+			"genres": "Genres",
+			"about": "About <about></about>",
+			"director": "Director",
+			"scriptWriter": "Script Writer"
+		},
+		"UserNavbar": {
+			"browse": "Browse",
+			"home": "Home",
+			"series": "Series",
+			"movies": "Movies",
+			"newAndPopular": "New and Popular",
+			"myList": "My List"
+		},
+		"UserFooter": {
+			"link1": "Audio Description",
+			"link2": "Help Center",
+			"link3": "Gift Cards",
+			"link4": "Media Center",
+			"link5": "Investor Relations",
+			"link6": "Careers",
+			"link7": "Terms of Use",
+			"link8": "Privacy",
+			"link9": "Legal",
+			"link10": "Cookie Preferences",
+			"link11": "Corporate Information",
+			"link12": "Contact Us",
+			"button": "Service Code"
 		}
 	},
 	"Pages": {
@@ -239,6 +320,68 @@
 		"PayWithCreditCardPage": {
 			"title": "Set up your payment: Credit Card/Debit Card",
 			"description": "This page is protected by Google reCAPTCHA to verify that you are not a robot. <link>Learn more.</link>"
+		},
+		"BrowsePage": {
+			"title": "Who's Watching?",
+			"profileManagement": "Profile Management"
+		},
+		"CreateProfilePage": {
+			"title": "Add Profile",
+			"description": "Add a profile for another person who watches Netflix."
+		},
+		"ManageProfilesPage": {
+			"title": "Edit Profile",
+			"okay": "Okay"
+		},
+		"EditProfilePage": {
+			"title": "Edit Profile"
+		},
+		"SearchPage": {
+			"noResult": "There is no result for <search></search>",
+			"results": "Search results for <search></search>"
+		},
+		"ListPage": {
+			"title": "My List"
+		},
+		"LatestPage": {
+			"upcomingMovies": "Upcoming Movies",
+			"upcomingSeries": "Upcoming Series",
+			"moviesReleasedThisWeek": "Movies Released This Week",
+			"seriesReleasedThisWeek": "Series Released This Week",
+			"topTenMovies": "Top 10 Movies in Turkey Today",
+			"topTenSeries": "Top 10 Series in Turkey Today"
+		},
+		"UserHomePage": {
+			"live": "On The Air"
+		},
+		"MoviesPage": {
+			"live": "On The Air"
+		},
+		"SeriesPage": {
+			"live": "On The Air"
+		}
+	},
+	"Api": {
+		"Genres": {
+			"action": "Action",
+			"adventure": "Adventure",
+			"animation": "Animation",
+			"comedy": "Comedy",
+			"crime": "Crime",
+			"documentary": "Documentary",
+			"dram": "Drama",
+			"family": "Family",
+			"fantastic": "Fantasy",
+			"history": "History",
+			"horror": "Horror",
+			"music": "Music",
+			"mystery": "Mystery",
+			"romantic": "Romantic",
+			"sciFi": "Sci-Fi",
+			"tvMovie": "TV Movie",
+			"thriller": "Thriller",
+			"war": "War",
+			"wildWest": "Western"
 		}
 	}
 }

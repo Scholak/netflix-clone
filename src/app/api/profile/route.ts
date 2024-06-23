@@ -1,34 +1,41 @@
-import { auth } from '@/lib/auth'
-import { prisma } from '@/lib/prisma'
+// Library Imports
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
 
-export async function GET(request: NextRequest) {
-	const session = await auth()
+// Utility Imports
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
 
-	if (!session) {
-		return new Response('', { status: 403 })
+export async function GET(_: never) {
+	try {
+		const session = await auth()
+
+		if (!session) {
+			return new Response('', { status: 403 })
+		}
+
+		const profiles = await prisma.profile.findMany({
+			where: {
+				userId: Number(session.user.id),
+			},
+		})
+
+		return new Response(JSON.stringify({ profiles }))
+	} catch (error) {
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
 	}
-
-	const profiles = await prisma.profile.findMany({
-		where: {
-			userId: Number(session.user.id),
-		},
-	})
-
-	return new Response(JSON.stringify({ profiles }))
 }
 
 export async function POST(request: NextRequest) {
-	const session = await auth()
-
-	if (!session) {
-		return new Response('', { status: 403 })
-	}
-
-	const body = await request.json()
-
 	try {
+		const session = await auth()
+
+		if (!session) {
+			return new Response('', { status: 403 })
+		}
+
+		const body = await request.json()
+
 		const newProfile = await prisma.profile.create({
 			data: {
 				name: body.name,
@@ -45,8 +52,6 @@ export async function POST(request: NextRequest) {
 			return new Response(JSON.stringify({ message: 'Yeni profil oluşturulurken hala oluştu.' }), { status: 400 })
 		}
 	} catch (error: any) {
-		return new Response(JSON.stringify({ message: 'Sunucu hatası. Lütfen daha sonra tekrar deneyin.' }), {
-			status: 500,
-		})
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
 	}
 }

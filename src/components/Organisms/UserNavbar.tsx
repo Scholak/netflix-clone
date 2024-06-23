@@ -2,6 +2,7 @@
 
 // Library Imports
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { FaCaretDown, FaRegBell } from 'react-icons/fa'
 import Link from 'next/link'
 
@@ -11,6 +12,8 @@ import UserMenu from '@/components/Molecules/UserMenu'
 import UserSearch from '@/components/Molecules/UserSearch'
 
 const UserNavbar = () => {
+	const t = useTranslations('Organisms.UserNavbar')
+
 	const [toggleMenu, setToggleMenu] = useState<boolean>(false)
 
 	return (
@@ -39,7 +42,7 @@ const UserNavbar = () => {
 					className='relative'
 				>
 					<button className='flex items-center gap-1 text-white cursor-pointer md:hidden'>
-						<Text element='span'>Göz At</Text>
+						<Text element='span'>{t('browse')}</Text>
 						<FaCaretDown />
 					</button>
 					<ul
@@ -49,19 +52,19 @@ const UserNavbar = () => {
 							md:static md:flex md:items-center md:flex-row md:pt-0 md:pb-0 md:px-0 md:text-sm md:gap-4`}
 					>
 						<li className='whitespace-nowrap'>
-							<Link href='/user'>Ana Sayfa</Link>
+							<Link href='/user'>{t('home')}</Link>
 						</li>
 						<li className='whitespace-nowrap'>
-							<Link href='/user/series'>Diziler</Link>
+							<Link href='/user/series'>{t('series')}</Link>
 						</li>
 						<li className='whitespace-nowrap'>
-							<Link href='/user/movies'>Filmler</Link>
+							<Link href='/user/movies'>{t('movies')}</Link>
 						</li>
 						<li className='whitespace-nowrap'>
-							<Link href='/user/latest'>Yeni ve Popüler</Link>
+							<Link href='/user/latest'>{t('newAndPopular')}</Link>
 						</li>
 						<li className='whitespace-nowrap'>
-							<Link href='/user/list'>Listem</Link>
+							<Link href='/user/list'>{t('myList')}</Link>
 						</li>
 					</ul>
 				</div>

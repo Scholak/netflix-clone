@@ -1,3 +1,7 @@
+// Library Imports
+import { headers } from 'next/headers'
+import { getTranslations } from 'next-intl/server'
+
 // Type Imports
 import { ISlider } from '@/types/sliderTypes'
 
@@ -11,8 +15,10 @@ import { api } from '@/lib/api'
 export const revalidate = 0
 
 const SeriesPage = async () => {
-	const popularSeriePromise = api.get('/series/popular')
-	const sliderSeresPromise = api.get('/series/slider')
+	const t = await getTranslations('Pages.SeriesPage')
+
+	const popularSeriePromise = api.get('/series/popular', { headers: { Cookie: headers().get('cookie') } })
+	const sliderSeresPromise = api.get('/series/slider', { headers: { Cookie: headers().get('cookie') } })
 
 	const promises = [popularSeriePromise, sliderSeresPromise]
 
@@ -23,7 +29,7 @@ const SeriesPage = async () => {
 			<Banner mediaType='serie' />
 			<div className='py-4 md:py-6 lg:py-12'>
 				<Slider
-					title='Gündemdekiler'
+					title={t('live')}
 					link='/popular'
 					items={popularSerieResponse.data.series}
 					type='serie'

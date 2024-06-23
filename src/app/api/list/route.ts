@@ -1,16 +1,19 @@
-import { auth } from '@/lib/auth'
-import { prisma } from '@/lib/prisma'
+// Library Imports
 import { NextRequest } from 'next/server'
 
+// Utility Imports
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+
 export async function POST(request: NextRequest) {
-	const session = await auth()
-	const body = await request.json()
-
-	if (!session?.user.profileId) {
-		return new Response(JSON.stringify({ message: 'Profil mevcut değil' }), { status: 400 })
-	}
-
 	try {
+		const session = await auth()
+		const body = await request.json()
+
+		if (!session?.user.profileId) {
+			return new Response(JSON.stringify({ message: 'Profil mevcut değil' }), { status: 400 })
+		}
+
 		const addToList = await prisma.list.create({
 			data: {
 				...body,
@@ -28,14 +31,14 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-	const session = await auth()
-	const body = await request.json()
-
-	if (!session?.user.profileId) {
-		return new Response(JSON.stringify({ message: 'Profil mevcut değil' }), { status: 400 })
-	}
-
 	try {
+		const session = await auth()
+		const body = await request.json()
+
+		if (!session?.user.profileId) {
+			return new Response(JSON.stringify({ message: 'Profil mevcut değil' }), { status: 400 })
+		}
+
 		const removeFromList = await prisma.list.deleteMany({
 			where: {
 				profileId: session.user.profileId,
@@ -49,6 +52,6 @@ export async function DELETE(request: NextRequest) {
 		}
 		return new Response(JSON.stringify({ message: 'Listeden silme işlemi başarısız oldu' }), { status: 422 })
 	} catch (error: any) {
-		return new Response(JSON.stringify({ message: error.message }), { status: 500 })
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
 	}
 }

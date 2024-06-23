@@ -3,6 +3,7 @@
 // Library Imports
 import { useState } from 'react'
 import { Navigation } from 'swiper/modules'
+import { useTranslations } from 'next-intl'
 import { FaAngleRight } from 'react-icons/fa'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
@@ -29,6 +30,8 @@ interface ISliderProps {
 }
 
 const Slider = ({ title, link, items, type }: ISliderProps) => {
+	const t = useTranslations('Organisms.Slider')
+
 	const [selectedMovie, setSelectedMovie] = useState<number>(-1)
 	const [selectedSerie, setSelectedSerie] = useState<number>(-1)
 
@@ -51,7 +54,7 @@ const Slider = ({ title, link, items, type }: ISliderProps) => {
 					size='sm'
 					className='text-sky-600 font-medium -translate-x-8 opacity-0 transition delay-100 duration-500 group-hover:opacity-100 group-hover:translate-x-0'
 				>
-					Tümüne Göz At
+					{t('seeAll')}
 				</Text>
 				<FaAngleRight className='-translate-x-28 text-sky-600 transition delay-100 duration-500 z-[1] group-hover:translate-x-0' />
 			</Link>

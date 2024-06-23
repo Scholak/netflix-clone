@@ -1,5 +1,7 @@
 // Library Imports
+import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
 
 // Type Imports
 import { IMovieMedia } from '@/types/movieType'
@@ -19,12 +21,14 @@ interface ISearchParams {
 }
 
 const SearchPage = async ({ searchParams }: ISearchParams) => {
+	const t = await getTranslations('Pages.SearchPage')
+
 	if (!searchParams.q || searchParams.q === '') {
 		redirect('/user')
 	}
 
-	const moviePromise = api.get(`/movies/search?q=${searchParams.q}`)
-	const seriePromise = api.get(`/series/search?q=${searchParams.q}`)
+	const moviePromise = api.get(`/movies/search?q=${searchParams.q}`, { headers: { Cookie: headers().get('cookie') } })
+	const seriePromise = api.get(`/series/search?q=${searchParams.q}`, { headers: { Cookie: headers().get('cookie') } })
 
 	const promises = [moviePromise, seriePromise]
 
@@ -40,26 +44,39 @@ const SearchPage = async ({ searchParams }: ISearchParams) => {
 				dark
 			>
 				{movieResponse.data.movies.length === 0 && serieResponse.data.series.length === 0 ? (
-					<>
-						<Text element='span'>{searchParams.q}</Text>
-						<Text
-							element='span'
-							size='lg'
-							weight='medium'
-							className='whitespace-nowrap text-neutral-300 '
-						>
-							için sonuç bulunamadı
-						</Text>
-					</>
+					<Text
+						element='span'
+						className='whitespace-nowrap text-neutral-300 '
+					>
+						{t.rich('noResult', {
+							search: chunks => (
+								<Text
+									element='span'
+									size='lg'
+									weight='bold'
+								>
+									{searchParams.q}
+								</Text>
+							),
+						})}
+					</Text>
 				) : (
 					<>
-						<Text>{searchParams.q}</Text>
 						<Text
-							size='lg'
-							weight='medium'
-							className='whitespace-nowrap text-neutral-300'
+							element='span'
+							className='whitespace-nowrap text-neutral-300 '
 						>
-							için arama sonuçları
+							{t.rich('results', {
+								search: chunks => (
+									<Text
+										element='span'
+										size='lg'
+										weight='bold'
+									>
+										{searchParams.q}
+									</Text>
+								),
+							})}
 						</Text>
 					</>
 				)}

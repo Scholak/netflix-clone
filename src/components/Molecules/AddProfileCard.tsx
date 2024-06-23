@@ -1,11 +1,14 @@
 // Library Imports
 import { FaPlusCircle } from 'react-icons/fa'
+import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
 // Component Imports
 import Text from '@/components/Atoms/Text'
 
-const AddProfileCard = () => {
+const AddProfileCard = async () => {
+	const t = await getTranslations('Molecules.AddProfileCard')
+
 	return (
 		<Link
 			href='/create-profile'
@@ -18,7 +21,7 @@ const AddProfileCard = () => {
 				size='2xl'
 				className='text-neutral-400 group-hover:text-white'
 			>
-				Profil Ekle
+				{t('addProfile')}
 			</Text>
 		</Link>
 	)

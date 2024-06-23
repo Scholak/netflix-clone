@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -25,6 +26,8 @@ import { createNewProfile } from '@/services/profileService'
 import { createProfileSchema } from '@/validations/createProfileSchema'
 
 const CreateProfileForm = () => {
+	const t = useTranslations('Molecules.CreateProfileForm')
+	const validation = useTranslations('Validation')
 	const router = useRouter()
 
 	const [responseError, setResponseError] = useState<string>('')
@@ -72,7 +75,7 @@ const CreateProfileForm = () => {
 					<div className='w-full flex-1'>
 						<Input
 							variant='lightGray'
-							placeholder='Adı'
+							placeholder={t('namePlaceholder')}
 							{...register('name')}
 						/>
 						{errors.name && (
@@ -81,7 +84,7 @@ const CreateProfileForm = () => {
 								size='xs'
 								className='mt-1 text-red'
 							>
-								{errors.name.message}
+								{validation(errors.name.message)}
 							</Text>
 						)}
 					</div>
@@ -104,7 +107,7 @@ const CreateProfileForm = () => {
 								size='xs'
 								className='mt-1 text-red'
 							>
-								{errors.language.message}
+								{validation(errors.language.message)}
 							</Text>
 						)}
 					</div>
@@ -112,14 +115,14 @@ const CreateProfileForm = () => {
 			</div>
 			<div className='h-px mt-8 mb-12 bg-neutral-600'></div>
 			<div className='flex flex-col gap-4 md:flex-row'>
-				<Button className='text-neutral-900 bg-white rounded-sm hover:text-white hover:bg-red'>Devam Et</Button>
+				<Button className='text-neutral-900 bg-white rounded-sm hover:text-white hover:bg-red'>{t('continue')}</Button>
 				<Button
 					variant='link'
 					href='/browse'
 					className='text-neutral-400 bg-trasnparent rounded-sm border-neutral-400 hover:text-white hover:border-white hover:bg-transparent'
 					outlined
 				>
-					İptal
+					{t('cancel')}
 				</Button>
 			</div>
 		</form>

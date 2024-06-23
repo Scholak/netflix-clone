@@ -2,6 +2,7 @@
 
 // Library Imports
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { FaInfo, FaPlay } from 'react-icons/fa'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -22,6 +23,8 @@ interface IBannerProps {
 }
 
 const Banner = ({ mediaType }: IBannerProps) => {
+	const t = useTranslations('Organisms.Banner')
+
 	const { data, isLoading } = useQuery({
 		queryKey: mediaType === 'movie' ? ['featuredMovie'] : ['featuredSerie'],
 		queryFn: mediaType === 'movie' ? getFeaturedMovie : getFeaturedSerie,
@@ -73,7 +76,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 									element='span'
 									weight='bold'
 								>
-									Oynat
+									{t('play')}
 								</Text>
 							</Link>
 							<button
@@ -87,7 +90,7 @@ const Banner = ({ mediaType }: IBannerProps) => {
 									element='span'
 									weight='bold'
 								>
-									Daha Fazla Bilgi
+									{t('more')}
 								</Text>
 							</button>
 						</div>

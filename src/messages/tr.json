@@ -1,5 +1,9 @@
 {
 	"Validation": {
+		"name": {
+			"required": "Lütfen profil adı girin.",
+			"max": "Profil adı maksimum 15 karakter olabilir."
+		},
 		"email": {
 			"required": "Lütfen e-posta adresini girin!",
 			"invalid": "Lütfen geçerli bir e-posta adresini girin.",
@@ -125,6 +129,36 @@
 			"start": "Üyeliğinizi Başlatın",
 			"responseError": "Bir hata oluştu",
 			"confirmError": "Lütfen onaylayın!"
+		},
+		"AddProfileCard": {
+			"addProfile": "Profil Ekle"
+		},
+		"CreateProfileForm": {
+			"namePlaceholder": "Adı",
+			"continue": "Devam Et",
+			"cancel": "İptal"
+		},
+		"EditProfileForm": {
+			"namePlaceholder": "Adı",
+			"save": "Kaydet",
+			"cancel": "İptal",
+			"delete": "Profili Sil"
+		},
+		"SerieSeasons": {
+			"seasons": "Sezonlar"
+		},
+		"PopupRelatedMovies": {
+			"related": "Benzerleri"
+		},
+		"UserSearch": {
+			"placeholder": "içerik, kişi, tür"
+		},
+		"UserMenu": {
+			"profileManagement": "Profil Yönetimi",
+			"transferProfile": "Profili Aktar",
+			"account": "Hesap",
+			"helpCenter": "Yardım Merkezi",
+			"signout": "Netflix oturumunu kapat"
 		}
 	},
 	"Organisms": {
@@ -192,6 +226,53 @@
 			"link4": "Gizlilik",
 			"link5": "Çerez Tercihleri",
 			"link6": "Kurumsal Bilgiler"
+		},
+		"Banner": {
+			"play": "Oynat",
+			"more": "Daha Fazla Bilgi"
+		},
+		"Slider": {
+			"seeAll": "Tümüne Göz At"
+		},
+		"MovieDetailPopup": {
+			"play": "Oynat",
+			"cast": "Oyuncu Kadrosu",
+			"genres": "Türler",
+			"about": "<about></about> Hakkında",
+			"director": "Yönetmen",
+			"scriptWriter": "Senarist"
+		},
+		"SerieDetailPopup": {
+			"play": "Oynat",
+			"noDescription": "açıklama yok",
+			"cast": "Oyuncu Kadrosu",
+			"genres": "Türler",
+			"about": "<about></about> Hakkında",
+			"director": "Yönetmen",
+			"scriptWriter": "Senarist"
+		},
+		"UserNavbar": {
+			"browse": "Göz At",
+			"home": "Ana Sayfa",
+			"series": "Diziler",
+			"movies": "Filmler",
+			"newAndPopular": "Yeni ve Popüler",
+			"myList": "Listem"
+		},
+		"UserFooter": {
+			"link1": "Sesli Betimleme",
+			"link2": "Yardım Merkezi",
+			"link3": "Hediye Kartları",
+			"link4": "Medya Merkezi",
+			"link5": "Yatırımcı İlişkileri",
+			"link6": "İş İmkanları",
+			"link7": "Kullanım Koşulları",
+			"link8": "Gizlilik",
+			"link9": "Yasal Hükümler",
+			"link10": "Çerez Tercihleri",
+			"link11": "Kurumsal Bilgiler",
+			"link12": "Bize Ulaşın",
+			"button": "Hizmet Kodu"
 		}
 	},
 	"Pages": {
@@ -239,6 +320,68 @@
 		"PayWithCreditCardPage": {
 			"title": "Ödemenizi ayarlayın: Kredi Kartı/Banka Kartı",
 			"description": "Bu sayfa robot olmadığınızı kanıtlamak için Google reCAPTCHA tarafından korunuyor. <link>Daha fazlasını öğrenin.</link>"
+		},
+		"BrowsePage": {
+			"title": "Kim izliyor?",
+			"profileManagement": "Profil Yönetimi"
+		},
+		"CreateProfilePage": {
+			"title": "Profil Ekle",
+			"description": "Netflix'i izleyen başka bir kişi için profil ekleyin."
+		},
+		"ManageProfilesPage": {
+			"title": "Profil Düzenle",
+			"okay": "Tamam"
+		},
+		"EditProfilePage": {
+			"title": "Profili Düzenle"
+		},
+		"SearchPage": {
+			"noResult": "<search></search> için sonuç bulunamadı",
+			"results": "<search></search> için arama sonuçları"
+		},
+		"ListPage": {
+			"title": "Listem"
+		},
+		"LatestPage": {
+			"upcomingMovies": "Beklemeye Değer Filmler",
+			"upcomingSeries": "Beklemeye Değer Diziler",
+			"moviesReleasedThisWeek": "Bu Hafta Yayınlanan Filmler",
+			"seriesReleasedThisWeek": "Bu Hafta Yayınlanan Diziler",
+			"topTenMovies": "Türkiye de Bugünün Top 10 Film Listesi",
+			"topTenSeries": "Türkiye de Bugünün Top 10 Dizi Listesi"
+		},
+		"UserHomePage": {
+			"live": "Gündemdekiler"
+		},
+		"MoviesPage": {
+			"live": "Gündemdekiler"
+		},
+		"SeriesPage": {
+			"live": "Gündemdekiler"
+		}
+	},
+	"Api": {
+		"Genres": {
+			"action": "Aksiyon",
+			"adventure": "Macera",
+			"animation": "Animasyon",
+			"comedy": "Komedi",
+			"crime": "Suç",
+			"documentary": "Belgesel",
+			"dram": "Dram",
+			"family": "Aile",
+			"fantastic": "Fantastik",
+			"history": "Tarih",
+			"horror": "Korku",
+			"music": "Müzik",
+			"mystery": "Gizem",
+			"romantic": "Romantik",
+			"sciFi": "Bilim-Kurgu",
+			"tvMovie": "TV film",
+			"thriller": "Gerilim",
+			"war": "Savaş",
+			"wildWest": "Vahşi Batı"
 		}
 	}
 }

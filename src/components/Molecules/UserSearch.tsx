@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaSearch } from 'react-icons/fa'
+import { useTranslations } from 'next-intl'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -14,6 +15,7 @@ import { ISearch } from '@/types/forms/searchType'
 import { searchSchema } from '@/validations/searchSchema'
 
 const UserSearch = () => {
+	const t = useTranslations('Molecules.UserSearch')
 	const router = useRouter()
 	const searchParams = useSearchParams()
 
@@ -46,7 +48,7 @@ const UserSearch = () => {
 				className={`bg-transparent active:bg-transparent focus:bg-transparent text-white rounded outline-none transition-all duration-300 ${
 					active ? 'sm:w-32 md:w-40 lg:w-48' : 'w-0'
 				}`}
-				placeholder='içerik, kişi, tür'
+				placeholder={t('placeholder')}
 			/>
 		</form>
 	)

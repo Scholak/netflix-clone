@@ -1,5 +1,8 @@
+'use client'
+
 // Library Imports
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 // Type Imports
 import { ISerieOverview } from '@/types/serieType'
@@ -12,6 +15,8 @@ interface IBannerRelatedMoviesProps {
 }
 
 const PopupRelatedMovies = ({ series }: IBannerRelatedMoviesProps) => {
+	const t = useTranslations('Molecules.PopupRelatedMovies')
+
 	return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
 			<Text
@@ -21,7 +26,7 @@ const PopupRelatedMovies = ({ series }: IBannerRelatedMoviesProps) => {
 				className='mb-6'
 				dark
 			>
-				Benzerleri
+				{t('related')}
 			</Text>
 			<div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
 				{series.map((serie: ISerieOverview) => (

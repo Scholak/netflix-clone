@@ -1,5 +1,6 @@
 // Library Imports
 import { redirect } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
 
 // Type Imports
 import { IList } from '@/types/listType'
@@ -14,6 +15,7 @@ import { auth } from '@/lib/auth'
 
 const ListPage = async () => {
 	const session = await auth()
+	const t = await getTranslations('Pages.ListPage')
 
 	if (!session?.user) {
 		redirect('/login')
@@ -34,7 +36,7 @@ const ListPage = async () => {
 				className='flex flex-wrap items-end gap-2 mb-4 md:mb-8'
 				dark
 			>
-				Listem
+				{t('title')}
 			</Text>
 			<div className='grid gap-4 md:gap-y-16 lg:gap-y-32 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
 				{response.data.lists.map((list: IList) => (

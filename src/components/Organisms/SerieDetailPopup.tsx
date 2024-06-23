@@ -2,6 +2,7 @@
 
 // Library Imports
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { AiOutlineLike } from 'react-icons/ai'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { FaCheck, FaPlay, FaPlus, FaTimes } from 'react-icons/fa'
@@ -31,6 +32,7 @@ interface ISerieDetailPopupProps {
 }
 
 const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
+	const t = useTranslations('Organisms.SerieDetailPopup')
 	const router = useRouter()
 
 	const { data, isLoading } = useQuery({
@@ -109,7 +111,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 										element='span'
 										weight='bold'
 									>
-										Oynat
+										{t('play')}
 									</Text>
 								</Link>
 								{data.existsInList ? (
@@ -150,14 +152,14 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									>
 										{data.title}
 									</Text>
-									<Text>{data.overview ? data.overview : 'açıklama yok'}</Text>
+									<Text>{data.overview ? data.overview : t('noDescription')}</Text>
 								</div>
 								<div>
 									<Text
 										size='sm'
 										className='mb-2 text-neutral-400'
 									>
-										Oyuncu Kadrosu:{' '}
+										{t('cast')}:{' '}
 										{data.cast.map((cast: ICast, idx: number) => {
 											if (idx < 5) {
 												return (
@@ -178,7 +180,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 										size='sm'
 										className='text-neutral-400'
 									>
-										Türler:{' '}
+										{t('genres')}:{' '}
 										{data.genres.map((genre: IGenre, idx: number) => (
 											<Text
 												key={idx}
@@ -200,10 +202,12 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									size='2xl'
 									weight='bold'
 								>
-									{data.title} Hakkında
+									{t.rich('about', {
+										about: chunks => data.title,
+									})}
 								</Text>
 								<Text>
-									Yönetmen:{' '}
+									{t('director')}:{' '}
 									<Text
 										element='span'
 										dark
@@ -222,7 +226,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									</Text>
 								</Text>
 								<Text>
-									Oyuncu Kadrosu:{' '}
+									{t('cast')}:{' '}
 									{data.cast.map((cast: ICast, idx: number) => (
 										<Text
 											key={idx}
@@ -236,7 +240,7 @@ const SerieDetailPopup = ({ id, setSelectedSerie }: ISerieDetailPopupProps) => {
 									))}
 								</Text>
 								<Text>
-									Senarist:{' '}
+									{t('scriptWriter')}:{' '}
 									{data.directors.map((director: IDirector, idx: number) => (
 										<Text
 											key={idx}

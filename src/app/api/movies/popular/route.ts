@@ -1,15 +1,24 @@
+// Utility Imports
 import { tmdbApi } from '@/lib/tmdbApi'
-import { NextRequest } from 'next/server'
+import { getLanguage } from '@/utils/getLanguage'
 
-export async function GET(request: NextRequest) {
-	const response = await tmdbApi.get('/movie/popular')
+export async function GET() {
+	try {
+		const language = getLanguage()
 
-	const movies = response.data.results.map((movie: any) => {
-    return {
-			id: movie.id,
-			image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
-		}
-  }).filter((movie: any) => !movie.image.includes('null'))
+		const response = await tmdbApi.get('/movie/popular', { params: { language } })
 
-	return new Response(JSON.stringify({ movies }))
+		const movies = response.data.results
+			.map((movie: any) => {
+				return {
+					id: movie.id,
+					image: `${process.env.TMDB_IMAGE_PATH}/original${movie.backdrop_path}`,
+				}
+			})
+			.filter((movie: any) => !movie.image.includes('null'))
+
+		return new Response(JSON.stringify({ movies }))
+	} catch (error) {
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
+	}
 }

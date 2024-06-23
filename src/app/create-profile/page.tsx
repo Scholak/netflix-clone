@@ -1,8 +1,13 @@
+// Library Imports
+import { getTranslations } from 'next-intl/server'
+
 // Component Imports
 import Text from '@/components/Atoms/Text'
 import CreateProfileForm from '@/components/Molecules/CreateProfileForm'
 
-const CreateProfilePage = () => {
+const CreateProfilePage = async () => {
+	const t = await getTranslations('Pages.CreateProfilePage')
+
 	return (
 		<div className='min-h-[100dvh] flex items-center justify-center px-2 bg-neutral-900 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 			<div className='flex flex-col md:w-1/2'>
@@ -14,7 +19,7 @@ const CreateProfilePage = () => {
 					dark
 					className='md:text-left'
 				>
-					Profil Ekle
+					{t('title')}
 				</Text>
 				<Text
 					size='2xl'
@@ -22,7 +27,7 @@ const CreateProfilePage = () => {
 					weight='medium'
 					className='my-6 text-neutral-500 md:text-left'
 				>
-					Netflix&apos;i izleyen başka bir kişi için profil ekleyin.
+					{t('description')}
 				</Text>
 				<div className='h-px mb-8 bg-neutral-600'></div>
 				<CreateProfileForm />

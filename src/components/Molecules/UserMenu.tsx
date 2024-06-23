@@ -16,8 +16,10 @@ import Text from '@/components/Atoms/Text'
 
 // Service Imports
 import { getProfiles } from '@/services/profileService'
+import { useTranslations } from 'next-intl'
 
 const UserMenu = () => {
+	const t = useTranslations('Molecules.UserMenu')
 	const session = useSession()
 	const router = useRouter()
 
@@ -88,26 +90,26 @@ const UserMenu = () => {
 						className='mb-3 px-3 flex items-center gap-2 hover:underline'
 					>
 						<FaPencilAlt className='text-lg' />
-						<Text>Profil Yönetimi</Text>
+						<Text size='sm'>{t('profileManagement')}</Text>
 					</Link>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaFileExport className='text-lg' />
-						<Text>Profili Aktar</Text>
+						<Text size='sm'>{t('transferProfile')}</Text>
 					</div>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaRegUser className='text-lg' />
-						<Text>Hesap</Text>
+						<Text size='sm'>{t('account')}</Text>
 					</div>
 					<div className='mb-3 px-3 flex items-center gap-2 hover:underline'>
 						<FaRegQuestionCircle className='text-lg' />
-						<Text>Yarım Merkezi</Text>
+						<Text size='sm'>{t('helpCenter')}</Text>
 					</div>
 					<div className='h-px bg-neutral-300'></div>
 					<button
 						onClick={() => signOut()}
 						className='py-3 pl-6 hover:underline'
 					>
-						Netflix oturumunu kapat
+						{t('signout')}
 					</button>
 				</div>
 			</div>

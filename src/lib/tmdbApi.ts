@@ -6,5 +6,4 @@ export const tmdbApi = axios.create({
 
 tmdbApi.defaults.params = {
 	api_key: process.env.TMDB_API_KEY!,
-	language: 'tr',
 }

@@ -1,6 +1,9 @@
-import { prisma } from '@/lib/prisma'
+// Library Imports
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
+
+// Utility Imports
+import { prisma } from '@/lib/prisma'
 
 interface Params {
 	params: {
@@ -8,20 +11,24 @@ interface Params {
 	}
 }
 
-export async function GET(request: NextRequest, { params }: Params) {
-	const profile = await prisma.profile.findUnique({
-		where: {
-			id: Number(params.id),
-		},
-	})
+export async function GET(_: never, { params }: Params) {
+	try {
+		const profile = await prisma.profile.findUnique({
+			where: {
+				id: Number(params.id),
+			},
+		})
 
-	return new Response(JSON.stringify({ profile }))
+		return new Response(JSON.stringify({ profile }))
+	} catch (error) {
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
+	}
 }
 
 export async function PUT(request: NextRequest, { params }: Params) {
-	const body = await request.json()
-
 	try {
+		const body = await request.json()
+
 		const updatedProfile = await prisma.profile.update({
 			where: {
 				id: Number(params.id),
@@ -39,16 +46,20 @@ export async function PUT(request: NextRequest, { params }: Params) {
 			return new Response(JSON.stringify({ message: 'Profil güncellenirken hata oluştu.' }), { status: 400 })
 		}
 	} catch (error: any) {
-		return new Response(JSON.stringify({ message: 'Sunucu hatası. Data sonra tekrar deneyin.' }), { status: 500 })
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
 	}
 }
 
-export async function DELETE(request: NextRequest, { params }: Params) {
-	await prisma.profile.delete({
-		where: {
-			id: Number(params.id),
-		},
-	})
+export async function DELETE(_: never, { params }: Params) {
+	try {
+		await prisma.profile.delete({
+			where: {
+				id: Number(params.id),
+			},
+		})
 
-	return new Response(null, { status: 204 })
+		return new Response(null, { status: 204 })
+	} catch (error) {
+		return new Response(JSON.stringify({ message: 'Internal Server Error' }), { status: 500 })
+	}
 }

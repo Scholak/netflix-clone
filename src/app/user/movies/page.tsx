@@ -1,3 +1,7 @@
+// Libraru Imports
+import { headers } from 'next/headers'
+import { getTranslations } from 'next-intl/server'
+
 // Type Imports
 import { ISlider } from '@/types/sliderTypes'
 
@@ -11,8 +15,10 @@ import { api } from '@/lib/api'
 export const revalidate = 0
 
 const MoviesPage = async () => {
-	const popularMoviePromise = api.get('/movies/popular')
-	const sliderMoviesPromise = api.get('/movies/slider')
+	const t = await getTranslations('Pages.MoviesPage')
+
+	const popularMoviePromise = api.get('/movies/popular', { headers: { Cookie: headers().get('cookie') } })
+	const sliderMoviesPromise = api.get('/movies/slider', { headers: { Cookie: headers().get('cookie') } })
 
 	const promises = [popularMoviePromise, sliderMoviesPromise]
 
@@ -23,7 +29,7 @@ const MoviesPage = async () => {
 			<Banner mediaType='movie' />
 			<div className='py-4 md:py-6 lg:py-12'>
 				<Slider
-					title='Gündemdekiler'
+					title={t('live')}
 					link='/popular'
 					items={popularMovieResponse.data.movies}
 					type='movie'

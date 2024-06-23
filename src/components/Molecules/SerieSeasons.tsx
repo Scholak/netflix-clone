@@ -1,5 +1,8 @@
+'use client'
+
 // Library Imports
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 // Type Imports
 import { ISerieSeason } from '@/types/serieType'
@@ -12,6 +15,8 @@ interface ISerieSeasonsProps {
 }
 
 const SerieSeasons = ({ seasons }: ISerieSeasonsProps) => {
+	const t = useTranslations('Molecules.SerieSeasons')
+
 	return (
 		<div className='px-3 pb-3 md:px-6 md:pb-6 lg:px-12 lg:pb-12'>
 			<Text
@@ -21,7 +26,7 @@ const SerieSeasons = ({ seasons }: ISerieSeasonsProps) => {
 				className='mb-6'
 				dark
 			>
-				Sezonlar
+				{t('seasons')}
 			</Text>
 			<div className='grid gap-2'>
 				{seasons.map((season: ISerieSeason, idx: number) => (

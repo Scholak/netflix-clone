@@ -1,3 +1,6 @@
+// Library Imports
+import { headers } from 'next/headers'
+
 // Type Imports
 import { ISlider } from '@/types/sliderTypes'
 
@@ -7,12 +10,15 @@ import Banner from '@/components/Organisms/Banner'
 
 // Utility Imports
 import { api } from '@/lib/api'
+import { getTranslations } from 'next-intl/server'
 
 export const revalidate = 0
 
 const UserHomePage = async () => {
-	const popularMoviePromise = api.get('/movies/popular')
-	const sliderMoviesPromise = api.get('/movies/slider')
+	const t = await getTranslations('Pages.UserHomePage')
+
+	const popularMoviePromise = api.get('/movies/popular', { headers: { Cookie: headers().get('cookie') } })
+	const sliderMoviesPromise = api.get('/movies/slider', { headers: { Cookie: headers().get('cookie') } })
 
 	const promises = [popularMoviePromise, sliderMoviesPromise]
 
@@ -23,7 +29,7 @@ const UserHomePage = async () => {
 			<Banner mediaType='movie' />
 			<div className='py-4 md:py-6 lg:py-12'>
 				<Slider
-					title='Gündemdekiler'
+					title={t('live')}
 					link='/popular'
 					items={popularMovieResponse.data.movies}
 					type='movie'

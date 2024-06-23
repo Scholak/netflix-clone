@@ -1,80 +1,80 @@
-import { IGenre } from "@/types/genreType";
+import { IGenre } from '@/types/genreType'
 
 export const genres: IGenre[] = [
 	{
 		id: 28,
-		name: 'Aksiyon',
+		name: 'action',
 	},
 	{
 		id: 12,
-		name: 'Macera',
+		name: 'adventure',
 	},
 	{
 		id: 16,
-		name: 'Animasyon',
+		name: 'animation',
 	},
 	{
 		id: 35,
-		name: 'Komedi',
+		name: 'comedy',
 	},
 	{
 		id: 80,
-		name: 'Suç',
+		name: 'crime',
 	},
 	{
 		id: 99,
-		name: 'Belgesel',
+		name: 'documentary',
 	},
 	{
 		id: 18,
-		name: 'Dram',
+		name: 'dram',
 	},
 	{
 		id: 10751,
-		name: 'Aile',
+		name: 'family',
 	},
 	{
 		id: 14,
-		name: 'Fantastik',
+		name: 'fantastic',
 	},
 	{
 		id: 36,
-		name: 'Tarih',
+		name: 'history',
 	},
 	{
 		id: 27,
-		name: 'Korku',
+		name: 'horror',
 	},
 	{
 		id: 10402,
-		name: 'Müzik',
+		name: 'music',
 	},
 	{
 		id: 9648,
-		name: 'Gizem',
+		name: 'mystery',
 	},
 	{
 		id: 10749,
-		name: 'Romantik',
+		name: 'romantic',
 	},
 	{
 		id: 878,
-		name: 'Bilim-Kurgu',
+		name: 'sciFi',
 	},
 	{
 		id: 10770,
-		name: 'TV film',
+		name: 'tvMovie',
 	},
 	{
 		id: 53,
-		name: 'Gerilim',
+		name: 'thriller',
 	},
 	{
 		id: 10752,
-		name: 'Savaş',
+		name: 'war',
 	},
 	{
 		id: 37,
-		name: 'Vahşi Batı',
+		name: 'wildWest',
 	},
 ]
