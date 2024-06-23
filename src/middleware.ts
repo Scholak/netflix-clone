@@ -1,4 +1,16 @@
-export { auth as middleware } from '@/lib/auth'
+// Library Imports
+import { NextRequest, NextResponse } from 'next/server'
+
+// Utility Imports
+import { auth } from '@/lib/auth'
+
+export default async function middleware(req: NextRequest) {
+	const session = await auth()
+
+	if (!session) return NextResponse.redirect(`${process.env.APP_URL}/login`)
+
+	return NextResponse.next()
+}
 
 export const config = {
 	matcher: [

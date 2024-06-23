@@ -2,6 +2,7 @@
 
 // Library Imports
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useQuery } from '@tanstack/react-query'
 import { signOut, useSession } from 'next-auth/react'
 import { FaCaretDown, FaFileExport, FaPencilAlt, FaRegQuestionCircle, FaRegUser } from 'react-icons/fa'
@@ -16,7 +17,6 @@ import Text from '@/components/Atoms/Text'
 
 // Service Imports
 import { getProfiles } from '@/services/profileService'
-import { useTranslations } from 'next-intl'
 
 const UserMenu = () => {
 	const t = useTranslations('Molecules.UserMenu')
@@ -43,6 +43,13 @@ const UserMenu = () => {
 	const handleSwitchProfile = async (profileId: number) => {
 		await session.update({ profileId })
 		router.refresh()
+	}
+
+	const handleSignout = async () => {
+		await signOut({
+			redirect: false,
+		})
+		router.push('/')
 	}
 
 	return (
@@ -106,7 +113,7 @@ const UserMenu = () => {
 					</div>
 					<div className='h-px bg-neutral-300'></div>
 					<button
-						onClick={() => signOut()}
+						onClick={handleSignout}
 						className='py-3 pl-6 hover:underline'
 					>
 						{t('signout')}
