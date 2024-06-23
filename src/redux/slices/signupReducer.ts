@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface signUpState {
+export type signUpState = {
 	email: string
 	password: string
 	planId: 0 | 1 | 2

@@ -169,6 +169,9 @@
 			"decline": "Reddet",
 			"customizePreferences": "Seçimleri kişiselleştir"
 		},
+		"Navbar": {
+			"signin": "Oturum Aç"
+		},
 		"Hero": {
 			"title": "Âlâsı var!",
 			"subTitleOne": "En iyi dizi, film, belgesel ve çok daha fazlası burada.",

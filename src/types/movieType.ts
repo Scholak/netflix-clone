@@ -1,9 +1,9 @@
-export interface IMovieMedia {
+export type IMovieMedia = {
 	id: number
 	image: string
 }
 
-export interface IMovieOverview {
+export type IMovieOverview = {
 	id: number
 	overview: string
 	image: string

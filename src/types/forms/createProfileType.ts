@@ -1,4 +1,4 @@
-export interface ICreateProfile {
+export type ICreateProfile = {
 	name: string
 	language: string
 }

@@ -54,7 +54,7 @@ const Button = ({
 	return (
 		<Link
 			href={href}
-			className={cn(sizes[size], outlinedStyle, 'hover:bg-[#F6121D]', className)}
+			className={cn(sizes[size], outlinedStyle, 'text-center hover:bg-[#F6121D]', className)}
 		>
 			{children}
 		</Link>

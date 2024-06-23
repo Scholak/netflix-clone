@@ -19,7 +19,7 @@ import MovieDetailPopup from '@/components/Organisms/MovieDetailPopup'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-interface ITopTenSliderProps {
+type ITopTenSliderProps = {
 	title: string
 	items: IMovieOverview[] | ISerieOverview[]
 	type: 'movie' | 'serie'

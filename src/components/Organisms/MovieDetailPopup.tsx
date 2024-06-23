@@ -25,7 +25,7 @@ import { queryClient } from '@/lib/queryClient'
 import { getMovieDetail } from '@/services/movieService'
 import { addToList, removeFromList } from '@/services/listService'
 
-interface IMovieDetailPopupProps {
+type IMovieDetailPopupProps = {
 	id: number
 	setSelectedMovie: (id: number) => void
 }

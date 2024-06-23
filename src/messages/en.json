@@ -169,6 +169,9 @@
 			"decline": "Decline",
 			"customizePreferences": "Customize Preferences"
 		},
+		"Navbar": {
+			"signin": "Sign In"
+		},
 		"Hero": {
 			"title": "Unlimited movies, TV shows, and more",
 			"subTitleOne": "Watch anywhere. Cancel anytime.",

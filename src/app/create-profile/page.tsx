@@ -9,7 +9,7 @@ const CreateProfilePage = async () => {
 	const t = await getTranslations('Pages.CreateProfilePage')
 
 	return (
-		<div className='min-h-[100dvh] flex items-center justify-center px-2 bg-neutral-900 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
+		<div className='min-h-[100dvh] flex items-center justify-center p-4 bg-neutral-900 sm:px-6 md:px-12 lg:px-20 xl:px-40 2xl:px-60'>
 			<div className='flex flex-col md:w-1/2'>
 				<Text
 					element='h1'

@@ -4,7 +4,7 @@ import { store } from '@/redux/store'
 import React from 'react'
 import { Provider } from 'react-redux'
 
-interface IReduxProviderProps {
+type IReduxProviderProps = {
 	children: React.ReactNode
 }
 

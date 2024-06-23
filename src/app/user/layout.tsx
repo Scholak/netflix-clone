@@ -9,7 +9,7 @@ import UserFooter from '@/components/Organisms/UserFooter'
 // Utility Imports
 import { auth } from '@/lib/auth'
 
-interface IUserLayoutProps {
+type IUserLayoutProps = {
 	children: ReactNode
 }
 

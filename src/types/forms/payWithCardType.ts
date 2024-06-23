@@ -1,4 +1,4 @@
-export interface IPayWithCard {
+export type IPayWithCard = {
 	cardNumber: string
 	expiryDate: string
 	cvv: string

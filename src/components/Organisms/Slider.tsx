@@ -3,9 +3,9 @@
 // Library Imports
 import { useState } from 'react'
 import { Navigation } from 'swiper/modules'
-import { useTranslations } from 'next-intl'
 import { FaAngleRight } from 'react-icons/fa'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -22,7 +22,7 @@ import MovieDetailPopup from '@/components/Organisms/MovieDetailPopup'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-interface ISliderProps {
+type ISliderProps = {
 	title: string
 	link: string
 	items: IMovieOverview[] | ISerieOverview[]
@@ -30,6 +30,7 @@ interface ISliderProps {
 }
 
 const Slider = ({ title, link, items, type }: ISliderProps) => {
+	const locale = useLocale()
 	const t = useTranslations('Organisms.Slider')
 
 	const [selectedMovie, setSelectedMovie] = useState<number>(-1)
@@ -56,7 +57,11 @@ const Slider = ({ title, link, items, type }: ISliderProps) => {
 				>
 					{t('seeAll')}
 				</Text>
-				<FaAngleRight className='-translate-x-28 text-sky-600 transition delay-100 duration-500 z-[1] group-hover:translate-x-0' />
+				<FaAngleRight
+					className={`${
+						locale === 'tr' ? '-translate-x-44' : '-translate-x-20'
+					} text-sky-600 transition delay-100 duration-500 z-[1] group-hover:translate-x-0`}
+				/>
 			</Link>
 			<div>
 				<Swiper

@@ -1,10 +1,13 @@
 // Library Imports
 import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 
 // Component Imports
 import LanguageSwitcher from '@/components/Molecules/LanguageSwitcher'
 
-const Navbar = () => {
+const Navbar = async () => {
+	const t = await getTranslations('Organisms.Navbar')
+
 	return (
 		<nav className='flex items-center justify-between py-6'>
 			<svg
@@ -26,7 +29,7 @@ const Navbar = () => {
 					href='/login'
 					className='py-1.5 px-4 rounded-md bg-red text-white text-sm font-bold'
 				>
-					Oturum Aç
+					{t('signin')}
 				</Link>
 			</div>
 		</nav>

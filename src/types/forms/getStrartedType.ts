@@ -1,3 +1,3 @@
-export interface IGetStarted {
-  email: string
+export type IGetStarted = {
+	email: string
 }

@@ -2,7 +2,7 @@
 import { prisma } from '@/lib/prisma'
 import { tmdbApi } from '@/lib/tmdbApi'
 
-interface IParams {
+type IParams = {
 	params: {
 		id: string
 	}

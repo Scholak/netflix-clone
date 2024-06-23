@@ -10,7 +10,7 @@ import { ISerieSeason } from '@/types/serieType'
 // Component Imports
 import Text from '@/components/Atoms/Text'
 
-interface ISerieSeasonsProps {
+type ISerieSeasonsProps = {
 	seasons: ISerieSeason[]
 }
 

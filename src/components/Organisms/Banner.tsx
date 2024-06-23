@@ -18,7 +18,7 @@ import SerieDetailPopup from '@/components/Organisms/SerieDetailPopup'
 import { getFeaturedMovie } from '@/services/movieService'
 import { getFeaturedSerie } from '@/services/serieService'
 
-interface IBannerProps {
+type IBannerProps = {
 	mediaType: 'movie' | 'serie'
 }
 

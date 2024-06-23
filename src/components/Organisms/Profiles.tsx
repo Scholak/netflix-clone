@@ -13,7 +13,7 @@ import ProfileLoader from '@/components/Organisms/ProfileLoader'
 // Service Imports
 import { getProfiles } from '@/services/profileService'
 
-interface IProfilesProps {
+type IProfilesProps = {
 	isEditingMode?: boolean
 }
 

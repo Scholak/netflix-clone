@@ -28,7 +28,7 @@ import { editProfile } from '@/services/profileService'
 // Validation Imports
 import { editProfileSchema } from '@/validations/editProfileSchema'
 
-interface IEditProfileFormProps {
+type IEditProfileFormProps = {
 	profile: IProfile
 }
 

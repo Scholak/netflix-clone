@@ -1,15 +1,15 @@
-export interface ISerieMedia {
+export type ISerieMedia = {
 	id: number
 	image: string
 }
 
-export interface ISerieOverview {
+export type ISerieOverview = {
 	id: number
 	title: string
 	image: string
 }
 
-export interface ISerieSeason {
+export type ISerieSeason = {
 	id: number
 	date: string
 	name: string

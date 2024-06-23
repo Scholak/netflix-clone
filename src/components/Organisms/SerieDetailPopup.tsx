@@ -26,7 +26,7 @@ import { queryClient } from '@/lib/queryClient'
 import { getSerieDetail } from '@/services/serieService'
 import { addToList, removeFromList } from '@/services/listService'
 
-interface ISerieDetailPopupProps {
+type ISerieDetailPopupProps = {
 	id: number
 	setSelectedSerie: (id: number) => void
 }

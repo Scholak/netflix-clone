@@ -10,7 +10,7 @@ import { ISerieOverview } from '@/types/serieType'
 // Component Imports
 import Text from '@/components/Atoms/Text'
 
-interface IBannerRelatedMoviesProps {
+type IBannerRelatedMoviesProps= {
 	series: ISerieOverview[]
 }
 

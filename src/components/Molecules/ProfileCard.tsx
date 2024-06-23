@@ -13,7 +13,7 @@ import { IProfile } from '@/types/profileType'
 // Component Imports
 import Text from '@/components/Atoms/Text'
 
-interface IProfileCardProps {
+type IProfileCardProps ={
 	profile: IProfile
 	editing?: boolean
 }

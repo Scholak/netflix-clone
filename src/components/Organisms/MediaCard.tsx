@@ -8,7 +8,7 @@ import Image from 'next/image'
 import MovieDetailPopup from '@/components/Organisms/MovieDetailPopup'
 import SerieDetailPopup from '@/components/Organisms/SerieDetailPopup'
 
-interface IMediaCardProps {
+type IMediaCardProps = {
 	media: any
 	type: 'movie' | 'serie'
 }

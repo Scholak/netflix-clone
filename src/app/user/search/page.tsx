@@ -14,7 +14,7 @@ import MediaCard from '@/components/Organisms/MediaCard'
 // Utility Imports
 import { api } from '@/lib/api'
 
-interface ISearchParams {
+type ISearchParams = {
 	searchParams: {
 		q?: string
 	}

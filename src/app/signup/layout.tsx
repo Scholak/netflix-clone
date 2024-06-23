@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 	title: 'Netflix',
 }
 
-interface ISignupProps {
+type ISignupProps= {
 	children: ReactNode
 }
 

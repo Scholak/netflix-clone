@@ -1,7 +1,7 @@
-import { IMovieOverview } from "./movieType"
-import { ISerieOverview } from "./serieType"
+import { IMovieOverview } from './movieType'
+import { ISerieOverview } from './serieType'
 
-export interface ISlider {
+export type ISlider = {
 	id: number
 	title: string
 	link: string

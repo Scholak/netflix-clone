@@ -1,3 +1,3 @@
-export interface IGiftOption {
-  code: string
+export type IGiftOption = {
+	code: string
 }

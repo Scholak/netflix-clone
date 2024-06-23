@@ -1,4 +1,4 @@
-export interface IEditProfile {
+export type IEditProfile = {
 	name: string
 	language: string
 }

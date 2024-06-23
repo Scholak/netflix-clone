@@ -5,7 +5,7 @@ import { NextRequest } from 'next/server'
 // Utility Imports
 import { prisma } from '@/lib/prisma'
 
-interface Params {
+type Params = {
 	params: {
 		id: number
 	}

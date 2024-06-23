@@ -1,6 +1,6 @@
 import { IUser } from './userType'
 
-export interface IProfile {
+export type IProfile = {
 	id: number
 	name: string
 	userId: number

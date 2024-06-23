@@ -6,7 +6,7 @@ import { getLanguage } from '@/utils/getLanguage'
 import { generateTeaser } from '@/utils/generateTeaser'
 import { calculateRating } from '@/utils/calculateRating'
 
-interface Params {
+type Params = {
 	params: {
 		id: string
 	}

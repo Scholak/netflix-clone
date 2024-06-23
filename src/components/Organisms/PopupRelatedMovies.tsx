@@ -7,7 +7,7 @@ import { IMovieOverview } from '@/types/movieType'
 // Component Imports
 import Text from '@/components/Atoms/Text'
 
-interface IBannerRelatedMoviesProps {
+type IBannerRelatedMoviesProps = {
 	movieId: number
 	movies: IMovieOverview[]
 }

@@ -1,14 +1,14 @@
-export interface ICast {
+export type ICast = {
 	id: number
 	name: string
 }
 
-export interface IProducer {
+export type IProducer = {
 	id: number
 	name: string
 }
 
-export interface IDirector {
+export type IDirector = {
 	id: number
 	name: string
 }
