@@ -1,13 +1,25 @@
 # Netflix Clone
 
 ## Project Description
+
 In this project, Next.js and TMDB API used. The project contains most of the features of Netflix such as registration, profile management, movie/serie sections, search functionality, my list page.
 
 ## Gift Option Code
+
 12345678910
 
-## Features
-- Sign up
+## Project Features
+
+- Atomic Design
+- Server Side Data Fetching
+- Multi Language Support
+- Type Safety
+- Authentication
+- Responsive Design
+
+## App Features
+
+- Registration
 - Login
 - Profile management
 - Popular movies
@@ -20,9 +32,10 @@ In this project, Next.js and TMDB API used. The project contains most of the fea
 - Movie/serie search
 - Add movie/serie to list
 - Remove movie/serie from list
-- Responsive Design
 
 ## Packages Used
+
+- Next Intl
 - Redux Toolkit
 - React Query
 - Prisma
@@ -32,10 +45,13 @@ In this project, Next.js and TMDB API used. The project contains most of the fea
 - React Loading Skeleton
 - React Icons
 - Axios
+- Tailwind Merge
+- Clsx
 
 ## Installation Guide
+
 - clone the project &nbsp; `git clone https://github.com/Scholak/netflix-clone.git`
-- install dependencies &nbsp; `npm install` &nbsp; or &nbsp; `yarn install` 
+- install dependencies &nbsp; `npm install` &nbsp; or &nbsp; `yarn install`
 - create `.env` file and paste `.env.example` file content
 - create `.env.local` file and paste `.env.local.example` file content
 - define environment variables
@@ -43,9 +59,11 @@ In this project, Next.js and TMDB API used. The project contains most of the fea
 - visit http://localhost:3000
 
 ## Live Demo
+
 https://netflix-clone-one-beryl.vercel.app
 
 ## Project Images
+
 ![](./assets/1.png)
 <br>
 <br>
